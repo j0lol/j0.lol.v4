@@ -1,0 +1,357 @@
+@font-face {
+    font-family: "DM Sans";
+    src:
+        local("DM Sans"),
+        url("../static/fonts/DMSans-VariableFont_opsz,wght.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "DM Sans Italic";
+    src:
+        local("DM Sans Italic"),
+        url("../static/fonts/DMSans-Italic-VariableFont_opsz\,wght.ttf")
+            format("truetype");
+}
+
+@font-face {
+    font-family: "Cascadia Code";
+    src:
+        local("Cascadia Code"),
+        url("../static/fonts/CascadiaCode.ttf") format("truetype");
+}
+
+:root {
+
+    --max-width: 47rem;
+    --dull-lavender-50: 247 244 254;
+    --dull-lavender-100: 239 235 252;
+    --dull-lavender-200: 227 218 250;
+    --dull-lavender-300: 206 189 245;
+    --dull-lavender-400: 180 151 238;
+    --dull-lavender-500: 155 109 229;
+    --dull-lavender-600: 140 77 218;
+    --dull-lavender-700: 124 59 198;
+    --dull-lavender-800: 104 49 166;
+    --dull-lavender-900: 87 42 136;
+    --dull-lavender-950: 54 25 92;
+
+    --steel-gray-50: 243 243 250;
+    --steel-gray-100: 233 234 246;
+    --steel-gray-200: 214 214 239;
+    --steel-gray-300: 189 189 228;
+    --steel-gray-400: 167 162 215;
+    --steel-gray-500: 148 138 202;
+    --steel-gray-600: 131 114 185;
+    --steel-gray-700: 113 96 162;
+    --steel-gray-800: 93 80 131;
+    --steel-gray-900: 77 69 106;
+    --steel-gray-925: 55 49 76;
+    --steel-gray-950: 34 30 46;
+    --steel-gray-975: 17 15 23;
+
+    --accent: rgb(var(--dull-lavender-400));
+    --bg-header: rgb(var(--dull-lavender-400));
+    --fg-header: rgb(var(--steel-gray-950));
+
+    /* light mode */
+    @media (prefers-color-scheme: light) {
+        --bg: rgb(var(--dull-lavender-100));
+        --bg-surface: rgb(var(--steel-gray-200));
+        --fg: rgb(var(--steel-gray-900));
+        --fg-light: rgb(var(--steel-gray-800) / 90%);
+        --anchor: rgb(var(--dull-lavender-700));
+        --anchor-visited: rgb(var(--steel-gray-700));
+        --anchor-active: rgb(var(--dull-lavender-950));
+
+    }
+
+    /* dark mode */
+    @media (prefers-color-scheme: dark) {
+        --bg: rgb(var(--steel-gray-950));
+        --fg: rgb(var(--dull-lavender-200));
+        --bg-surface: rgb(var(--steel-gray-975));
+        --fg-light: rgb(var(--dull-lavender-300));
+        --anchor: rgb(var(--dull-lavender-400));
+        --anchor-visited: rgb(var(--steel-gray-400));
+        --anchor-active: rgb(var(--dull-lavender-100));
+    }
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--fg);
+}
+.wrapper {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+nav.bar {
+    background-color: var(--bg-header);
+}
+nav.bar > ul {
+    max-width: min(var(--max-width), 100%);
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    gap: 0.5rem;
+    font-size: 1.2rem;
+    padding-inline: 0;
+    margin-block: 0;
+    list-style: none;
+    & li a {
+        display: inline-block;
+        padding: 0.5rem 0.5rem;
+        text-decoration: none;
+        color: var(--fg-header);
+        &:hover {
+            background-color: rgb(0 0 0 / 10%);
+        }
+        &:active {
+            background-color: rgb(0 0 0 / 20%);
+        }
+        &.active {
+            text-decoration: underline;
+        }
+    }
+}
+#nav-index {
+    font-family: "Cascadia Code", sans-serif;
+    font-weight: 500;
+    font-feature-settings: "zero";
+}
+
+main {
+    flex-grow: 1;
+    font-family: "DM Sans", sans-serif;
+    margin: 1rem;
+
+    a {
+        color: var(--anchor);
+        &:visited {
+            color: var(--anchor-visited);
+        }
+        &:hover, &:focus {
+            text-decoration: none;
+        }
+        &:active {
+            color: var(--anchor-active);
+        }
+    }
+
+    & h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: "Cascadia Code", sans-serif;
+        font-feature-settings: "zero";
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+    }
+
+    & code, & pre {
+        font-family: "Cascadia Code", sans-serif;
+        font-feature-settings: "zero";
+        font-weight: 300;
+    }
+
+    & img:not(.raw) {
+        max-width: 100%;
+        height: auto;
+        border: 1px solid rgb(53 50 68);
+        border-radius: 0.5rem;
+    }
+    /* & .page-section,
+    section {
+    } */
+
+    & > * {
+        max-width: min(var(--max-width), 100%);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    & #title {
+        font-size: 2rem;
+        margin-bottom: 0.2rem;
+    }
+
+    & .metadata {
+        /* make italic */
+        font-family: "DM Sans Italic", sans-serif;
+        color: var(--fg-light);
+        margin-bottom: 1rem;
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    & .table-of-contents {
+        background-color: var(--bg-surface);
+        list-style: none;
+        padding-inline-start: 0;
+        padding: 1rem;
+
+        & h3 {
+            margin-top: 0;
+        }
+
+        & a {
+            color: var(--fg);
+        }
+    }
+}
+
+footer {
+    padding: 1rem;
+    background-color: var(--bg-header);
+    color: var(--fg-header);
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    & div._88x31s {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1px;
+
+        & > * {
+            width: 88px;
+            height: 31px;
+            display: block;
+        }
+    }
+}
+
+span.icon {
+    font-family: "Nerd Font Symbols";
+    font-size: 1.2rem;
+    margin-inline-end: 0.5rem;
+}
+
+@media (max-width: 425px) {
+    .mobile-hide {
+        display: none;
+    }
+
+    footer {
+        padding: 0.5em;
+        font-size: 2em;
+
+        & div._88x31s {
+            align-items: baseline;
+        }
+    }
+}
+
+.sr-only {
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+}
+pre {
+    background-color: rgb(28, 24, 37);
+    padding: 1rem;
+    border: 1px solid rgb(53 50 68);
+    border-radius: 0.5rem;
+    font-family: "Cascadia Code", monospace;
+    text-overflow: clip;
+    overflow-x: scroll;
+    & b {
+        font-weight: 500;
+    }
+}
+
+
+pre[lang="ansi"] {
+    --red: rgb(243, 139, 168);
+    --green: rgb(166, 227, 161);
+    --yellow: rgb(249, 226, 175);
+    --blue: rgb(137, 180, 250);
+    --pink: rgb(245, 194, 231);
+    --teal: rgb(148, 226, 213);
+    --black: #6c7086;
+}
+
+
+.card-stack {
+    display: grid;
+    gap: 0.5em;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: 425px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card:hover > .title {
+    color: var(--anchor);
+    text-decoration: underline;
+    .year {
+        color: var(--fg-light);
+    }
+}
+
+.card-stack > a {
+    display: flex;
+    flex-direction: column;
+
+
+}
+.card {
+    background-color: var(--bg-surface);
+    padding: 1em;
+    color: var(--fg);
+    display: block;
+    height: 100%;
+
+    .preview {
+        max-width: 100%;
+        aspect-ratio: 16 / 9;
+        background: rgb(53 50 68 / 50%);
+        display: flex;
+        flex-direction: column;
+
+        border: 1px solid rgb(53 50 68);
+        border-radius: 0.5rem;
+        overflow: clip;
+
+        img {
+            margin: auto;
+            max-width: 100%;
+        }
+    }
+
+    span {
+        display: block;
+        &.title {
+            font-size: 1.2rem;
+        }
+        &.year {
+            color: var(--anchor);
+            display: inline;
+            font-size: 0.8em;
+        }
+        &.description {
+            color: var(--fg-light);
+            font-size: 0.8em;
+        }
+    }
+}
