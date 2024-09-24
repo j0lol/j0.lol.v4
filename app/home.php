@@ -23,7 +23,7 @@ route("head") ?>
                 ["Dig", "🚧 Side-view 2D Platformer with Building. Rust & Macroquad. Click to play! (Keyboard + Mouse)", 'https://vps.j0.lol/dig/', '2024', 'dig.jpg'],
                 ["ZeroBridge", "Discord bridge for Minecraft 1.4.7. NilLoader mod.", 'https://github.com/j0lol/ZeroBridge', '2024', "zerobridge.jpg"],
                 ["World Conquest", "Group project: Risk clone made in Godot. I was project lead.", 'https://github.com/goblin-code-se/world_conquest', '2024', "conquest.jpg"],
-                ["TIC-80 Tetris", "Physics-accurate Tetris clone for the TIC-80 Fantasy console. Click to play! (Keyboard only)", 'https://j0.lol/static/sillytetrisgame/index.html', '2023', "tetr.jpg"],
+                ["TIC-80 Tetris", "Physics-accurate Tetris clone for the TIC-80 Fantasy console. Click to play! (Keyboard only)", 'https://vps.j0.lol/tetr/', '2023', "tetr.jpg"],
                 ["launCCher", "ToonTown: Corporate Clash launcher for Linux. Rust & egui", 'https://codeberg.org/j0/launccher', '2023', "launccher.jpg"],
                 ["Modulus", "🚧 Modular tool mod for Minecraft. Quilt mod.", 'https://github.com/j0lol/modulus', '2022-2024', "modulus.png"],
                 ["Quicksnad", "Simple Fabric Minecraft mod that lets you grow cacti & sugarcane quicker", 'https://modrinth.com/mod/quicksnad', '2022', "snad.png"],
