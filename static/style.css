@@ -263,7 +263,7 @@ span.icon {
     position: absolute;
 }
 pre {
-    background-color: rgb(28, 24, 37);
+    background-color: var(--bg-surface);
     padding: 1rem;
     border: 1px solid rgb(53 50 68);
     border-radius: 0.5rem;

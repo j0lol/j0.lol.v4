@@ -19,6 +19,8 @@ if (file_exists($_SERVER['SCRIPT_FILENAME']) && pathinfo($_SERVER['SCRIPT_FILENA
 }
 
 $router->map( 'GET', '/', 'app/home.php', "index" );
+$router->map( 'GET', '/blog', 'app/blog-index.php', "blog-index" );
+$router->map( 'GET', '/blog/[*:post_slug]', 'app/blog-post.php', "blog-post" );
 $router->map( 'GET', '/contact', 'app/contact.php', "contact" );
 
 // Match the current request
