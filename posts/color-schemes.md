@@ -93,7 +93,7 @@ It's a little weird to look at, but it's better than having to make `--steel-gra
 
 ## The tool to do this for you
 
-There's [hundreds of tools out there](https://lmgt.org/?q=tailwind+color+palette+generator) to make configs for you ([here's my favorite](https://www.tailwindshades.com)). 
+There's hundreds of tools out there to make configs for you ([here's my favorite](https://www.tailwindshades.com)). 
 It doesn't really matter which one you pick, as long as it outputs hex codes.
 
 Here's some glue to convert between Tailwind configs to CSS 
