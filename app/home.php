@@ -37,10 +37,12 @@ route("head") ?>
                         <div class="preview">
                             <img class="raw" src="%s">
                         </div>
-                        <span class="title">%s
-                            <span class="year">%s</span>
-                        </span>
-                        <span class="description">%s</span>
+                        <div class="blurb">
+                            <span class="title">%s
+                                <span class="year">%s</span>
+                            </span>
+                            <span class="description">%s</span>
+                        </div>
                     </div>
                 </a>
                 ',

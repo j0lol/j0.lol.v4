@@ -108,7 +108,9 @@ Instead, let's just install it ourselves.
 > **Note**
 > 
 > I got this working on my Ubuntu Server! Not my MacOS laptop though. I had to build it from git instead of the latest version though.
+> 
 > `cargo install cargo-php --git https://github.com/davidcole1340/ext-php-rs`
+> 
 > If you have PHP installed globally you will have to install it on the super-user (use sudo).
 > Overall this seems spotty, and I'm looking for an alternative to this.
 

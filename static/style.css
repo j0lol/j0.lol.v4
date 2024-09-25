@@ -22,6 +22,8 @@
 
 :root {
 
+    color-scheme: light dark;
+
     --max-width: 47rem;
     --dull-lavender-50: 247 244 254;
     --dull-lavender-100: 239 235 252;
@@ -53,35 +55,69 @@
     --bg-header: rgb(var(--dull-lavender-400));
     --fg-header: rgb(var(--steel-gray-950));
 
-    /* light mode */
-    @media (prefers-color-scheme: light) {
-        --bg: rgb(var(--dull-lavender-100));
-        --bg-surface: rgb(var(--steel-gray-200));
-        --fg: rgb(var(--steel-gray-900));
-        --fg-light: rgb(var(--steel-gray-800) / 90%);
-        --anchor: rgb(var(--dull-lavender-700));
-        --anchor-visited: rgb(var(--steel-gray-700));
-        --anchor-active: rgb(var(--dull-lavender-950));
 
-    }
+    --plain-bg: light-dark(
+        rgb(var(--dull-lavender-50)),
+        rgb(var(--steel-gray-975))
+    );
 
-    /* dark mode */
-    @media (prefers-color-scheme: dark) {
-        --bg: rgb(var(--steel-gray-950));
-        --fg: rgb(var(--dull-lavender-200));
-        --bg-surface: rgb(var(--steel-gray-975));
-        --fg-light: rgb(var(--dull-lavender-300));
-        --anchor: rgb(var(--dull-lavender-400));
-        --anchor-visited: rgb(var(--steel-gray-400));
-        --anchor-active: rgb(var(--dull-lavender-100));
-    }
+    --bg: light-dark(
+        rgb(var(--dull-lavender-200)),
+        rgb(var(--steel-gray-950))
+    );
+
+    --bg-surface0: light-dark(
+        rgb(var(--dull-lavender-100)),
+        rgb(var(--steel-gray-900))
+    );
+
+    --bg-surface1: light-dark(
+        rgb(var(--dull-lavender-50)),
+        rgb(var(--steel-gray-975))
+    );
+
+    --text: light-dark(
+        rgb(var(--steel-gray-900)),
+        rgb(var(--dull-lavender-200))
+    );
+
+    --subtext: light-dark(
+            rgb(var(--steel-gray-700)),
+            rgb(var(--dull-lavender-300))
+    );
+
+    --anchor: light-dark(
+        rgb(var(--dull-lavender-700)),
+        rgb(var(--dull-lavender-400))
+    );
+
+    --anchor-visited: light-dark(
+        rgb(var(--steel-gray-700)),
+        rgb(var(--steel-gray-400))
+    );
+
+    --anchor-active: light-dark(
+        rgb(var(--dull-lavender-950)),
+        rgb(var(--dull-lavender-100))
+    );
+
+    --border: light-dark(
+        rgb(var(--dull-lavender-800)),
+        rgb(var(--steel-gray-600))
+    );
+
+    --border-surface0: light-dark(
+            rgb(var(--dull-lavender-800)),
+            rgb(var(--steel-gray-600))
+    );
+
 }
 
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
     background-color: var(--bg);
-    color: var(--fg);
+    color: var(--text);
 }
 .wrapper {
     min-height: 100vh;
@@ -183,7 +219,7 @@ main {
     & .metadata {
         /* make italic */
         font-family: "DM Sans Italic", sans-serif;
-        color: var(--fg-light);
+        color: var(--subtext);
         margin-bottom: 1rem;
         display: flex;
         flex-direction: row;
@@ -191,7 +227,7 @@ main {
     }
 
     & .table-of-contents {
-        background-color: var(--bg-surface);
+        background-color: var(--bg-surface0);
         list-style: none;
         padding-inline-start: 0;
         padding: 1rem;
@@ -201,7 +237,7 @@ main {
         }
 
         & a {
-            color: var(--fg);
+            color: var(--text);
         }
     }
 }
@@ -263,9 +299,9 @@ span.icon {
     position: absolute;
 }
 pre {
-    background-color: var(--bg-surface);
+    background-color: var(--plain-bg);
     padding: 1rem;
-    border: 1px solid rgb(53 50 68);
+    border: 1px solid var(--border);
     border-radius: 0.5rem;
     font-family: "Cascadia Code", monospace;
     text-overflow: clip;
@@ -305,7 +341,7 @@ pre[lang="ansi"] {
     color: var(--anchor);
     text-decoration: underline;
     .year {
-        color: var(--fg-light);
+        color: var(--subtext);
     }
 }
 
@@ -316,21 +352,24 @@ pre[lang="ansi"] {
 
 }
 .card {
-    background-color: var(--bg-surface);
-    padding: 1em;
-    color: var(--fg);
+    border-radius: 0.5rem;
+    background-color: var(--bg-surface0);
+    /*padding: 1em;*/
+    color: var(--text);
+    border: 1px solid var(--border);
     display: block;
     height: 100%;
+    overflow: clip;
 
     .preview {
         max-width: 100%;
         aspect-ratio: 16 / 9;
-        background: rgb(53 50 68 / 50%);
+        background: light-dark(rgb(var(--steel-gray-200)), rgb(var(--steel-gray-950)));
         display: flex;
         flex-direction: column;
 
-        border: 1px solid rgb(53 50 68);
-        border-radius: 0.5rem;
+        border-bottom: 1px solid var(--border);
+
         overflow: clip;
 
         img {
@@ -339,19 +378,31 @@ pre[lang="ansi"] {
         }
     }
 
-    span {
-        display: block;
-        &.title {
-            font-size: 1.2rem;
-        }
-        &.year {
-            color: var(--anchor);
-            display: inline;
-            font-size: 0.8em;
-        }
-        &.description {
-            color: var(--fg-light);
-            font-size: 0.8em;
+    .blurb {
+
+        padding: 0.5em;
+        span {
+            display: block;
+            &.title {
+                font-size: 1.2rem;
+            }
+            &.year {
+                color: var(--anchor);
+                display: inline;
+                font-size: 0.8em;
+            }
+            &.description {
+                color: var(--subtext);
+                font-size: 0.8em;
+            }
         }
     }
+}
+
+blockquote {
+    border-radius: 1em;
+    border: 1px solid var(--border);
+    border-left: 0.3em solid var(--border);
+    padding: 0.1em 0.7em;
+    background-color: var(--bg-surface0);
 }
