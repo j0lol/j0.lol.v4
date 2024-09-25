@@ -21,6 +21,7 @@ $parser->code_block_content_func = function ($code, $language) {
 };
 
 $posts = array(
+    "color-schemes" => ["Color Schemes", "2024-09-25"],
     "php-site" => ["Site remake", "2024-09-25"],
     "zerobridge-launch" => ["ZeroBridge 0.1.0 Release", "2024-04-03"]
 );
