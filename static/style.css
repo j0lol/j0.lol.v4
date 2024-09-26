@@ -54,7 +54,7 @@
     --accent: rgb(var(--dull-lavender-400));
     --bg-header: rgb(var(--dull-lavender-400));
     --fg-header: rgb(var(--steel-gray-950));
-
+    --border-header: rgb(var(--dull-lavender-700));
 
     --plain-bg: light-dark(
         rgb(var(--dull-lavender-50)),
@@ -126,6 +126,7 @@ body {
 }
 nav.bar {
     background-color: var(--bg-header);
+    border-bottom: 2px solid var(--border-header);
 }
 nav.bar > ul {
     max-width: min(var(--max-width), 100%);
@@ -137,20 +138,24 @@ nav.bar > ul {
     padding-inline: 0;
     margin-block: 0;
     list-style: none;
-    & li a {
-        display: inline-block;
-        padding: 0.5rem 0.5rem;
-        text-decoration: none;
-        color: var(--fg-header);
-        &:hover {
-            background-color: rgb(0 0 0 / 10%);
-        }
-        &:active {
-            background-color: rgb(0 0 0 / 20%);
-        }
-        &.active {
-            text-decoration: underline;
-        }
+}
+nav.bar li a {
+    display: inline-block;
+    padding: 0.5rem 0.5rem;
+    text-decoration: none;
+    color: var(--fg-header);
+    &:hover {
+        background-color: rgb(0 0 0 / 10%);
+        margin-bottom: -2px;
+        border-bottom: 2px solid rgb(0 0 0 / 30%);
+    }
+    &:active {
+        background-color: rgb(0 0 0 / 20%);
+        margin-bottom: -2px;
+        border-bottom: 2px solid rgb(0 0 0 / 50%);
+    }
+    &.active {
+        text-decoration: underline;
     }
 }
 #nav-index {
@@ -251,6 +256,7 @@ footer {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    border-top: 2px solid var(--border-header);
 
     & div._88x31s {
         display: flex;

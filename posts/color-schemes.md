@@ -185,7 +185,7 @@ Please make sure you format it like the example above. You can leave whitespace 
         str += ":root {\n";
 
         for (const [key, value] of Object.entries(shades)) {
-            str += `    --${palette_name}-${key}: ${value}\n`;
+            str += `    --${palette_name}-${key}: ${value};\n`;
         }
         
         str += "}";
