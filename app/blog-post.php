@@ -2,8 +2,6 @@
 
 <body>
 
-<!--<div class="wrapper">-->
-
 <?php route("navbar") ?>
 
 <main>
@@ -20,14 +18,12 @@ if (!$contents) {
     echo "404.";
 } else {
 
-
     $parser = new MarkdownExtra();
     $parser->code_block_content_func = function ($code, $language) {
         return syntect_highlight($code, $language);
     };
 
     echo $parser->transform($contents);
-
 }
 ?>
 

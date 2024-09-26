@@ -264,13 +264,10 @@ footer {
             height: 31px;
             display: block;
         }
+        img {
+            image-rendering: pixelated;
+        }
     }
-}
-
-span.icon {
-    font-family: "Nerd Font Symbols";
-    font-size: 1.2rem;
-    margin-inline-end: 0.5rem;
 }
 
 @media (max-width: 425px) {
