@@ -41,11 +41,33 @@ fragment("head") ?>
 
         <h1>About me</h1>
         <p>I'm a creature!
-            <label>My pronouns are <?php make_select($pronouns); ?></label>
+            <label id="my-pronouns">My pronouns are <?php make_select($pronouns); ?></label>
         and
             <label>my gender is <?php make_select($genders, true); ?></label>
 
         </p>
+
+        <details>
+            <summary>What about you?</summary>
+
+            <label id="pronouns-blurb"> What's your pronouns? <input id="pronouns-choice"> </label>
+            <button id="pronouns-submit" type="button" onclick="steal_pronouns()">Submit</button>
+
+            <script>
+                function steal_pronouns() {
+                    let input_field = document.querySelector("#pronouns-choice");
+                    let pronouns = input_field.value;
+                    input_field.value = "";
+
+                    document.querySelector("#pronouns-blurb").innerHTML = "haha! mine now!";
+
+                    document.querySelector("#my-pronouns").innerHTML = `My pronouns are <b>${pronouns}</b>`;
+
+                    document.querySelector("#pronouns-submit").remove();
+
+                }
+            </script>
+        </details>
 
         <h2>What are you doing?</h2>
         <p>Here's what im interested in right now!</p>
