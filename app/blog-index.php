@@ -1,11 +1,11 @@
 <?php global $router;
-route("head") ?>
+fragment("head") ?>
 
 <body>
 
 <div class="wrapper">
 
-<?php route("navbar") ?>
+<?php fragment("navbar") ?>
 
 <main>
 
@@ -43,7 +43,7 @@ foreach (array_diff(scandir("./posts"), array('..', '.')) as $post_file) {
 </ul>
 </main>
 
-<?php route("footer") ?>
+<?php fragment("footer") ?>
 
 </div>
 </body>

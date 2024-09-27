@@ -8,6 +8,7 @@
 
     $nav_bar = array(
         ["index", 'j0.lol'],
+        ['projects', 'Projects'],
         ['blog-index', 'Blog'],
         ['contact', 'Contact']
     );

@@ -6,6 +6,10 @@ function route($name) {
     require (__DIR__ . '/app/' . $name . '.php');
 }
 
+function fragment($name) {
+    require (__DIR__ . '/app/fragments/' . $name . '.php');
+}
+
 global $router;
 
 $router = new AltoRouter();
@@ -22,6 +26,7 @@ $router->map( 'GET', '/', 'app/home.php', "index" );
 $router->map( 'GET', '/blog', 'app/blog-index.php', "blog-index" );
 $router->map( 'GET', '/blog/[*:post_slug]', 'app/blog-post.php', "blog-post" );
 $router->map( 'GET', '/contact', 'app/contact.php', "contact" );
+$router->map( 'GET', '/projects', 'app/projects.php', "projects" );
 
 // Match the current request
 $match = $router->match(urldecode($_SERVER['REQUEST_URI']));

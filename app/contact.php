@@ -1,8 +1,8 @@
-<?php route("head") ?>
+<?php fragment("head") ?>
 
 
 <div class="wrapper">
-    <?php route("navbar") ?>
+    <?php fragment("navbar") ?>
 
     <main>
         <h1 id="title">Contact me</h1>
@@ -38,5 +38,5 @@
             </li>
         </ul>
     </main>
-    <?php route("footer") ?>
+    <?php fragment("footer") ?>
 </div>

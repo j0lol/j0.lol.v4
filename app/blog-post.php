@@ -1,8 +1,8 @@
-<?php route("head") ?>
+<?php fragment("head") ?>
 
 <body>
 
-<?php route("navbar") ?>
+<?php fragment("navbar") ?>
 
 <main>
 
@@ -29,7 +29,7 @@ if (!$contents) {
 
 </main>
 
-<?php route("footer") ?>
+<?php fragment("footer") ?>
 
 <!--</div>-->
 </body>
