@@ -13,14 +13,27 @@ fragment("head") ?>
             $pronouns = ["she/her", "they/them", "it/its"];
             shuffle($pronouns);
 
-            $genders = ["the number Zero", "deer", "don't worry about it", "between female and the void", "in stores this Summer", "behind you", "featuring Funky Kong", "stolen"];
+            $genders = [
+                "the number Zero",
+                "deer",
+                "don't worry about it",
+                "between girl and void",
+                "in stores this Summer",
+                "behind you",
+                "featuring Funky Kong",
+                "stolen",
+                "n't",
+                $_SERVER['REMOTE_ADDR']
+            ];
             shuffle($genders);
 
-            function make_select($list)
+            function make_select($list, $funky=false)
             {
                 echo "<select>";
                 foreach ($list as $item) {
-                    echo "<option>" . $item . "</option>";
+                    $punctuation = $funky ? [".", "!"][array_rand([0, 1])] : "";
+
+                    echo "<option>" . $item . $punctuation . "</option>";
                 }
                 echo "</select>";
             }
@@ -30,7 +43,7 @@ fragment("head") ?>
         <p>I'm a creature!
             <label>My pronouns are <?php make_select($pronouns); ?></label>
         and
-            <label>my gender is <?php make_select($genders); ?></label>!
+            <label>my gender is <?php make_select($genders, true); ?></label>
 
         </p>
 
