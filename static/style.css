@@ -54,7 +54,7 @@
     --accent: rgb(var(--dull-lavender-400));
     --bg-header: rgb(var(--dull-lavender-400));
     --fg-header: rgb(var(--steel-gray-950));
-    --border-header: rgb(var(--dull-lavender-700));
+    --border-header: rgb(var(--steel-gray-700));
 
     --plain-bg: light-dark(
         rgb(var(--dull-lavender-50)),
@@ -124,16 +124,39 @@ body {
     display: grid;
     grid-template-rows: auto 1fr auto;
 }
+
 nav.bar {
-    background-color: var(--bg-header);
-    border-bottom: 2px solid var(--border-header);
+    /*background-color: var(--bg-header);*/
+    background: linear-gradient(to right, hsl(from rgb(var(--dull-lavender-400)) calc(h + 10) calc(s - 10) calc(l - 3) ), rgb(var(--dull-lavender-400)));
 }
+nav.bar::after {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 100%;
+
+    background: linear-gradient(to right, hsl(from var(--border-header) calc(h + 20) calc(s + 10) calc(l + 3) ), var(--border-header));
+}
+@media (max-width: 425px) {
+    nav.bar {
+        background: linear-gradient(35deg, hsl(from rgb(var(--dull-lavender-400)) calc(h + 10) calc(s - 10) calc(l - 3) ), rgb(var(--dull-lavender-400)));
+    }
+    nav.bar > ul {
+        justify-content: center;
+    }
+    #nav-index, #nav-index:hover, #nav-index:active {
+        border-bottom: 0;
+        margin-bottom: 0;
+    }
+}
+
 nav.bar > ul {
     max-width: min(var(--max-width), 100%);
     margin-left: auto;
     margin-right: auto;
     display: flex;
-    gap: 0.5rem;
+    column-gap: 0.5rem;
+    flex-wrap: wrap;
     font-size: 1.2rem;
     padding-inline: 0;
     margin-block: 0;
@@ -257,22 +280,37 @@ footer {
     align-items: center;
     justify-content: space-between;
     border-top: 2px solid var(--border-header);
+    @media (max-width: 768px) {
 
-    & div._88x31s {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 1px;
+        flex-direction: row-reverse;
+    }
+}
 
-        & > * {
-            width: 88px;
-            height: 31px;
-            display: block;
-        }
-        img {
-            image-rendering: pixelated;
-        }
+div._88x31s {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1px;
+
+    & > * {
+        width: 88px;
+        height: 31px;
+        display: block;
+    }
+    img {
+        image-rendering: pixelated;
+    }
+}
+
+@media (max-width: 768px) {
+    .tablet-hide {
+        display: none;
+    }
+}
+@media (min-width: 426px) {
+    .mobile-show {
+        display: none;
     }
 }
 
