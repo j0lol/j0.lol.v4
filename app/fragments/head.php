@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <link href="/static/normalize.css" type="text/css" rel="stylesheet">
-    <link href="/static/style.css#<?php echo md5_file("static/style.css") ?>" type="text/css" rel="stylesheet">
+    <link href="/static/style.css?v=<?php echo md5_file("static/style.css") ?>" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/font-awesome-extension.css">
     <meta name="theme-color" content="#b497ee">
