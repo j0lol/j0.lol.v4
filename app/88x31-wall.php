@@ -23,6 +23,7 @@ fragment("head") ?>
                 font-feature-settings: "zero";
                 font-weight: 300;
                 white-space: preserve-breaks;
+                word-wrap: anywhere;
             }
         </style>
 
