@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="/static/font-awesome-extension.css">
     <meta name="theme-color" content="#b497ee">
     <meta name="apple-mobile-web-app-status-bar-style" content="#b497ee">
+    <meta property="og:title" content="j0" />
+    <meta property="og:image" content="https://j0.lol/static/j0site-banner.png" />
     <style>
         @media screen and (prefers-color-scheme: dark) {
             <?php echo syntect_css("./Catppuccin Mocha.tmTheme"); ?>
