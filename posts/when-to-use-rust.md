@@ -6,9 +6,11 @@ Posted on 2024-09-29
 
 <hr>
 
-I'm honestly not sure how to write this intro without sounding weirdly combative.
-Rust is good at some things and bad at other things. This should be a pretty non-controversial take.
+Part of using a tool is to decide when to use it instead of using another tool.
+I think we should look at programming languages the same. No language will ever be "one size fits all",
+as they all have small differences that will make them better for different use cases.
 
+Some examples of when to use Rust:
 
 ## When you're doing low-level development
 
@@ -32,6 +34,7 @@ their clients work the same way when decrypting messages or whatever people on M
 It also means that their encryption logic is faster (probably).
 
 Note that they don't write the entire app in Rust! It's not worth it!
+
 
 ## When you're learning Rust (or just having fun)
 
