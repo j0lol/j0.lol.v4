@@ -7,6 +7,7 @@
     <link href="/static/style.css?v=<?php echo md5_file("static/style.css") ?>" type="text/css" rel="stylesheet">
     <meta name="theme-color" content="#b497ee">
     <meta name="apple-mobile-web-app-status-bar-style" content="#b497ee">
+    <script defer data-domain="j0.lol" src="https://plausible.j0.lol/js/script.js"></script>
 
     <?php
 
