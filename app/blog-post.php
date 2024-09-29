@@ -5,12 +5,10 @@
 <div class="wrapper">
 
 <?php fragment("navbar") ?>
-
 <main>
 
 <?php
-
-global $posts;
+global $posts, $post_slug;
 
 $meta = $posts[$post_slug];
 
