@@ -1,9 +1,3 @@
-# Color schemes
-
-*Authored 2024-09-25*
-
----
-
 Let's talk about color schemes on my website!
 
 # The CSS

@@ -1,8 +1,3 @@
-# Site remake
-
-*Authored on 2024-09-25*
-<hr>
-
 I remade my website! I went from using Rust to PHP!
 
 

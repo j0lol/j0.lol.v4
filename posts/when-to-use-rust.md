@@ -1,11 +1,3 @@
-# When to use Rust
-
-*and when not to!*
-
-Posted on 2024-09-29
-
-<hr>
-
 Part of using a tool is to decide when to use it instead of using another tool.
 I think we should look at programming languages the same. No language will ever be "one size fits all",
 as they all have small differences that will make them better for different use cases.

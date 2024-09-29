@@ -1,8 +1,3 @@
-# ZeroBridge 0.1.0 Release 
-
-*Authored on 2024-04-03*
-<hr>
-
 I wrote a Discord bridge for Minecraft 1.4.7! I might go in depth about this in another blog post, but for now, here's a link: [ZeroBridge](https://git.gay/j0/ZeroBridge)
 
 ## Okay here's a bit of talk

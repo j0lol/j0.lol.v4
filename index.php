@@ -1,6 +1,7 @@
 <?php
 
 require 'vendor/autoload.php';
+require 'posts/post-list.php';
 
 function route($name) {
     require (__DIR__ . '/app/' . $name . '.php');
