@@ -191,6 +191,7 @@ main {
     flex-grow: 1;
     font-family: "DM Sans", sans-serif;
     margin: 1rem;
+    max-width: calc(100vw - 2rem);
 
     a {
         color: var(--anchor);
