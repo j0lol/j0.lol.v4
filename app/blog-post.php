@@ -2,6 +2,8 @@
 
 <body>
 
+<div class="wrapper">
+
 <?php fragment("navbar") ?>
 
 <main>
@@ -31,5 +33,5 @@ if (!$contents) {
 
 <?php fragment("footer") ?>
 
-<!--</div>-->
+</div>
 </body>

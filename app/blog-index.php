@@ -30,14 +30,12 @@ $posts = array(
 
 <ul>
 <?php
-foreach (array_diff(scandir("./posts"), array('..', '.')) as $post_file) {
-
-   $post_file = pathinfo($post_file, PATHINFO_FILENAME);
+foreach ($posts as $slug => [$title, $date]) {
 
    printf("<li><a href=\"%s\">%s</a> &bullet; Posted on %s</li>",
-       $router->generate("blog-post", ['post_slug' => "$post_file"]),
-       $posts[$post_file][0],
-       $posts[$post_file][1]
+       $router->generate("blog-post", ['post_slug' => "$slug"]),
+       $title,
+       $date
    );
 }
 ?>
