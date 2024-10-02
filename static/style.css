@@ -1,23 +1,19 @@
 @font-face {
     font-family: "DM Sans";
-    src:
-        local("DM Sans"),
-        url("../static/fonts/DMSans-VariableFont_opsz,wght.ttf") format("truetype");
+    src: local("DM Sans"),
+    url("../static/fonts/DMSans-VariableFont_opsz,wght.ttf") format("truetype");
 }
 
 @font-face {
     font-family: "DM Sans Italic";
-    src:
-        local("DM Sans Italic"),
-        url("../static/fonts/DMSans-Italic-VariableFont_opsz\,wght.ttf")
-            format("truetype");
+    src: local("DM Sans Italic"),
+    url("../static/fonts/DMSans-Italic-VariableFont_opsz\,wght.ttf") format("truetype");
 }
 
 @font-face {
     font-family: "Cascadia Code";
-    src:
-        local("Cascadia Code"),
-        url("../static/fonts/CascadiaCode.ttf") format("truetype");
+    src: local("Cascadia Code"),
+    url("../static/fonts/CascadiaCode.ttf") format("truetype");
 }
 
 :root {
@@ -57,28 +53,28 @@
     --border-header: rgb(var(--steel-gray-700));
 
     --plain-bg: light-dark(
-        rgb(var(--dull-lavender-50)),
-        rgb(var(--steel-gray-975))
+            rgb(var(--dull-lavender-50)),
+            rgb(var(--steel-gray-975))
     );
 
     --bg: light-dark(
-        rgb(var(--dull-lavender-200)),
-        rgb(var(--steel-gray-950))
+            rgb(var(--dull-lavender-200)),
+            rgb(var(--steel-gray-950))
     );
 
     --bg-surface0: light-dark(
-        rgb(var(--dull-lavender-100)),
-        rgb(var(--steel-gray-900))
+            rgb(var(--dull-lavender-100)),
+            rgb(var(--steel-gray-900))
     );
 
     --bg-surface1: light-dark(
-        rgb(var(--dull-lavender-50)),
-        rgb(var(--steel-gray-975))
+            rgb(var(--dull-lavender-50)),
+            rgb(var(--steel-gray-975))
     );
 
     --text: light-dark(
-        rgb(var(--steel-gray-900)),
-        rgb(var(--dull-lavender-200))
+            rgb(var(--steel-gray-900)),
+            rgb(var(--dull-lavender-200))
     );
 
     --subtext: light-dark(
@@ -87,23 +83,23 @@
     );
 
     --anchor: light-dark(
-        rgb(var(--dull-lavender-700)),
-        rgb(var(--dull-lavender-400))
+            rgb(var(--dull-lavender-700)),
+            rgb(var(--dull-lavender-400))
     );
 
     --anchor-visited: light-dark(
-        rgb(var(--steel-gray-700)),
-        rgb(var(--steel-gray-400))
+            rgb(var(--steel-gray-700)),
+            rgb(var(--steel-gray-400))
     );
 
     --anchor-active: light-dark(
-        rgb(var(--dull-lavender-950)),
-        rgb(var(--dull-lavender-100))
+            rgb(var(--dull-lavender-950)),
+            rgb(var(--dull-lavender-100))
     );
 
     --border: light-dark(
-        rgb(var(--dull-lavender-800)),
-        rgb(var(--steel-gray-600))
+            rgb(var(--dull-lavender-800)),
+            rgb(var(--steel-gray-600))
     );
 
     --border-surface0: light-dark(
@@ -119,6 +115,7 @@ body {
     background-color: var(--bg);
     color: var(--text);
 }
+
 .wrapper {
     min-height: 100vh;
     display: grid;
@@ -127,23 +124,27 @@ body {
 
 nav.bar {
     /*background-color: var(--bg-header);*/
-    background: linear-gradient(to right, hsl(from rgb(var(--dull-lavender-400)) calc(h + 10) calc(s - 10) calc(l - 3) ), rgb(var(--dull-lavender-400)));
+    background: linear-gradient(to right, hsl(from rgb(var(--dull-lavender-400)) calc(h + 10) calc(s - 10) calc(l - 3)), rgb(var(--dull-lavender-400)));
 }
+
 nav.bar::after {
     content: '';
     display: block;
     height: 2px;
     width: 100%;
 
-    background: linear-gradient(to right, hsl(from var(--border-header) calc(h + 20) calc(s + 10) calc(l + 3) ), var(--border-header));
+    background: linear-gradient(to right, hsl(from var(--border-header) calc(h + 20) calc(s + 10) calc(l + 3)), var(--border-header));
 }
+
 @media (max-width: 425px) {
     nav.bar {
-        background: linear-gradient(35deg, hsl(from rgb(var(--dull-lavender-400)) calc(h + 10) calc(s - 10) calc(l - 3) ), rgb(var(--dull-lavender-400)));
+        background: linear-gradient(35deg, hsl(from rgb(var(--dull-lavender-400)) calc(h + 10) calc(s - 10) calc(l - 3)), rgb(var(--dull-lavender-400)));
     }
+
     nav.bar > ul {
         justify-content: center;
     }
+
     #nav-index, #nav-index:hover, #nav-index:active {
         border-bottom: 0;
         margin-bottom: 0;
@@ -162,25 +163,30 @@ nav.bar > ul {
     margin-block: 0;
     list-style: none;
 }
+
 nav.bar li a {
     display: inline-block;
     padding: 0.5rem 0.5rem;
     text-decoration: none;
     color: var(--fg-header);
+
     &:hover {
         background-color: rgb(0 0 0 / 10%);
         margin-bottom: -2px;
         border-bottom: 2px solid rgb(0 0 0 / 30%);
     }
+
     &:active {
         background-color: rgb(0 0 0 / 20%);
         margin-bottom: -2px;
         border-bottom: 2px solid rgb(0 0 0 / 50%);
     }
+
     &.active {
         text-decoration: underline;
     }
 }
+
 #nav-index {
     font-family: "Cascadia Code", sans-serif;
     font-weight: 500;
@@ -195,12 +201,15 @@ main {
 
     a {
         color: var(--anchor);
+
         &:visited {
             color: var(--anchor-visited);
         }
+
         &:hover, &:focus {
             text-decoration: none;
         }
+
         &:active {
             color: var(--anchor-active);
         }
@@ -230,6 +239,7 @@ main {
         border: 1px solid rgb(53 50 68);
         border-radius: 0.5rem;
     }
+
     /* & .page-section,
     section {
     } */
@@ -299,6 +309,7 @@ div._88x31s {
         height: 31px;
         display: block;
     }
+
     img {
         image-rendering: pixelated;
     }
@@ -309,6 +320,7 @@ div._88x31s {
         display: none;
     }
 }
+
 @media (min-width: 426px) {
     .mobile-show {
         display: none;
@@ -340,6 +352,7 @@ div._88x31s {
     padding: 0;
     position: absolute;
 }
+
 pre {
     background-color: var(--plain-bg);
     padding: 1rem;
@@ -348,6 +361,7 @@ pre {
     font-family: "Cascadia Code", monospace;
     text-overflow: clip;
     overflow-x: scroll;
+
     & b {
         font-weight: 500;
     }
@@ -382,6 +396,7 @@ pre[lang="ansi"] {
 .card:hover > .title {
     color: var(--anchor);
     text-decoration: underline;
+
     .year {
         color: var(--subtext);
     }
@@ -393,6 +408,7 @@ pre[lang="ansi"] {
 
 
 }
+
 .card {
     border-radius: 0.5rem;
     background-color: var(--bg-surface0);
@@ -423,16 +439,20 @@ pre[lang="ansi"] {
     .blurb {
 
         padding: 0.5em;
+
         span {
             display: block;
+
             &.title {
                 font-size: 1.2rem;
             }
+
             &.year {
                 color: var(--anchor);
                 display: inline;
                 font-size: 0.8em;
             }
+
             &.description {
                 color: var(--subtext);
                 font-size: 0.8em;

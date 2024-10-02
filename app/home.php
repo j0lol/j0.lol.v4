@@ -10,40 +10,41 @@ fragment("head") ?>
 
 
         <?php
-            $pronouns = ["she/her", "they/them", "it/its"];
-            shuffle($pronouns);
+        $pronouns = ["she/her", "they/them", "it/its"];
+        shuffle($pronouns);
 
-            $genders = [
-                "the number Zero",
-                "deer",
-                "don't worry about it",
-                "between girl and void",
-                "in stores this Summer",
-                "behind you",
-                "featuring Funky Kong",
-                "stolen",
-                "n't",
-                $_SERVER['REMOTE_ADDR']
-            ];
-            shuffle($genders);
+        $genders = [
+            "the number Zero",
+            "deer",
+            "don't worry about it",
+            "between girl and void",
+            "in stores this Summer",
+            "behind you",
+            "featuring Funky Kong",
+            "stolen",
+            "n't",
+            $_SERVER['REMOTE_ADDR']
+        ];
+        shuffle($genders);
 
-            function make_select($list, $funky=false)
-            {
-                echo "<select>";
-                foreach ($list as $item) {
-                    $punctuation = $funky ? [".", "!"][array_rand([0, 1])] : "";
+        function makeSelect($list, $funky = false)
+        {
+            echo "<select>";
+            foreach ($list as $item) {
+                $punctuation = $funky ? [".", "!"][array_rand([0, 1])] : "";
 
-                    echo "<option>" . $item . $punctuation . "</option>";
-                }
-                echo "</select>";
+                echo "<option>" . $item . $punctuation . "</option>";
             }
+            echo "</select>";
+        }
+
         ?>
 
         <h1>About me</h1>
         <p>I'm a creature!
-            <label id="my-pronouns">My pronouns are <?php make_select($pronouns); ?></label>
-        and
-            <label>my gender is <?php make_select($genders, true); ?></label>
+            <label id="my-pronouns">My pronouns are <?php makeSelect($pronouns); ?></label>
+            and
+            <label>my gender is <?php makeSelect($genders, true); ?></label>
 
         </p>
 
@@ -72,18 +73,18 @@ fragment("head") ?>
         <h2>What are you doing?</h2>
         <p>Here's what im interested in right now!</p>
         <?php
-            $interests = [
-                "Rust",
-                "PHP",
-                "WebGPU",
-                "Small websites",
-                "Shader programming"
-            ];
-            echo "<ul>";
-            foreach ($interests as $interest) {
-                echo "<li>" . $interest . "</li>";
-            }
-            echo "</ul>"
+        $interests = [
+            "Rust",
+            "PHP",
+            "WebGPU",
+            "Small websites",
+            "Shader programming"
+        ];
+        echo "<ul>";
+        foreach ($interests as $interest) {
+            echo "<li>" . $interest . "</li>";
+        }
+        echo "</ul>"
         ?>
 
         <p style="margin-bottom: 0.25em">
@@ -108,16 +109,19 @@ fragment("head") ?>
         <h2>More info</h2>
         <ul>
             <li>
-                If you want to see what I've done before, see <a href="<?php echo $router->generate("projects") ?>">my projects</a>!
+                If you want to see what I've done before, see <a href="<?php echo $router->generate("projects") ?>">my
+                    projects</a>!
             </li>
 
             <li>
-                If you want to see how I did my projects, see <a href="<?php echo $router->generate("blog-index") ?>">my blog</a>!
+                If you want to see how I did my projects, see <a href="<?php echo $router->generate("blog-index") ?>">my
+                    blog</a>!
             </li>
         </ul>
 
         <p>
-            i'm always working on something! if you're curious, <a href="<?php echo $router->generate("contact") ?>">contact me</a>, or check out my <a href="https://github.com/j0lol">git repos</a>!
+            i'm always working on something! if you're curious, <a href="<?php echo $router->generate("contact") ?>">contact
+                me</a>, or check out my <a href="https://github.com/j0lol">git repos</a>!
         </p>
 
     </main>

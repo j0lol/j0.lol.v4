@@ -4,45 +4,45 @@
 
 <div class="wrapper">
 
-<?php fragment("navbar") ?>
-<main>
+    <?php fragment("navbar") ?>
+    <main>
 
-<?php
-global $posts, $post_slug;
+        <?php
+        global $posts, $post_slug;
 
-$meta = $posts[$post_slug];
+        $meta = $posts[$post_slug];
 
-printf('<h1>%s</h1>',$meta["title"]);
+        printf('<h1>%s</h1>', $meta["title"]);
 
-if (key_exists("subtitle", $meta)) {
-    printf('<p><em>%s</em></p>',$meta["subtitle"]);
-}
-printf('<p>Posted on %s</p>',$meta["date"]);
+        if (key_exists("subtitle", $meta)) {
+            printf('<p><em>%s</em></p>', $meta["subtitle"]);
+        }
+        printf('<p>Posted on %s</p>', $meta["date"]);
 
-echo "<hr>";
+        echo "<hr>";
 
-use Michelf\MarkdownExtra;
+        use Michelf\MarkdownExtra;
 
-$post_file = "./posts/" . $post_slug . ".md";
+        $post_file = "./posts/" . $post_slug . ".md";
 
-$contents = file_get_contents($post_file);
+        $contents = file_get_contents($post_file);
 
-if (!$contents) {
-    echo "404.";
-} else {
+        if (!$contents) {
+            echo "404.";
+        } else {
 
-    $parser = new MarkdownExtra();
-    $parser->code_block_content_func = function ($code, $language) {
-        return syntect_highlight($code, $language);
-    };
+            $parser = new MarkdownExtra();
+            $parser->code_block_content_func = function ($code, $language) {
+                return syntect_highlight($code, $language);
+            };
 
-    echo $parser->transform($contents);
-}
-?>
+            echo $parser->transform($contents);
+        }
+        ?>
 
-</main>
+    </main>
 
-<?php fragment("footer") ?>
+    <?php fragment("footer") ?>
 
 </div>
 </body>

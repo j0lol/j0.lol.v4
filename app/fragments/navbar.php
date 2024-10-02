@@ -25,7 +25,7 @@
         $is_idx = $name == "index";
 
         printf(
-                '<li><a href="%s" id="nav-%s"%s>%s</a></li>',
+            '<li><a href="%s" id="nav-%s"%s>%s</a></li>',
             $url,
             $name,
             (($active)?' class="active"':''),

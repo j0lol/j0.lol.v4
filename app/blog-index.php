@@ -5,45 +5,43 @@ fragment("head") ?>
 
 <div class="wrapper">
 
-<?php fragment("navbar") ?>
+    <?php fragment("navbar") ?>
 
-<main>
+    <main>
 
-<h1>Post Index</h1>
+        <h1>Post Index</h1>
 
-<blockquote>BTW, I'm working on RSS.</blockquote>
-<?php
+        <blockquote>BTW, I'm working on RSS.</blockquote>
 
-use Michelf\MarkdownExtra;
+        <?php
 
-$parser = new MarkdownExtra();
-$parser->code_block_content_func = function ($code, $language) {
-    return syntect_highlight($code, $language);
-};
+        use Michelf\MarkdownExtra;
 
-?>
+        $parser = new MarkdownExtra();
+        $parser->code_block_content_func = function ($code, $language) {
+            return syntect_highlight($code, $language);
+        };
+        ?>
 
-<ul>
-<?php
+        <ul>
+            <?php
 
-global $posts;
+            global $posts;
 
-foreach ($posts as $slug => [
-        "title" => $title,
-         "date" => $date
-]) {
+            foreach ($posts as $slug => ["title" => $title,
+                     "date" => $date]) {
 
-   printf("<li><a href=\"%s\">%s</a> &bullet; Posted on %s</li>",
-       $router->generate("blog-post", ['post_slug' => "$slug"]),
-       $title,
-       $date
-   );
-}
-?>
-</ul>
-</main>
+                printf("<li><a href=\"%s\">%s</a> &bullet; Posted on %s</li>",
+                    $router->generate("blog-post", ['post_slug' => "$slug"]),
+                    $title,
+                    $date
+                );
+            }
+            ?>
+        </ul>
+    </main>
 
-<?php fragment("footer") ?>
+    <?php fragment("footer") ?>
 
 </div>
 </body>

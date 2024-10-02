@@ -8,7 +8,8 @@ fragment("head") ?>
     <main>
         <h1>88x31 Button Wall</h1>
 
-        <p>These silly buttons used to be everywhere, but now they are just a fun relic of the past. It's a cute way to link sites together!</p>
+        <p>These silly buttons used to be everywhere, but now they are just a fun relic of the past. It's a cute way to
+            link sites together!</p>
 
         <p>My button should be in the footer! Feel free to add to your site (and link back to my site!)</p>
 
@@ -29,13 +30,13 @@ fragment("head") ?>
 
         <pre class="fakepre">
             <?php
-                $string = <<<END
+            $string = <<<END
                 <a rel="noreferrer" href="https://j0.lol">
                     <img src="https://j0.lol/static/badges/j0.gif" alt="Image contains a purple deer with bright neon yellow eyes, glasses and nose. The neon yellow is flickering. Next to the deer it says in large text: 'j0', and under that it says 'deer thing'. The 'thing' and the slash in the zero both are neon yellow and flicker.">
                 </a>
                 END;
 
-                echo htmlspecialchars($string);
+            echo htmlspecialchars($string);
             ?>
         </pre>
 

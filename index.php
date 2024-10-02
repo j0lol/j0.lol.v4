@@ -1,14 +1,16 @@
 <?php
 
-require 'vendor/autoload.php';
-require 'posts/post-list.php';
+require_once 'vendor/autoload.php';
+require_once 'posts/post-list.php';
 
-function route($name) {
-    require (__DIR__ . '/app/' . $name . '.php');
+function route($name)
+{
+    require_once __DIR__ . '/app/' . $name . '.php';
 }
 
-function fragment($name) {
-    require (__DIR__ . '/app/fragments/' . $name . '.php');
+function fragment($name)
+{
+    require_once __DIR__ . '/app/fragments/' . $name . '.php';
 }
 
 global $router;
@@ -23,12 +25,16 @@ if (file_exists($_SERVER['SCRIPT_FILENAME']) && pathinfo($_SERVER['SCRIPT_FILENA
     return;
 }
 
-$router->map( 'GET', '/', 'app/home.php', "index" );
-$router->map( 'GET', '/blog', 'app/blog-index.php', "blog-index" );
-$router->map( 'GET', '/blog/[*:post_slug]', 'app/blog-post.php', "blog-post" );
-$router->map( 'GET', '/contact', 'app/contact.php', "contact" );
-$router->map( 'GET', '/projects', 'app/projects.php', "projects" );
-$router->map( 'GET', '/friends', 'app/88x31-wall.php', "friends" );
+try {
+    $router->map('GET', '/', 'app/home.php', "index");
+    $router->map('GET', '/blog', 'app/blog-index.php', "blog-index");
+    $router->map('GET', '/blog/[*:post_slug]', 'app/blog-post.php', "blog-post");
+    $router->map('GET', '/contact', 'app/contact.php', "contact");
+    $router->map('GET', '/projects', 'app/projects.php', "projects");
+    $router->map('GET', '/friends', 'app/88x31-wall.php', "friends");
+} catch (Exception $e) {
+    echo $e;
+}
 
 // Match the current request
 $match = $router->match(urldecode($_SERVER['REQUEST_URI']));

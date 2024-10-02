@@ -1,7 +1,5 @@
-
 <?php global $router;
 fragment("head") ?>
-
 
 <div class="wrapper" xmlns="http://www.w3.org/1999/html">
     <?php fragment("navbar") ?>
@@ -9,7 +7,8 @@ fragment("head") ?>
     <main>
         <h1>Projects</h1>
 
-        <p> these are the projects i have made over the years. i hope you enjoy them! <br>(🚧 means Work in Progress) </p>
+        <p> these are the projects i have made over the years. i hope you enjoy them! <br>(🚧 means Work in Progress)
+        </p>
 
         <div class="card-stack">
 
@@ -30,7 +29,6 @@ fragment("head") ?>
             );
 
             foreach ($cards as [$name, $description, $url, $year, $imslug]) {
-
                 printf('<a href="%s" style="text-decoration: none">
                     <div class="card">
                         <div class="preview">
@@ -51,10 +49,7 @@ fragment("head") ?>
                     $year,
                     $description
                 );
-
             }
-
-
             ?>
         </div>
     </main>
