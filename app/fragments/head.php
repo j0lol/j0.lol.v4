@@ -21,7 +21,7 @@
             <meta property="og:title" content="j0 — %s" />
         END, $meta["title"]);
 
-        $description = "";
+        // I wish PHP had a way of doing $x = if {} else {} that wasn't ugly (ternary op)
         if (key_exists("subtitle", $meta)) {
             $description = sprintf("%s — Posted on %s", $meta["subtitle"], $meta["date"]);
         } else {

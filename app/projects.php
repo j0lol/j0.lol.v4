@@ -15,7 +15,6 @@ fragment("head") ?>
             <?php
 
             # [ Title, Description, URL, Year, Image slug ]
-
             $cards = array(
                 ["mel0n", "🚧 sphere-stacker game for the GBA. Rust & agb-rs.", 'https://github.com/j0lol/mel0n', '2024', 'mel0n.jpg'],
                 ["Dig", "🚧 Side-view 2D Platformer with Building. Rust & Macroquad. Click to play! (Keyboard + Mouse)", 'https://vps.j0.lol/dig/', '2024', 'dig.jpg'],

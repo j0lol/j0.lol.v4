@@ -7,7 +7,6 @@ fragment("head") ?>
     <main>
         <p>Hi! I'm Jo <em>(often stylised <code>j0</code>)</em>. Welcome to my website! </p>
 
-
         <?php
         $pronouns = ["she/her", "they/them", "it/its"];
         shuffle($pronouns);
@@ -30,7 +29,11 @@ fragment("head") ?>
         {
             echo "<select>";
             foreach ($list as $item) {
-                $punctuation = $funky ? [".", "!"][array_rand([0, 1])] : "";
+                $punctuation = "";
+                
+                if ($funky) {
+                    $punctuation = [".", "!"][rand(0, 1)];
+                }
 
                 echo "<option>" . $item . $punctuation . "</option>";
             }
@@ -60,17 +63,15 @@ fragment("head") ?>
                     input_field.value = "";
 
                     document.querySelector("#pronouns-blurb").innerHTML = "haha! mine now!";
-
-                    document.querySelector("#my-pronouns").innerHTML = `My pronouns are <b>${pronouns}</b>`;
-
+                    document.querySelector("#my-pronouns").innerHTML = "My pronouns are <b>${pronouns}</b>";
                     document.querySelector("#pronouns-submit").remove();
-
                 }
             </script>
         </details>
 
         <h2>What are you doing?</h2>
         <p>Here's what im interested in right now!</p>
+        <ul>
         <?php
         $interests = [
             "Rust",
@@ -79,12 +80,11 @@ fragment("head") ?>
             "Small websites",
             "Shader programming"
         ];
-        echo "<ul>";
         foreach ($interests as $interest) {
             echo "<li>" . $interest . "</li>";
         }
-        echo "</ul>"
         ?>
+        </ul>
 
         <p style="margin-bottom: 0.25em">
             Here's what I'm doing online:

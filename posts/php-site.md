@@ -47,7 +47,6 @@ How many dependencies do I have in PHP?
         "michelf/php-markdown": "^2.0"
     }
 }
-
 ```
 
 Two! I could probably get it even lower if I were to use my web server's routing, but ehhhhhhhhhh

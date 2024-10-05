@@ -17,13 +17,13 @@ fragment("head") ?>
             <?php
             global $posts;
 
-            foreach ($posts as $slug => ["title" => $title, "date" => $date]) {
+            foreach ($posts as $slug => $item) {
 
                 try {
                     printf("<li><a href=\"%s\">%s</a> &bullet; Posted on %s</li>",
                         $router->generate("blog-post", ['post_slug' => "$slug"]),
-                        $title,
-                        $date
+                        $item["title"],
+                        $item["date"]
                     );
                 } catch (Exception $e) {
                     echo $e;
