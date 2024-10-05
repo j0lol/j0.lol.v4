@@ -1,19 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 require_once 'vendor/autoload.php';
 require_once 'posts/post-list.php';
 
-function route($name)
-{
-    require_once __DIR__ . '/app/' . $name . '.php';
-}
+global $router;
 
-function fragment($name)
+function fragment(string $name): void
 {
     require_once __DIR__ . '/app/fragments/' . $name . '.php';
 }
-
-global $router;
 
 $router = new AltoRouter();
 
