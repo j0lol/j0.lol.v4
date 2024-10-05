@@ -1,7 +1,6 @@
 <?php global $router;
 fragment("head") ?>
 
-
 <div class="wrapper" xmlns="http://www.w3.org/1999/html">
     <?php fragment("navbar") ?>
 
@@ -27,7 +26,7 @@ fragment("head") ?>
         ];
         shuffle($genders);
 
-        function makeSelect($list, $funky = false)
+        function makeSelect(array $list, bool $funky = false)
         {
             echo "<select>";
             foreach ($list as $item) {
@@ -41,11 +40,11 @@ fragment("head") ?>
         ?>
 
         <h1>About me</h1>
+
         <p>I'm a creature!
             <label id="my-pronouns">My pronouns are <?php makeSelect($pronouns); ?></label>
             and
             <label>my gender is <?php makeSelect($genders, true); ?></label>
-
         </p>
 
         <details>
@@ -105,7 +104,6 @@ fragment("head") ?>
             </blockquote>
         </div>
 
-
         <h2>More info</h2>
         <ul>
             <li>
@@ -120,7 +118,7 @@ fragment("head") ?>
         </ul>
 
         <p>
-            i'm always working on something! if you're curious, <a href="<?php echo $router->generate("contact") ?>">contact
+            I'm always working on something! if you're curious, <a href="<?php echo $router->generate("contact") ?>">contact
                 me</a>, or check out my <a href="https://github.com/j0lol">git repos</a>!
         </p>
 

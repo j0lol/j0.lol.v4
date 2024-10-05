@@ -12,30 +12,32 @@
 
         $meta = $posts[$post_slug];
 
-        printf('<h1>%s</h1>', $meta["title"]);
+        printf(<<<END
+        <h1>%s</h1>
+        %s
+        <p>Posted on %s</p>
+        END,
+            $meta["title"],
+            (key_exists("subtitle", $meta))
+                ? '<p><em>' .  $meta["subtitle"] . '</em></p>'
+                : "",
+            $meta["date"]);
+        ?>
 
-        if (key_exists("subtitle", $meta)) {
-            printf('<p><em>%s</em></p>', $meta["subtitle"]);
-        }
-        printf('<p>Posted on %s</p>', $meta["date"]);
+        <hr>
 
-        echo "<hr>";
-
+        <?php
         use Michelf\MarkdownExtra;
 
-        $post_file = "./posts/" . $post_slug . ".md";
-
-        $contents = file_get_contents($post_file);
+        $contents = file_get_contents("./posts/" . $post_slug . ".md");
 
         if (!$contents) {
             echo "404.";
         } else {
-
             $parser = new MarkdownExtra();
             $parser->code_block_content_func = function ($code, $language) {
                 return syntect_highlight($code, $language);
             };
-
             echo $parser->transform($contents);
         }
         ?>

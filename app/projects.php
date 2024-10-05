@@ -32,7 +32,7 @@ fragment("head") ?>
                 printf('<a href="%s" style="text-decoration: none">
                     <div class="card">
                         <div class="preview">
-                            <img class="raw" src="%s">
+                            <img class="raw" src="%s" alt="Screenshot of project.">
                         </div>
                         <div class="blurb">
                             <span class="title">%s

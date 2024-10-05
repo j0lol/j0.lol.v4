@@ -1,6 +1,5 @@
 <?php fragment("head") ?>
 
-
 <div class="wrapper">
     <?php fragment("navbar") ?>
 
@@ -38,5 +37,6 @@
             </li>
         </ul>
     </main>
+
     <?php fragment("footer") ?>
 </div>
