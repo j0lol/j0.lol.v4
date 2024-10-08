@@ -10,6 +10,12 @@
         </a>
 
         <a rel="noreferrer" href="https://www.php.net">
-            <img class="raw" width=88 height=31 src="/static/badges/php.gif" alt="Powered by PHP"></a>
+            <img class="raw" width=88 height=31 src="/static/badges/php.gif" alt="Powered by PHP">
+        </a>
+        <a rel="noreferrer" href="https://brainmade.org">
+            <div style="display: flex; padding: 3px; background-color: #000" width=88 height=31>
+                <img class="raw" src="/static/brainmade.svg" width=82 height=25>
+            </div>
+        </a>
     </div>
 </footer>
