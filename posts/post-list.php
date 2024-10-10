@@ -2,17 +2,18 @@
 
 use Carbon\Carbon;
 
-global $posts, $posts_updated;
+global $posts;
 
 function dt($string)
 {
     return new Carbon($string . " UTC");
 }
 
-// Make sure to update this when you add a new date, silly!
-$posts_updated = dt("2024-04-29");
-
 $posts = [
+    "rss-is-done" => [
+        "title" => "RSS is done!",
+        "date" => dt("2024-10-10 20:00")
+    ],
     "when-to-use-rust" => [
         "title" => "When to use Rust",
         "subtitle" => "and when not to!",

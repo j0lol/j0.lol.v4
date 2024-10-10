@@ -1,3 +1,19 @@
+Just a short post!
+
+I added RSS (technically an Atom feed) to my website!
+You can now subscribe to my blog posts with the link on my [blog index](/blog)
+or click [here](/feed) to add me to your RSS reader.
+
+## Implementation
+
+I used this very colorful library from "Starbeam Rainbow Labs": [atom.gen.php](https://starbeamrainbowlabs.com/code/phpatomgenerator/).
+It's quite easy to use, and less buggy than others that I found.
+
+I had to pull in [Carbon](https://github.com/briannesbitt/Carbon) (great library) to deal with dates better too
+(I was storing them in a quite silly way before.)
+
+Pretty simple, don't you think?
+```php
 <?php
 
 use Michelf\MarkdownExtra;
@@ -41,3 +57,4 @@ foreach ($posts as $slug => $post) {
 
 header("content-type: application/atom+xml");
 echo $feed->render();
+```
