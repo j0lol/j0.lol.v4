@@ -23,7 +23,7 @@ fragment("head") ?>
                     printf("<li><a href=\"%s\">%s</a> &bullet; Posted on %s</li>",
                         $router->generate("blog-post", ['post_slug' => "$slug"]),
                         $item["title"],
-                        $item["date"]
+                        $item["date"]->format("l jS \of F, Y")
                     );
                 } catch (Exception $e) {
                     echo $e;

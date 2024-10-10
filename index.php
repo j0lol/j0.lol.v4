@@ -29,6 +29,7 @@ try {
     $router->map('GET', '/contact', 'app/contact.php', "contact");
     $router->map('GET', '/projects', 'app/projects.php', "projects");
     $router->map('GET', '/friends', 'app/88x31-wall.php', "friends");
+    $router->map('GET', '/feed[.xml]?', 'app/feed.php', "feed");
 } catch (Exception $e) {
     echo $e;
 }
