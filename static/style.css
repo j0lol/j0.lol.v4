@@ -1,19 +1,24 @@
 @font-face {
     font-family: "DM Sans";
-    src: local("DM Sans"),
-    url("../static/fonts/DMSans-VariableFont_opsz,wght.ttf") format("truetype");
+    src:
+        local("DM Sans"),
+        url("../static/fonts/DMSans-VariableFont_opsz,wght.ttf")
+            format("truetype");
 }
 
 @font-face {
     font-family: "DM Sans Italic";
-    src: local("DM Sans Italic"),
-    url("../static/fonts/DMSans-Italic-VariableFont_opsz\,wght.ttf") format("truetype");
+    src:
+        local("DM Sans Italic"),
+        url("../static/fonts/DMSans-Italic-VariableFont_opsz\,wght.ttf")
+            format("truetype");
 }
 
 @font-face {
     font-family: "Cascadia Code";
-    src: local("Cascadia Code"),
-    url("../static/fonts/CascadiaCode.ttf") format("truetype");
+    src:
+        local("Cascadia Code"),
+        url("../static/fonts/CascadiaCode.ttf") format("truetype");
 }
 
 :root {
@@ -52,60 +57,56 @@
     --border-header: rgb(var(--steel-gray-700));
 
     --plain-bg: light-dark(
-            rgb(var(--dull-lavender-50)),
-            rgb(var(--steel-gray-975))
+        rgb(var(--dull-lavender-50)),
+        rgb(var(--steel-gray-975))
     );
 
-    --bg: light-dark(
-            rgb(var(--dull-lavender-200)),
-            rgb(var(--steel-gray-950))
-    );
+    --bg: light-dark(rgb(var(--dull-lavender-200)), rgb(var(--steel-gray-950)));
 
     --bg-surface0: light-dark(
-            rgb(var(--dull-lavender-100)),
-            rgb(var(--steel-gray-900))
+        rgb(var(--dull-lavender-100)),
+        rgb(var(--steel-gray-900))
     );
 
     --bg-surface1: light-dark(
-            rgb(var(--dull-lavender-50)),
-            rgb(var(--steel-gray-975))
+        rgb(var(--dull-lavender-50)),
+        rgb(var(--steel-gray-975))
     );
 
     --text: light-dark(
-            rgb(var(--steel-gray-900)),
-            rgb(var(--dull-lavender-200))
+        rgb(var(--steel-gray-900)),
+        rgb(var(--dull-lavender-200))
     );
 
     --subtext: light-dark(
-            rgb(var(--steel-gray-700)),
-            rgb(var(--dull-lavender-300))
+        rgb(var(--steel-gray-700)),
+        rgb(var(--dull-lavender-300))
     );
 
     --anchor: light-dark(
-            rgb(var(--dull-lavender-700)),
-            rgb(var(--dull-lavender-400))
+        rgb(var(--dull-lavender-700)),
+        rgb(var(--dull-lavender-400))
     );
 
     --anchor-visited: light-dark(
-            rgb(var(--steel-gray-700)),
-            rgb(var(--steel-gray-400))
+        rgb(var(--steel-gray-700)),
+        rgb(var(--steel-gray-400))
     );
 
     --anchor-active: light-dark(
-            rgb(var(--dull-lavender-950)),
-            rgb(var(--dull-lavender-100))
+        rgb(var(--dull-lavender-950)),
+        rgb(var(--dull-lavender-100))
     );
 
     --border: light-dark(
-            rgb(var(--dull-lavender-800)),
-            rgb(var(--steel-gray-600))
+        rgb(var(--dull-lavender-800)),
+        rgb(var(--steel-gray-600))
     );
 
     --border-surface0: light-dark(
-            rgb(var(--dull-lavender-800)),
-            rgb(var(--steel-gray-600))
+        rgb(var(--dull-lavender-800)),
+        rgb(var(--steel-gray-600))
     );
-
 }
 
 body {
@@ -124,13 +125,16 @@ body {
 nav.bar {
     background: linear-gradient(
         to right,
-        hsl(from rgb(var(--dull-lavender-400)) calc(h + 10) calc(s - 10) calc(l - 3)),
+        hsl(
+            from rgb(var(--dull-lavender-400)) calc(h + 10) calc(s - 10)
+                calc(l - 3)
+        ),
         rgb(var(--dull-lavender-400))
     );
 }
 
 nav.bar::after {
-    content: '';
+    content: "";
     display: block;
     height: 2px;
     width: 100%;
@@ -145,8 +149,11 @@ nav.bar::after {
 @media (max-width: 425px) {
     nav.bar {
         background: linear-gradient(
-            35deg, 
-            hsl(from rgb(var(--dull-lavender-400)) calc(h + 10) calc(s - 10) calc(l - 3)),
+            35deg,
+            hsl(
+                from rgb(var(--dull-lavender-400)) calc(h + 10) calc(s - 10)
+                    calc(l - 3)
+            ),
             rgb(var(--dull-lavender-400))
         );
     }
@@ -155,7 +162,9 @@ nav.bar::after {
         justify-content: center;
     }
 
-    #nav-index, #nav-index:hover, #nav-index:active {
+    #nav-index,
+    #nav-index:hover,
+    #nav-index:active {
         border-bottom: 0;
         margin-bottom: 0;
     }
@@ -208,7 +217,7 @@ main {
     font-family: "DM Sans", sans-serif;
     margin: 1rem;
     max-width: calc(100vw - 2rem);
-    
+
     & > * {
         max-width: min(var(--max-width), 100%);
         margin-left: auto;
@@ -223,7 +232,8 @@ a {
         color: var(--anchor-visited);
     }
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         text-decoration: none;
     }
 
@@ -232,14 +242,20 @@ a {
     }
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: "Cascadia Code", sans-serif;
     font-feature-settings: "zero";
     font-weight: 500;
     margin-bottom: 0.5rem;
 }
 
-code, pre {
+code,
+pre {
     font-family: "Cascadia Code", sans-serif;
     font-feature-settings: "zero";
     font-weight: 300;
@@ -251,7 +267,6 @@ img:not(.raw) {
     border: 1px solid rgb(53 50 68);
     border-radius: 0.5rem;
 }
-
 
 #title {
     font-size: 2rem;
@@ -293,7 +308,7 @@ footer {
     align-items: center;
     justify-content: space-between;
     border-top: 2px solid var(--border-header);
-    
+
     @media (max-width: 768px) {
         flex-direction: row-reverse;
     }
@@ -337,10 +352,6 @@ div._88x31s {
     footer {
         padding: 0.5em;
         font-size: 2em;
-
-        & div._88x31s {
-            align-items: baseline;
-        }
     }
 }
 
@@ -369,7 +380,6 @@ pre {
     }
 }
 
-
 pre[lang="ansi"] {
     --red: rgb(243, 139, 168);
     --green: rgb(166, 227, 161);
@@ -379,7 +389,6 @@ pre[lang="ansi"] {
     --teal: rgb(148, 226, 213);
     --black: #6c7086;
 }
-
 
 .card-stack {
     display: grid;
@@ -422,7 +431,10 @@ pre[lang="ansi"] {
     .preview {
         max-width: 100%;
         aspect-ratio: 16 / 9;
-        background: light-dark(rgb(var(--steel-gray-200)), rgb(var(--steel-gray-950)));
+        background: light-dark(
+            rgb(var(--steel-gray-200)),
+            rgb(var(--steel-gray-950))
+        );
         display: flex;
         flex-direction: column;
 
@@ -437,7 +449,6 @@ pre[lang="ansi"] {
     }
 
     .blurb {
-
         padding: 0.5em;
 
         span {
