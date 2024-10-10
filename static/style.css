@@ -17,8 +17,17 @@
 @font-face {
     font-family: "Cascadia Code";
     src:
+        local("Cascadia Code Italic"),
+        url("../static/fonts/CascadiaCodeItalic.ttf") format("truetype");
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Cascadia Code";
+    src:
         local("Cascadia Code"),
         url("../static/fonts/CascadiaCode.ttf") format("truetype");
+    font-style: normal;
 }
 
 :root {
@@ -249,7 +258,8 @@ h4,
 h5,
 h6 {
     font-family: "Cascadia Code", sans-serif;
-    font-feature-settings: "zero";
+    font-feature-settings: "zero", "ss01";
+    font-style: italic;
     font-weight: 500;
     margin-bottom: 0.5rem;
 }
@@ -257,7 +267,7 @@ h6 {
 code,
 pre {
     font-family: "Cascadia Code", sans-serif;
-    font-feature-settings: "zero";
+    font-feature-settings: "zero", "ss01";
     font-weight: 300;
 }
 
