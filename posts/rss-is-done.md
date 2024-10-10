@@ -21,19 +21,7 @@ require_once "remote/atom.gen.php"; # https://starbeamrainbowlabs.com/code/phpat
 global $posts;
 $host = "https://j0.lol"; // So this doesn't break when im working on localhost
 
-/// Thx php docs
-function get_include_contents($filename)
-{
-    if (is_file($filename)) {
-        ob_start();
-        include $filename;
-        return ob_get_clean();
-    }
-    return false;
-}
-
 $feed = new atomfeed();
-
 $feed->title = "j0's blog";
 $feed->id_uri = $host . "/blog";
 $feed->feed_uri = $host . "/feed";
