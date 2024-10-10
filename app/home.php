@@ -63,7 +63,7 @@ fragment("head") ?>
                     input_field.value = "";
 
                     document.querySelector("#pronouns-blurb").innerHTML = "haha! mine now!";
-                    document.querySelector("#my-pronouns").innerHTML = "My pronouns are <b>${pronouns}</b>";
+                    document.querySelector("#my-pronouns").innerHTML = "My pronouns are <b>" + pronouns + "</b>";
                     document.querySelector("#pronouns-submit").remove();
                 }
             </script>
