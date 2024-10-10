@@ -52,8 +52,8 @@ END;
     }
     ?>
 
-    <meta rel="icon" content="https://j0.lol/static/j0site-pfp.png"/>
-    <meta rel="apple-touch-icon" content="https://j0.lol/static/j0site-pfp.png"/>
+    <meta rel="icon" href="https://j0.lol/static/j0site-pfp.png"/>
+    <meta rel="apple-touch-icon" href="https://j0.lol/static/j0site-pfp.png"/>
     <meta property="og:image" content="https://j0.lol/static/j0site-banner.png"/>
 
     <style>
