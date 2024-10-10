@@ -12,7 +12,7 @@ fragment("head");
 
         <h1>Post Index</h1>
 
-        <a href="/feed">Click here for an RSS feed.</a>
+        <p><a href="/feed">Click here for an RSS feed.</a></p>
 
         <ul>
             <?php
