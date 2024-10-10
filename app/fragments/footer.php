@@ -14,7 +14,7 @@
         </a>
         <a rel="noreferrer" href="https://brainmade.org">
             <div style="display: flex; padding: 3px; background-color: #000" width=88 height=31>
-                <img class="raw" src="/static/brainmade.svg" width=82 height=25>
+                <img class="raw" alt="The Brainmade Mark" src="/static/brainmade.svg" width=82 height=25>
             </div>
         </a>
     </div>
