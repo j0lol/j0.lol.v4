@@ -66,6 +66,10 @@ END;
                     "Green text says 'Join Barr0wnet'. Enclosing the text is a scientific diagram of the chemical alpha-methyl.",
                     "http://alphamethyl.barr0w.net",
                 ],
+                "swiftys.gif" => [
+                    "Swifty's HQ!",
+                    "https://swiftyshq.neocities.org"
+                ]
             ];
 
             foreach ($buttons as $file => [$alt, $link]) {
@@ -77,8 +81,9 @@ END;
                 );
             }
             ?>
-
         </div>
+        
+        <p>Note: I run (self-hosted) analytics on my site! If you put me on your website, someone will inevitably click it without referrer blocking, meaning that I will know! And I will probably add you here if you do that!</p>
 
     </main>
     <?php fragment("footer"); ?>
