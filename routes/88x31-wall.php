@@ -26,19 +26,19 @@ fragment("head");
                 font-weight: 300;
                 white-space: preserve-breaks;
                 word-wrap: anywhere;
+                overflow: hidden;
             }
         </style>
 
         <pre class="fakepre">
-            <?php
-            $string = <<<END
+        <?php
+        $string = <<<END
 <a rel="noreferrer" href="https://j0.lol">
-    <img src="https://j0.lol/static/badges/j0.gif" alt="Image contains a purple deer with bright neon yellow eyes, glasses and nose. The neon yellow is flickering. Next to the deer it says in large text: 'j0', and under that it says 'deer thing'. The 'thing' and the slash in the zero both are neon yellow and flicker.">
+    <img src="https://j0.lol/static/badges/j0.gif" alt="Logo: j0, with subtitle 'deer thing'. To the side, there is a purple deer with yellow features. Various elements flicker.">
 </a>
 END;
-
-            echo htmlspecialchars($string);
-            ?>
+        echo syntect_highlight($string, "html");
+        ?>
         </pre>
 
         <br><br>
@@ -51,15 +51,15 @@ END;
             <?php
             $buttons = [
                 "meihapps.gif" => [
-                    "Box with purple border and dark indigo background. Text says 'mei happs' in monospaced font.",
+                    "Logo: mei happs. Monospaced text. Pink border.",
                     "https://meihapps.gay",
                 ],
                 "finn.gif" => [
-                    "Green striped background. Handwritten, pixelated text says 'cr0wbar'. The 0 has what appears to be a shiny gem inside of it.",
+                    "Logo: cr0wbar. Handwritten text. The 0 has what appears to be a shiny gem inside of it.",
                     "https://cr0wbar.dev",
                 ],
                 "cadence_now.png" => [
-                    "Purple background. Text says cadence Now!. The first part of the text is in an 'outrun' vaporwave-type style. The final part is handwritten. There is what appears to be a purple eye with a yellow iris to the left of the text. Enclosing the eye is a white letter c. There is a star banner on the bottom right.",
+                    "Logo: cadence Now!. The first part of the text is in an 'outrun' vaporwave-type style. The final part is handwritten. There is what appears to be a purple eye with a yellow iris to the left of the text. Enclosing the eye is a white letter c. There is a star banner on the bottom right.",
                     "https://cadence.moe",
                 ],
                 "barrow.png" => [
@@ -68,13 +68,13 @@ END;
                 ],
                 "swiftys.gif" => [
                     "Swifty's HQ!",
-                    "https://swiftyshq.neocities.org"
-                ]
+                    "https://swiftyshq.neocities.org",
+                ],
             ];
 
             foreach ($buttons as $file => [$alt, $link]) {
                 printf(
-                    '<a rel="noreferrer" href="%s"><img class="raw" src="/static/badges/%s" alt="%s"> </a>',
+                    '<a href="%s"><img class="raw" src="/static/badges/%s" alt="%s"> </a>',
                     $link,
                     $file,
                     $alt
@@ -82,7 +82,7 @@ END;
             }
             ?>
         </div>
-        
+
         <p>Note: I run (self-hosted) analytics on my site! If you put me on your website, someone will inevitably click it without referrer blocking, meaning that I will know! And I will probably add you here if you do that!</p>
 
     </main>

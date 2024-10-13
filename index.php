@@ -9,7 +9,7 @@ global $router;
 
 function fragment(string $name): void
 {
-    require_once __DIR__ . '/app/fragments/' . $name . '.php';
+    require_once __DIR__ . '/routes/fragments/' . $name . '.php';
 }
 
 $router = new AltoRouter();
@@ -23,13 +23,13 @@ if (file_exists($_SERVER['SCRIPT_FILENAME']) && pathinfo($_SERVER['SCRIPT_FILENA
 }
 
 try {
-    $router->map('GET', '/', 'app/home.php', "index");
-    $router->map('GET', '/blog', 'app/blog-index.php', "blog-index");
-    $router->map('GET', '/blog/[*:post_slug]', 'app/blog-post.php', "blog-post");
-    $router->map('GET', '/contact', 'app/contact.php', "contact");
-    $router->map('GET', '/projects', 'app/projects.php', "projects");
-    $router->map('GET', '/friends', 'app/88x31-wall.php', "friends");
-    $router->map('GET', '/feed[.xml]?', 'app/feed.php', "feed");
+    $router->map('GET', '/', 'routes/home.php', "index");
+    $router->map('GET', '/blog', 'routes/blog-index.php', "blog-index");
+    $router->map('GET', '/blog/[*:post_slug]', 'routes/blog-post.php', "blog-post");
+    $router->map('GET', '/contact', 'routes/contact.php', "contact");
+    $router->map('GET', '/projects', 'routes/projects.php', "projects");
+    $router->map('GET', '/friends', 'routes/88x31-wall.php', "friends");
+    $router->map('GET', '/feed[.xml]?', 'routes/feed.php', "feed");
 } catch (Exception $e) {
     echo $e;
 }
