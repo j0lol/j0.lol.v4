@@ -10,10 +10,9 @@
 
         <h2>Microblogs</h2>
         <ul>
-            <li>Mastodon: <a href="https://wetdry.world/@j0">@j0@wetdry.world</a></li>
             <li>Bluesky: <a href="https://bsky.app/profile/j0.lol">@j0.lol</a></li>
+            <li>Mastodon: <a href="https://wetdry.world/@j0">@j0@wetdry.world</a></li>
         </ul>
-
 
         <h2>Real-time Chat</h2>
         <ul>
@@ -22,8 +21,7 @@
                 <details>
                     <summary>Niche chat apps</summary>
                     <ul>
-                        <li> XMPP: j0@wetdry.world</li>
-                        <li> Matrix main account: @j0:f0rest.net</li>
+                        <li> Matrix main account: @deer:f0rest.net</li>
                         <li> Matrix previous/backup accounts:
                             <ul>
                                 <li>@j0:barr0w.net</li>
@@ -32,6 +30,7 @@
                                 <li>@j0lol:matrix.org</li>
                             </ul>
                         </li>
+                        <li> XMPP: j0@wetdry.world</li>
                     </ul>
                 </details>
             </li>
