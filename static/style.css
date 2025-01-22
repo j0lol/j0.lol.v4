@@ -42,7 +42,7 @@ head.forest-shade--moss-slate ~ body {
     --primary-800: 31 76 38;
     --primary-900: 16 40 23;
     --primary-950: 9 22 14; */
-    
+
     --primary-50: 208 236 226;
     --primary-100: 193 230 219;
     --primary-200: 164 218 207;
@@ -54,7 +54,7 @@ head.forest-shade--moss-slate ~ body {
     --primary-800: 31 59 76;
     --primary-900: 16 29 40;
     --primary-950: 9 15 22;
-    
+
 
     --secondary-50: 217 227 217;
     --secondary-100: 205 218 207;
@@ -189,8 +189,8 @@ nav.bar::after {
     nav.bar {
         background: linear-gradient(
             35deg,
-            hsl(from rgb(var(--accent)) calc(h + 10) calc(s - 10) calc(l - 3)),
-            rgb(var(--accent))
+            hsl(from var(--accent) calc(h + 10) calc(s - 10) calc(l - 3)),
+            var(--accent)
         );
     }
 
