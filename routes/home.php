@@ -5,7 +5,7 @@ fragment("head") ?>
     <?php fragment("navbar") ?>
 
     <main>
-        <p>Hi! I'm Jo <em>(often stylised <code>j0</code>)</em>. Welcome to my website! </p>
+        <p>Hi! I'm Jo <em>(often stylized <code>j0</code>)</em>. Welcome to my website! </p>
 
         <?php
         $pronouns = ["she/her", "they/them", "it/its"];
@@ -30,7 +30,7 @@ fragment("head") ?>
             echo "<select>";
             foreach ($list as $item) {
                 $punctuation = "";
-                
+
                 if ($funky) {
                     $punctuation = [".", "!"][rand(0, 1)];
                 }
@@ -70,7 +70,7 @@ fragment("head") ?>
         </details>
 
         <h2>What are you doing?</h2>
-        <p>Here's what im interested in right now!</p>
+        <p>Here's what I'm interested in right now!</p>
         <ul>
         <?php
         $interests = [
@@ -118,7 +118,7 @@ fragment("head") ?>
         </ul>
 
         <p>
-            I'm always working on something! if you're curious, <a href="<?php echo $router->generate("contact") ?>">contact
+            I'm always working on something! If you're curious, <a href="<?php echo $router->generate("contact") ?>">contact
                 me</a>, or check out my <a href="https://github.com/j0lol">git repos</a>!
         </p>
 
