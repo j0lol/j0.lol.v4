@@ -13,7 +13,7 @@
             <img class="raw" width=88 height=31 src="/static/badges/php.gif" alt="Powered by PHP">
         </a>
         <a href="https://brainmade.org">
-            <div style="display: flex; padding: 3px; background-color: #000" width=88 height=31>
+            <div style="display: flex; padding: 3px; background-color: #000">
                 <img class="raw" alt="The Brainmade Mark" src="/static/brainmade.svg" width=82 height=25>
             </div>
         </a>

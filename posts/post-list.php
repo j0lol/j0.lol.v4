@@ -10,6 +10,11 @@ function dt($string)
 }
 
 $posts = [
+    "downtime" => [
+        "title" => "My site went down!",
+        "subtitle" => "...so I made it simpler",
+        "date" => dt("2025-03-20 22:00")
+    ],
     "rss-is-done" => [
         "title" => "RSS is done!",
         "date" => dt("2024-10-10 20:00")

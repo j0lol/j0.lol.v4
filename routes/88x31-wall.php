@@ -14,32 +14,12 @@ fragment("head");
 
         <p>My button should be in the footer! Feel free to add to your site (and link back to my site!)</p>
 
-        <style>
-            .fakepre {
-                display: block;
-                padding: 1rem;
-                background-color: var(--plain-bg);
-                border: 1px solid var(--border);
-                border-radius: 0.5rem;
-                font-family: "Cascadia Code", sans-serif;
-                font-feature-settings: "zero";
-                font-weight: 300;
-                white-space: preserve-breaks;
-                word-wrap: anywhere;
-                overflow: hidden;
-            }
-        </style>
 
-        <pre class="fakepre">
-        <?php
-        $string = <<<END
-<a rel="noreferrer" href="https://j0.lol">
-    <img src="https://j0.lol/static/badges/j0.gif" alt="Logo: j0, with subtitle 'deer thing'. To the side, there is a purple deer with yellow features. Various elements flicker.">
-</a>
-END;
-        echo syntect_highlight($string, "html");
-        ?>
-        </pre>
+        <script src="/static/prism.js"></script>
+
+        <pre><code class="language-html">&#x3C;a rel=&#x22;noreferrer&#x22; href=&#x22;https://j0.lol&#x22;&#x3E;
+    &#x3C;img src=&#x22;https://j0.lol/static/badges/j0.gif&#x22; alt=&#x22;Logo: j0, with subtitle &#x27;deer thing&#x27;. To the side, there is a purple deer with yellow features. Various elements flicker.&#x22;&#x3E;
+&#x3C;/a&#x3E;</code></pre>
 
         <br><br>
 
@@ -88,3 +68,4 @@ END;
     </main>
     <?php fragment("footer"); ?>
 </div>
+<?php fragment("closer") ?>

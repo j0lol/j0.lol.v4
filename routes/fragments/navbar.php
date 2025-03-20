@@ -14,20 +14,17 @@
 
     foreach ($nav_bar as [$name, $label]) {
         $url = $router->generate($name);
-        
+
         $active = $url == $_SERVER['REQUEST_URI'];
         $is_index = $name == "index";
 
-        printf(
-            '<li><a href="%s" id="nav-%s"%s>%s</a></li>',
-            $url,
-            $name,
-            (($active)?' class="active"':''),
-            $label
-        );
-        if ($is_index) {
-            echo '<li class="mobile-show" style="flex: 1 0 100%; "></li>';
-        }
+        ?>
+        <li>
+            <a href="<?= $url ?>" id="nav-<?= $name ?>"<?php if ($active) {?> class="active" <?php }?> ><?=$label ?></a>
+        </li>
+        <?php if ($is_index) { ?>
+                <li class="mobile-show" style="flex: 1 0 100%; "></li>
+        <?php }
     }
     unset($nav_bar)
     ?>
