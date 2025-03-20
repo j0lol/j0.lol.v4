@@ -1,11 +1,20 @@
 <?php global $router;
-fragment("head") ?>
-
-<div class="wrapper" xmlns="http://www.w3.org/1999/html">
-    <?php fragment("navbar") ?>
+fragment("head");
+?>
+<div class="wrapper">
+    <?php fragment("navbar"); ?>
 
     <main>
-        <p>Hi! I'm Jo <em>(often stylized <code>j0</code>)</em>. Welcome to my website! </p>
+        <div style="display: flex; flex-direction: row">
+            <img class="raw jo-profile" src="/static/speechdeer.png" alt="drawing of a deer, talking to you.">
+            <div class="jo-speech">
+                <p>
+                    Hi! I'm j0. Welcome to my website! I hope you like it <br> :-)
+                </p>
+            </div>
+        </div>
+
+<!--        <p>Hi! I'm Jo <em>(often stylized <code>j0</code>)</em>. Welcome to my website! </p>-->
 
         <?php
         $pronouns = ["she/her", "they/them", "it/its"];
@@ -21,7 +30,7 @@ fragment("head") ?>
             "featuring Funky Kong",
             "stolen",
             "n't",
-            $_SERVER['REMOTE_ADDR']
+            $_SERVER["REMOTE_ADDR"],
         ];
         shuffle($genders);
 
@@ -39,13 +48,14 @@ fragment("head") ?>
             }
             echo "</select>";
         }
-
         ?>
 
         <h1>About me</h1>
 
         <p>I'm a creature!
-            <label id="my-pronouns">My pronouns are <?php makeSelect($pronouns); ?></label>
+            <label id="my-pronouns">My pronouns are <?php makeSelect(
+                $pronouns
+            ); ?></label>
             and
             <label>my gender is <?php makeSelect($genders, true); ?></label>
         </p>
@@ -78,7 +88,7 @@ fragment("head") ?>
             "PHP",
             "WebGPU",
             "Small websites",
-            "Shader programming"
+            "Shader programming",
         ];
         foreach ($interests as $interest) {
             echo "<li>" . $interest . "</li>";
@@ -87,41 +97,44 @@ fragment("head") ?>
         </ul>
 
         <p style="margin-bottom: 0.25em">
-            Here's what I'm doing online:
+            Here's what I'm doing on the computer:
         </p>
         <div>
-            <blockquote style="border-radius: 0.2em; margin: 0 0.25em; padding: 0.25em;">
-                A voxel-based game for WebGPU! This one's going to take a while.
-            </blockquote>
+            <blockquote style="border-radius: 0.2em; margin: 0 0.25em; padding: 0.25em;">Finishing up University submission for my voxel game prototype.</blockquote>
         </div>
 
         <p style="margin-bottom: 0.25em">
             And here's what I'm doing offline:
         </p>
         <div>
-            <blockquote style="border-radius: 0.2em; margin: 0 0.25em; padding: 0.25em;">
-                Trying to get back into using my exercise bike 🚴🚴
-            </blockquote>
+            <blockquote style="border-radius: 0.2em; margin: 0 0.25em; padding: 0.25em;">Just got a bicycle!</blockquote>
         </div>
 
         <h2>More info</h2>
         <ul>
             <li>
-                If you want to see what I've done before, see <a href="<?php echo $router->generate("projects") ?>">my
+                If you want to see what I've done before, see <a href="<?php echo $router->generate(
+                    "projects"
+                ); ?>">my
                     projects</a>!
             </li>
 
             <li>
-                If you want to see how I did my projects, see <a href="<?php echo $router->generate("blog-index") ?>">my
+                If you want to see how I did my projects, see <a href="<?php echo $router->generate(
+                    "blog-index"
+                ); ?>">my
                     blog</a>!
             </li>
         </ul>
 
         <p>
-            I'm always working on something! If you're curious, <a href="<?php echo $router->generate("contact") ?>">contact
-                me</a>, or check out my <a href="https://github.com/j0lol">git repos</a>!
+            I'm always working on something! If you're curious,
+            <a href="<?= $router->generate(
+                "contact"
+            ) ?>">contact me</a>, or check out my <a href="https://github.com/j0lol">git repos</a>!
         </p>
 
     </main>
-    <?php fragment("footer") ?>
+    <?php fragment("footer"); ?>
 </div>
+<?php fragment("closer"); ?>

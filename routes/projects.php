@@ -1,7 +1,7 @@
 <?php global $router;
 fragment("head") ?>
 
-<div class="wrapper" xmlns="http://www.w3.org/1999/html">
+<div class="wrapper">
     <?php fragment("navbar") ?>
 
     <main>
@@ -56,4 +56,4 @@ fragment("head") ?>
     </main>
     <?php fragment("footer") ?>
 </div>
-
+<?php fragment("closer") ?>

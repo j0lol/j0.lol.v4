@@ -10,6 +10,7 @@
     <meta name="theme-color" content="#b497ee">
     <meta name="apple-mobile-web-app-status-bar-style" content="#b497ee">
     <script defer data-domain="j0.lol" src="https://plausible.j0.lol/js/script.js"></script>
+    <link href="https://prismjs.catppuccin.com/mocha.css" rel="stylesheet" />
 
     <?php
     global $post_slug;
@@ -56,14 +57,18 @@ END;
     <link rel="apple-touch-icon" href="/static/j0site-pfp.png"/>
     <meta property="og:image" content="https://j0.lol/static/j0site-banner.png"/>
 
-    <style>
+    <!-- <style>
         @media screen and (prefers-color-scheme: dark) {
-        <?php echo syntect_css("./Catppuccin Mocha.tmTheme"); ?>
+        <?php
+//echo syntect_css("./Catppuccin Mocha.tmTheme");
+?>
         }
 
         @media screen and (prefers-color-scheme: light) {
-        <?php echo syntect_css("./Catppuccin Latte.tmTheme"); ?>
+        <?php
+//echo syntect_css("./Catppuccin Latte.tmTheme");
+?>
         }
-    </style>
+    </style> -->
     <title>j0.lol</title>
 </head>

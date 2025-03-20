@@ -1,0 +1,89 @@
+
+<p>Part of using a tool is to decide when to use it instead of using another tool.
+    I think we should look at programming languages the same. No language will ever be "one size fits all",
+    as they all have small differences that will make them better for different use cases.</p>
+
+<p>Some examples of when to use Rust:</p>
+
+<h2>When you're doing low-level development</h2>
+
+<p>If you're working low level, and you want your code to be correct, use Rust.
+    This one's pretty obvious. I like doing a lot of low-level game development (working on obsolete hardware, writing shaders, etc.) and Rust is great for this as it has lots of great tools and frameworks for this!</p>
+
+<h2>When you're writing performant code</h2>
+
+<p>This is basically the same as the previous point, but Rust's "zero cost abstractions" mean that you can work at a
+    higher level and write performant code. Sometimes.</p>
+
+<h2>When you need something to be airtight</h2>
+
+<p>One great example of this is Element X, a Matrix client.
+    Matrix rolls their own encryption, and while I don't claim to know much about implementing encryption,
+    avoiding memory unsafety is a pretty good idea.</p>
+
+<p>Matrix rolls <a href="https://github.com/matrix-org/matrix-rust-sdk">matrix-rust-sdk</a> with their Android and iOS clients
+    by making <a href="https://github.com/matrix-org/matrix-rust-sdk/tree/main/bindings">bindings</a>. This ensures that all of
+    their clients work the same way when decrypting messages or whatever people on Matrix do.
+    It also means that their encryption logic is faster (probably).</p>
+
+<p>Note that they don't write the entire app in Rust! It's not worth it!</p>
+
+<h2>When you're learning Rust (or just having fun)</h2>
+
+<p>All of this doesn't matter when you're still learning. When you are learning, it's best to strive for the thing
+    you want to do whether it's worth it. Tackling things that aren't easy will teach you way more
+    lessons than if you write 50 CLI calculators.</p>
+
+<h2>When you really want to use <em>that</em> library</h2>
+
+<p>Sometimes it's worth it, just for that one library that someone made well.
+    What I would recommend doing in this case is to make bindings to a language that's more appropriate for your use case.
+    This is a good learning exercise too!</p>
+
+<h1>When not to use Rust:</h1>
+
+<h2>A CRUD web app</h2>
+
+<p>This one is very painful to me because I did this. It's really, really not worth the hassle.
+    Use Laravel. It's perfectly engineered for producing shiny CRUD apps.</p>
+
+<p>If you really care about how performant your site is going to be, maybe consider using Rust.</p>
+
+<h2>Your personal website</h2>
+
+<p>I made this mistake! It was fun to make at first, and I enjoyed applying my knowledge, but it became such a burden
+    to maintain.</p>
+
+<p>Axum puts way more overhead on your program than something simple like PHP's AltoRouter.
+    You have to be a real HTTP server and deal with all that comes with being a real HTTP server.
+    Another thing is that Axum requires you to get all of your state via specifying them in handlers,
+    and then you have to worry about lifetimes and stuff. Maybe I'm nitpicking, but it's too much for a small project.</p>
+
+<p>You will end up importing a lot of crates.
+    Rust doesn't come with a lot to help you write a blog!
+    I ended up with about 20 dependencies for my old blog site.</p>
+
+<p>Your iteration time will slow because of inflated build times.
+    This one sucks if you're writing a blog!
+    You have to recompile it every time (unless you're smart about it!)
+    This gets worse the more you add to your site, punishing you for pouring more care into your website.</p>
+
+<h2>A GUI app</h2>
+
+<p>Overplayed, but Rust GUI sucks.</p>
+
+<p>If you're making a small program, you can get away with <code>egui</code> + <code>eframe</code> for a UI. It's pretty well-made for this use case.
+    If you're going to make a larger program, make bindings from a backend to a frontend
+    in a more appropriate language (Swift, Kotlin, C/++/#) or just don't use Rust.
+    Consider why Rust would <em>help</em> you with your program, and if that outweighs the technical debt of gluing a Rust blob to your program.</p>
+
+<p>If you're insane enough (<em>or well funded enough</em>), you can get away with making your own GUI. Good luck!</p>
+
+<h1>A conclusion</h1>
+
+<p>These are just some recommendations, from doing most of this stuff myself.
+    Rust is a fun language, I enjoy it a lot, but I can get really burnt out when I end up using it wrong.</p>
+
+<p>You can do anything you like, and I recommend it, but please be kind to yourself.
+    If you find yourself knee-deep in a Rust program and thinking "I am <em>really</em> not enjoying myself", maybe try using something else.
+    Keep doing things and having fun!</p>

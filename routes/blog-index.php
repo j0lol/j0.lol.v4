@@ -20,14 +20,13 @@ fragment("head");
 
             foreach ($posts as $slug => $item) {
                 try {
-                    printf(
-                        "<li><a href=\"%s\">%s</a> &bullet; Posted on %s</li>",
-                        $router->generate("blog-post", [
-                            "post_slug" => "$slug",
-                        ]),
-                        $item["title"],
-                        $item["date"]->format("l jS \of F, Y")
-                    );
+                    ?>
+                        <li>
+                            <a href="<?= $router->generate("blog-post", ["post_slug" => "$slug",]) ?>"><?=$item["title"]?></a>
+                            <br>
+                            <span style="font-family: var(--font-mono)">-></span> <?= $item["date"]->format("l jS \of F, Y") ?>
+                        </li>
+                    <?php
                 } catch (Exception $e) {
                     echo $e;
                 }
@@ -40,3 +39,4 @@ fragment("head");
 
 </div>
 </body>
+<?php fragment("closer") ?>

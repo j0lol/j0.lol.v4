@@ -16,7 +16,8 @@
 
         <h2>Real-time Chat</h2>
         <ul>
-            <li>Discord: @nixpkgs</li>
+            <li>Discord: <samp>@nixpkgs</samp></li>
+            <li>IRC: <samp>j0lol</samp> on libera</li>
             <li>
                 <details>
                     <summary>Niche chat apps</summary>
@@ -39,3 +40,4 @@
 
     <?php fragment("footer") ?>
 </div>
+<?php fragment("closer") ?>
