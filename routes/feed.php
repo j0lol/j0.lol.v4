@@ -13,10 +13,7 @@ $feed->logo_uri = $host . "/static/j0site-pfp.png";
 $feed->addauthor("Jo Null", "me@j0.lol", "https://j0.lol/", "author");
 
 foreach ($posts as $slug => $post) {
-    $parser = new MarkdownExtra();
-    $content = $parser->transform(
-        file_get_contents("./posts/" . $slug . ".md")
-    );
+    $content = file_get_contents("./posts/" . $slug . ".html");
 
     $feed->addentry(
         $host . "/blog/" . $slug,
