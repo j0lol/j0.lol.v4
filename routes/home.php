@@ -6,10 +6,10 @@ fragment("head");
 
     <main>
         <div style="display: flex; flex-direction: row">
-            <img class="raw jo-profile" src="/static/speechdeer.png" alt="drawing of a deer, talking to you.">
-            <div class="jo-speech">
+            <img class="raw dialog profile" src="/static/speechdeer.png" alt="drawing of a deer, talking to you.">
+            <div class="dialog speech jo">
                 <p>
-                    Hi! I'm j0. Welcome to my website! I hope you like it <br> :-)
+                    Hi! I'm j0. Welcome to my website! I hope you like it! <br> :-)
                 </p>
             </div>
         </div>
@@ -23,11 +23,10 @@ fragment("head");
         $genders = [
             "the number Zero",
             "deer",
-            "don't worry about it",
+            "idk",
             "between girl and void",
             "in stores this Summer",
             "behind you",
-            "featuring Funky Kong",
             "stolen",
             "n't",
             $_SERVER["REMOTE_ADDR"],
@@ -79,16 +78,19 @@ fragment("head");
             </script>
         </details>
 
-        <h2>What are you doing?</h2>
+        <h2>What do you do?</h2>
+        <p>I mainly write software, and study in the art of writing software. My specialities lie in writing correct, robust code. I love to read standards and double-check my work. Outside of development, I like to draw and write, and cook meals with a good balance of acidity. I am conversational in a constructed language, toki pona. </p>
+        <p>We should all strive for correctness.</p>
         <p>Here's what I'm interested in right now!</p>
         <ul>
         <?php
         $interests = [
-            "Rust",
-            "PHP",
-            "WebGPU",
-            "Small websites",
-            "Shader programming",
+            "Rust <small>(self explanatory)</small>",
+            "PHP as a vector for quick web iteration",
+            "WebGPU and <samp>wgpu</samp> for fast, write-once-run-anywhere game engine code",
+            "Small websites, small communities, bringing power back to the homeservers",
+            "Idiomatic vanilla Javascript, modern CSS",
+            "Clean design"
         ];
         foreach ($interests as $interest) {
             echo "<li>" . $interest . "</li>";

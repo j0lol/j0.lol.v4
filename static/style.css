@@ -83,11 +83,8 @@
     );
     --text: light-dark(rgb(var(--secondary-900)), rgb(var(--primary-200)));
     --subtext: light-dark(rgb(var(--secondary-700)), rgb(var(--primary-300)));
-    --anchor: light-dark(rgb(var(--primary-700)), rgb(var(--primary-400)));
-    --anchor-visited: light-dark(
-        rgb(var(--secondary-700)),
-        rgb(var(--secondary-400))
-    );
+    --anchor:  light-dark( hsl(from rgb(var(--secondary-700)) calc(h - 10) calc(s + 10) l), hsl(from rgb(var(--secondary-400)) calc(h - 10) calc(s + 10) l));
+    --anchor-visited:  light-dark( hsl(from rgb(var(--primary-700)) calc(h + 10) s l), hsl(from rgb(var(--primary-400)) calc(h + 10) s l));
     --anchor-active: light-dark(
         rgb(var(--primary-950)),
         rgb(var(--primary-100))
