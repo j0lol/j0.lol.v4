@@ -21,7 +21,8 @@
         <?= key_exists("subtitle", $meta)
             ? "<p><em>" . $meta["subtitle"] . "</em></p>"
             : "" ?>
-        <p>Posted on <?= $date->format("l jS \of F, Y") ?></p>
+        <p>Posted on <time datetime="<?= $date ?>"><?= $date->format("F jS, Y") ?></time></p>
+
 
 
         <hr>

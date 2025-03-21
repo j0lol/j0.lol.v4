@@ -24,7 +24,7 @@ fragment("head");
                         <li>
                             <a href="<?= $router->generate("blog-post", ["post_slug" => "$slug",]) ?>"><?=$item["title"]?></a>
                             <br>
-                            <span style="font-family: var(--font-mono)">-></span> <?= $item["date"]->format("l jS \of F, Y") ?>
+                            <span style="font-family: var(--font-mono)">-></span> <time datetime="<?= $item["date"] ?>"><?= $item["date"]->format("F jS, Y") ?></time>
                         </li>
                     <?php
                 } catch (Exception $e) {
