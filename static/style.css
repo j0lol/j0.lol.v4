@@ -208,6 +208,25 @@ abbr {
     cursor: help;
 }
 
+hr {
+    border: none;
+    border-top: 3px double var(--text);
+    color: var(--text);
+    overflow: visible;
+    text-align: center;
+    height: 5px;
+}
+
+hr::after {
+    background: var(--bg-surface1);
+    content: "0";
+    font-family: var(--font-mono);
+    padding: 0 2px;
+    position: relative;
+    top: -10px;
+}
+
+
 #title {
     font-size: 2rem;
     margin-bottom: 0.2rem;
