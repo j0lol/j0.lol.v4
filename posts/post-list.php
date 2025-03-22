@@ -17,7 +17,8 @@ $posts = [
     ],
     "draw-something" => [
         "title" => "draw something",
-        "date" => dt("1990-01-01 12:00")
+        "date" => dt("2025-03-21 22:00"),
+        "trash" => true
     ],
     "productivity" => [
         "title" => "Free yourself from the shackles of productivity",
