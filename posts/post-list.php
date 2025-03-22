@@ -10,6 +10,11 @@ function dt($string)
 }
 
 $posts = [
+    "kegworks-winery" => [
+        "title" => "How to run games on macOS like It's SteamOS",
+        "subtitle" => "Or: How to use CrossOver without using CrossOver",
+        "date" => dt("2025-03-22 19:00")
+    ],
     "draw-something" => [
         "title" => "draw something",
         "date" => dt("1990-01-01 12:00")
