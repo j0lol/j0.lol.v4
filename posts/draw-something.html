@@ -1,0 +1,22 @@
+
+
+<script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+
+<script>
+    window.RufflePlayer = window.RufflePlayer || {};
+    window.addEventListener("load", (event) => {
+        const ruffle = window.RufflePlayer.newest();
+        const player = ruffle.createPlayer();
+        const container = document.getElementById("container");
+        container.appendChild(player);
+        player.ruffle().load("/static/poke_painter.swf");
+    });
+</script>
+
+<p>
+    I found this Pokemon-themed drawing game on <a
+        href="https://archive.org/details/poke-painter-a-flash-game_flash">archive.org</a> and I think it looks cute. Have fun.
+</p>
+<div id="container"></div>
+
+<p>PS: If you draw something, <a href="/contact">send it to me</a>! :)</p>
