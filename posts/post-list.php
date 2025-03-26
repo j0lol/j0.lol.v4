@@ -13,6 +13,7 @@ $posts = [
     "comments" => [
         "title" => "I added Bluesky powered comments!",
         "date" => dt("2025-03-26 20:00"),
+        "post" => "at://did:plc:by6abidhbnj6siox5if2wzq6/app.bsky.feed.post/3llclmbjrak2z"
     ],
     "kegworks-winery" => [
         "title" => "How to run games on macOS like it's SteamOS",
