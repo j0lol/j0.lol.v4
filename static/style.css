@@ -475,10 +475,5 @@ bsky-comments {
     --link-color: var(--anchor);
     --link-hover-color: var(--anchor-active);
     --comment-meta-color: var(--subtext);
-    --error-color: red;
     --reply-border-color: var(--border);
-    --button-background-color: rgba(0,0,0,0.05);
-    --button-hover-background-color: rgba(0,0,0,0.1);
-    --author-avatar-border-radius: 100%;
 }
-

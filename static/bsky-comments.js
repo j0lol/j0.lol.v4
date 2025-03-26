@@ -243,6 +243,16 @@ class BskyComments extends HTMLElement {
       .error {
         color: var(--error-color);
       }
+      @media (width <= 27rem) {
+        .replies-container {
+          border-left: 1px solid var(--reply-border-color);
+          margin-left: 0.4em;
+          padding-left: 0.4em;
+        }
+        .comment-meta {
+          margin: 0.5em 0 1em;
+        }
+      }
     `;
         this.shadowRoot.appendChild(style);
     }
