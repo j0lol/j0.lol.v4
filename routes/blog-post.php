@@ -35,6 +35,16 @@
         ?>
 
     </main>
+    <?php
+        if (isset($meta["post"])) {
+            ?>
+            <section class="page">
+                <bsky-comments post="<?= $meta["post"] ?>"></bsky-comments>
+            </section>
+            <?php
+        }
+    ?>
+
 
     <?php fragment("footer"); ?>
 
