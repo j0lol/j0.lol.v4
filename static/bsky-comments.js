@@ -129,7 +129,7 @@ class BskyComments extends HTMLElement {
       <div class="author">
         <a href="https://bsky.app/profile/${author.did}" target="_blank" rel="noopener noreferrer">
           ${author.avatar ? `<img width="22px" src="${author.avatar}" />` : ''}
-          ${author.displayName ?? author.handle} @${author.handle}
+          ${author.displayName ?? author.handle}‭ @${author.handle}
         </a>
         <p class="comment-text">${this.escapeHTML(text)}</p>
         <small class="comment-meta">
