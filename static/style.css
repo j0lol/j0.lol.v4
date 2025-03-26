@@ -123,7 +123,7 @@ body {
     grid-template-rows: auto 1fr auto;
 }
 
-main {
+main, .page {
     flex-grow: 1;
     font-family: var(--font-body);
     margin: 1rem auto;
@@ -468,3 +468,17 @@ blockquote {
     background-color: var(--bg);
     word-break: break-all;
 }
+
+bsky-comments {
+    --background-color: var(--bg-surface1);
+    --text-color: var(--text);
+    --link-color: var(--anchor);
+    --link-hover-color: var(--anchor-active);
+    --comment-meta-color: var(--subtext);
+    --error-color: red;
+    --reply-border-color: var(--border);
+    --button-background-color: rgba(0,0,0,0.05);
+    --button-hover-background-color: rgba(0,0,0,0.1);
+    --author-avatar-border-radius: 100%;
+}
+
