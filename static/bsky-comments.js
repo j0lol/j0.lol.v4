@@ -77,9 +77,7 @@ class BskyComments extends HTMLElement {
       <comments>
         <p class="reply-info">
           Reply on Bluesky 
-          <a href="https://bsky.app/profile/${this.thread.post?.author?.did}/post/${this.thread.post?.uri.split("/").pop()}" target="_blank" rel="noopener noreferrer">
-            here
-          </a> to join the conversation.
+          <a href="https://bsky.app/profile/${this.thread.post?.author?.did}/post/${this.thread.post?.uri.split("/").pop()}" target="_blank" rel="noopener noreferrer">here</a> to join the conversation.
         </p>
         <div id="comments"></div>
         <button id="show-more">
