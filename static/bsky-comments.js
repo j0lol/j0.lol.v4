@@ -22,6 +22,7 @@ class BskyComments extends HTMLElement {
             this.thread = thread;
             this.render();
         } catch (err) {
+            console.log(err);
             this.renderError("Error loading comments");
         }
     }
@@ -88,7 +89,9 @@ class BskyComments extends HTMLElement {
 
         const commentsContainer = container.querySelector("#comments");
         sortedReplies.slice(0, this.visibleCount).forEach((reply) => {
-            commentsContainer.appendChild(this.createCommentElement(reply));
+            if (!this.thread.post.threadgate.record.hiddenReplies.includes(reply.post.uri)) {
+                commentsContainer.appendChild(this.createCommentElement(reply));
+            }
         });
 
         const showMoreButton = container.querySelector("#show-more");
@@ -128,7 +131,7 @@ class BskyComments extends HTMLElement {
         comment.innerHTML = `
       <div class="author">
         <a href="https://bsky.app/profile/${author.did}" target="_blank" rel="noopener noreferrer">
-          ${author.avatar ? `<img width="22px" src="${author.avatar}" />` : ''}
+          ${author.avatar ? `<img width="22" src="${author.avatar}" />` : ''}
           ${author.displayName ?? author.handle}‭ @${author.handle}
         </a>
         <p class="comment-text">${this.escapeHTML(text)}</p>
