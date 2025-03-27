@@ -87,9 +87,10 @@ class BskyComments extends HTMLElement {
       </comments>
     `;
 
+        const hiddenReplies = this.thread.post.threadgate.record.hiddenReplies;
         const commentsContainer = container.querySelector("#comments");
         sortedReplies.slice(0, this.visibleCount).forEach((reply) => {
-            if (!this.thread.post.threadgate.record.hiddenReplies.includes(reply.post.uri)) {
+            if (hiddenReplies != null && !hiddenReplies.includes(reply.post.uri)) {
                 commentsContainer.appendChild(this.createCommentElement(reply));
             }
         });
