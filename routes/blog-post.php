@@ -1,12 +1,12 @@
 <?php fragment("head"); ?>
 
 <body>
+    <script src="/static/prism.js"></script>
 
 <div class="wrapper">
 
     <?php fragment("navbar"); ?>
     <main>
-        <script src="/static/prism.js"></script>
 
         <?php
         use Aeon\Calendar\Gregorian\DateTime;
@@ -15,35 +15,33 @@
 
         $meta = $posts[$post_slug];
         $date = $meta["date"];
-
         ?>
-        <h1><?= $meta["title"] ?></h1>
+        <h1 class="blog-head"><?= $meta["title"] ?></h1>
         <?= key_exists("subtitle", $meta)
-            ? "<p><em>" . $meta["subtitle"] . "</em></p>"
+            ? "<span class='blog-subhead'><em>" .
+                $meta["subtitle"] .
+                "</em></span>"
             : "" ?>
-        <p>Posted on <time datetime="<?= $date ?>"><?= $date->format("F jS, Y") ?></time></p>
+            <hr>
+
+        <p class="blog-publish">Posted on <time datetime="<?= $date ?>"><?= $date->format(
+    "F jS, Y"
+) ?></time></p>
 
 
 
-        <hr>
 
-        <?php
-        if (file_exists("./posts/" . $post_slug . ".html")) {
+        <?php if (file_exists("./posts/" . $post_slug . ".html")) {
             $contents = file_get_contents("./posts/" . $post_slug . ".html");
             echo $contents;
-        }
-        ?>
+        } ?>
 
     </main>
-    <?php
-        if (isset($meta["post"])) {
-            ?>
+    <?php if (isset($meta["post"])) { ?>
             <section class="page">
                 <bsky-comments post="<?= $meta["post"] ?>"></bsky-comments>
             </section>
-            <?php
-        }
-    ?>
+            <?php } ?>
 
 
     <?php fragment("footer"); ?>

@@ -1,83 +1,83 @@
 class BskyComments extends HTMLElement {
-    constructor() {
-        super();
-        this.attachShadow({ mode: "open" });
-        this.visibleCount = 3;
-        this.thread = null;
-        this.error = null;
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+    this.visibleCount = 3;
+    this.thread = null;
+    this.error = null;
+  }
+
+  connectedCallback() {
+    const postUri = this.getAttribute("post");
+    if (!postUri) {
+      this.renderError("Post URI is required");
+      return;
+    }
+    this.loadThread(postUri);
+  }
+
+  async loadThread(uri) {
+    try {
+      const thread = await this.fetchThread(uri);
+      this.thread = thread;
+      this.render();
+    } catch (err) {
+      console.log(err);
+      this.renderError("Error loading comments");
+    }
+  }
+
+  async fetchThread(uri) {
+    if (!uri || typeof uri !== "string") {
+      throw new Error("Invalid URI: A valid string URI is required.");
     }
 
-    connectedCallback() {
-        const postUri = this.getAttribute("post");
-        if (!postUri) {
-            this.renderError("Post URI is required");
-            return;
-        }
-        this.loadThread(postUri);
+    const params = new URLSearchParams({ uri });
+    const url = `https://public.api.bsky.app/xrpc/app.bsky.feed.getPostThread?${params.toString()}`;
+
+    try {
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+        },
+        cache: "no-store",
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("Fetch Error: ", errorText);
+        throw new Error(`Failed to fetch thread: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+
+      if (!data.thread || !data.thread.replies) {
+        throw new Error("Invalid thread data: Missing expected properties.");
+      }
+
+      return data.thread;
+    } catch (error) {
+      console.error("Error fetching thread:", error.message);
+      throw error;
+    }
+  }
+
+  render() {
+    if (!this.thread || !this.thread.replies) {
+      this.renderError("No comments found");
+      return;
     }
 
-    async loadThread(uri) {
-        try {
-            const thread = await this.fetchThread(uri);
-            this.thread = thread;
-            this.render();
-        } catch (err) {
-            console.log(err);
-            this.renderError("Error loading comments");
-        }
-    }
+    const sortedReplies = this.thread.replies.sort(
+      (a, b) => (b.post.likeCount ?? 0) - (a.post.likeCount ?? 0),
+    );
 
-    async fetchThread(uri) {
-        if (!uri || typeof uri !== "string") {
-            throw new Error("Invalid URI: A valid string URI is required.");
-        }
-
-        const params = new URLSearchParams({ uri });
-        const url = `https://public.api.bsky.app/xrpc/app.bsky.feed.getPostThread?${params.toString()}`;
-
-        try {
-            const response = await fetch(url, {
-                method: "GET",
-                headers: {
-                    Accept: "application/json",
-                },
-                cache: "no-store",
-            });
-
-            if (!response.ok) {
-                const errorText = await response.text();
-                console.error("Fetch Error: ", errorText);
-                throw new Error(`Failed to fetch thread: ${response.statusText}`);
-            }
-
-            const data = await response.json();
-
-            if (!data.thread || !data.thread.replies) {
-                throw new Error("Invalid thread data: Missing expected properties.");
-            }
-
-            return data.thread;
-        } catch (error) {
-            console.error("Error fetching thread:", error.message);
-            throw error;
-        }
-    }
-
-    render() {
-        if (!this.thread || !this.thread.replies) {
-            this.renderError("No comments found");
-            return;
-        }
-
-        const sortedReplies = this.thread.replies.sort(
-            (a, b) => (b.post.likeCount ?? 0) - (a.post.likeCount ?? 0)
-        );
-
-        const container = document.createElement("div");
-        container.innerHTML = `
+    const container = document.createElement("div");
+    container.innerHTML = `
       <comments>
         <p class="reply-info">
-          Reply on Bluesky 
+          Reply on Bluesky
           <a href="https://bsky.app/profile/${this.thread.post?.author?.did}/post/${this.thread.post?.uri.split("/").pop()}" target="_blank" rel="noopener noreferrer">here</a> to join the conversation.
         </p>
         <div id="comments"></div>
@@ -87,52 +87,51 @@ class BskyComments extends HTMLElement {
       </comments>
     `;
 
-        const hiddenReplies = this.thread.post.threadgate?.record.hiddenReplies;
-        const commentsContainer = container.querySelector("#comments");
-        sortedReplies.slice(0, this.visibleCount).forEach((reply) => {
-            if (hiddenReplies != null && !hiddenReplies.includes(reply.post.uri)) {
-                commentsContainer.appendChild(this.createCommentElement(reply));
-            }
-        });
+    const hiddenReplies = this.thread.post.threadgate?.record.hiddenReplies;
+    const commentsContainer = container.querySelector("#comments");
+    sortedReplies.slice(0, this.visibleCount).forEach((reply) => {
+      if (hiddenReplies != null && !hiddenReplies.includes(reply.post.uri)) {
+        commentsContainer.appendChild(this.createCommentElement(reply));
+      }
+    });
 
-        const showMoreButton = container.querySelector("#show-more");
-        if (this.visibleCount >= sortedReplies.length) {
-            showMoreButton.style.display = "none";
-        }
-        showMoreButton.addEventListener("click", () => {
-            this.visibleCount += 5;
-            this.render();
-        });
-
-        this.shadowRoot.innerHTML = "";
-        this.shadowRoot.appendChild(container);
-
-        if (!this.hasAttribute("no-css")) {
-            this.addStyles();
-        }
+    const showMoreButton = container.querySelector("#show-more");
+    if (this.visibleCount >= sortedReplies.length) {
+      showMoreButton.style.display = "none";
     }
+    showMoreButton.addEventListener("click", () => {
+      this.visibleCount += 5;
+      this.render();
+    });
 
-    escapeHTML(htmlString) {
-        return htmlString
-            .replace(/&/g, '&amp;') // Escape &
-            .replace(/</g, '&lt;')  // Escape <
-            .replace(/>/g, '&gt;')  // Escape >
-            .replace(/"/g, '&quot;') // Escape "
-            .replace(/'/g, '&#039;'); // Escape '
+    this.shadowRoot.innerHTML = "";
+    this.shadowRoot.appendChild(container);
+
+    if (!this.hasAttribute("no-css")) {
+      this.addStyles();
     }
+  }
 
+  escapeHTML(htmlString) {
+    return htmlString
+      .replace(/&/g, "&amp;") // Escape &
+      .replace(/</g, "&lt;") // Escape <
+      .replace(/>/g, "&gt;") // Escape >
+      .replace(/"/g, "&quot;") // Escape "
+      .replace(/'/g, "&#039;"); // Escape '
+  }
 
-    createCommentElement(reply) {
-        const comment = document.createElement("div");
-        comment.classList.add("comment");
+  createCommentElement(reply) {
+    const comment = document.createElement("div");
+    comment.classList.add("comment");
 
-        const author = reply.post.author;
-        const text = reply.post.record?.text || "";
+    const author = reply.post.author;
+    const text = reply.post.record?.text || "";
 
-        comment.innerHTML = `
+    comment.innerHTML = `
       <div class="author">
         <a href="https://bsky.app/profile/${author.did}" target="_blank" rel="noopener noreferrer">
-          ${author.avatar ? `<img width="22" src="${author.avatar}" />` : ''}
+          ${author.avatar ? `<img width="22" src="${author.avatar}" />` : ""}
           ${author.displayName ?? author.handle}‭ @${author.handle}
         </a>
         <p class="comment-text">${this.escapeHTML(text)}</p>
@@ -142,29 +141,29 @@ class BskyComments extends HTMLElement {
       </div>
     `;
 
-        if (reply.replies && reply.replies.length > 0) {
-            const repliesContainer = document.createElement("div");
-            repliesContainer.classList.add("replies-container");
+    if (reply.replies && reply.replies.length > 0) {
+      const repliesContainer = document.createElement("div");
+      repliesContainer.classList.add("replies-container");
 
-            reply.replies
-                .sort((a, b) => (b.post.likeCount ?? 0) - (a.post.likeCount ?? 0))
-                .forEach((childReply) => {
-                    repliesContainer.appendChild(this.createCommentElement(childReply));
-                });
+      reply.replies
+        .sort((a, b) => (b.post.likeCount ?? 0) - (a.post.likeCount ?? 0))
+        .forEach((childReply) => {
+          repliesContainer.appendChild(this.createCommentElement(childReply));
+        });
 
-            comment.appendChild(repliesContainer);
-        }
-
-        return comment;
+      comment.appendChild(repliesContainer);
     }
 
-    renderError(message) {
-        this.shadowRoot.innerHTML = `<p class="error">${message}</p>`;
-    }
+    return comment;
+  }
 
-    addStyles() {
-        const style = document.createElement("style");
-        style.textContent = `
+  renderError(message) {
+    this.shadowRoot.innerHTML = `<p class="error">${message}</p>`;
+  }
+
+  addStyles() {
+    const style = document.createElement("style");
+    style.textContent = `
       :host {
         --background-color: white;
         --text-color: black;
@@ -180,7 +179,7 @@ class BskyComments extends HTMLElement {
 
       comments {
         margin: 0 auto;
-        padding: 1.2em;
+        padding: 0;
         max-width: 720px;
         display: block;
         background-color: var(--background-color);
@@ -189,6 +188,7 @@ class BskyComments extends HTMLElement {
       .reply-info {
         font-size: 14px;
         color: var(--text-color);
+        margin-top: 0;
       }
       #show-more {
         margin-top: 10px;
@@ -205,7 +205,7 @@ class BskyComments extends HTMLElement {
           background: var(--button-hover-background-color);
         }
       }
-      .comment {
+      .comment:not(:last-child) {
         margin-bottom: 2em;
       }
       .author {
@@ -258,8 +258,8 @@ class BskyComments extends HTMLElement {
         }
       }
     `;
-        this.shadowRoot.appendChild(style);
-    }
+    this.shadowRoot.appendChild(style);
+  }
 }
 
 customElements.define("bsky-comments", BskyComments);

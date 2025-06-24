@@ -1,10 +1,10 @@
-<?php fragment("head") ?>
+<?php fragment("head"); ?>
 
 <div class="wrapper">
-    <?php fragment("navbar") ?>
+    <?php fragment("navbar"); ?>
 
     <main>
-        <h1 id="title">Contact me</h1>
+        <h1 class="page-head" id="title">Contact me</h1>
 
         <p>The best place to contact me is my email: <a href="mailto:me@j0.lol">me@j0.lol</a></p>
 
@@ -44,6 +44,6 @@
         </ul>
     </main>
 
-    <?php fragment("footer") ?>
+    <?php fragment("footer"); ?>
 </div>
-<?php fragment("closer") ?>
+<?php fragment("closer"); ?>

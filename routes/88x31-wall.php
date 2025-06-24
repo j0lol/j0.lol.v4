@@ -7,24 +7,8 @@ fragment("head");
     <?php fragment("navbar"); ?>
 
     <main>
-        <h1>88x31 Button Wall</h1>
 
-        <p>These silly buttons used to be everywhere, but now they are just a fun relic of the past. It's a cute way to
-            link sites together!</p>
-
-        <p>My button should be in the footer! Feel free to add to your site (and link back to my site!)</p>
-
-
-        <script src="/static/prism.js"></script>
-
-        <pre><code class="language-html">&#x3C;a rel=&#x22;noreferrer&#x22; href=&#x22;https://j0.lol&#x22;&#x3E;
-    &#x3C;img src=&#x22;https://j0.lol/static/badges/j0.gif&#x22; alt=&#x22;Logo: j0, with subtitle &#x27;deer thing&#x27;. To the side, there is a purple deer with yellow features. Various elements flicker.&#x22;&#x3E;
-&#x3C;/a&#x3E;</code></pre>
-
-        <br><br>
-
-
-        <h2>Friends</h2>
+        <h1>Friends</h1>
 
         <p>These are the buttons that my friends made to link to their websites. Click them to go to them!</p>
         <div class="_88x31s">
@@ -63,9 +47,24 @@ fragment("head");
             ?>
         </div>
 
-        <p>Note: I run (self-hosted) analytics on my site! If you put me on your website, someone will inevitably click it without referrer blocking, meaning that I will know! And I will probably add you here if you do that!</p>
+        <br>
+
+        <details>
+            <summary>Embed code for my website</summary>
+
+            <script src="/static/prism.js"></script>
+
+            <pre><code class="language-html">&#x3C;a rel=&#x22;noreferrer&#x22; href=&#x22;https://j0.lol&#x22;&#x3E;
+    &#x3C;img src=&#x22;https://j0.lol/static/badges/j0.gif&#x22; alt=&#x22;Logo: j0, with subtitle &#x27;deer thing&#x27;. To the side, there is a purple deer with yellow features. Various elements flicker.&#x22;&#x3E;
+&#x3C;/a&#x3E;</code></pre>
+
+            <p>Note: I run (self-hosted) analytics on my site! If you put me on your website, someone will inevitably click it without referrer blocking, meaning that I will know! And I will probably add you here if you do that!</p>
+
+
+        </details>
+
 
     </main>
     <?php fragment("footer"); ?>
 </div>
-<?php fragment("closer") ?>
+<?php fragment("closer"); ?>

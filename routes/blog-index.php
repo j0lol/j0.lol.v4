@@ -10,7 +10,7 @@ fragment("head");
 
     <main>
 
-        <h1>Post Index</h1>
+        <h1 class="page-head">Post Index</h1>
 
         <p><a href="/feed">Click here for an RSS feed.</a></p>
 
@@ -21,17 +21,18 @@ fragment("head");
             foreach ($posts as $slug => $item) {
                 if (isset($item["trash"]) && $item["trash"]) {
                     continue;
-                }
-                ?>
+                } ?>
                     <li>
-                        <a href="<?= $router->generate("blog-post", ["post_slug" => "$slug",]) ?>"><?=$item["title"]?></a>
+                        <a href="<?= $router->generate("blog-post", [
+                            "post_slug" => "$slug",
+                        ]) ?>"><?= $item["title"] ?></a>
                         <br>
-                        <span style="font-family: var(--font-mono)">-></span> <time datetime="<?= $item["date"] ?>"><?= $item["date"]->format("F jS, Y") ?></time>
+                        <span style="font-family: var(--font-mono)">-></span> <time datetime="<?= $item[
+                            "date"
+                        ] ?>"><?= $item["date"]->format("F jS, Y") ?></time>
                     </li>
                 <?php
             }
-
-
             ?>
         </ul>
 
@@ -43,17 +44,18 @@ fragment("head");
             foreach ($posts as $slug => $item) {
                 if (!isset($item["trash"]) || !$item["trash"]) {
                     continue;
-                }
-                ?>
+                } ?>
                 <li>
-                    <a href="<?= $router->generate("blog-post", ["post_slug" => "$slug",]) ?>"><?=$item["title"]?></a>
+                    <a href="<?= $router->generate("blog-post", [
+                        "post_slug" => "$slug",
+                    ]) ?>"><?= $item["title"] ?></a>
                     <br>
-                    <span style="font-family: var(--font-mono)">-></span> <time datetime="<?= $item["date"] ?>"><?= $item["date"]->format("F jS, Y") ?></time>
+                    <span style="font-family: var(--font-mono)">-></span> <time datetime="<?= $item[
+                        "date"
+                    ] ?>"><?= $item["date"]->format("F jS, Y") ?></time>
                 </li>
                 <?php
             }
-
-
             ?>
         </ul>
     </main>
@@ -62,4 +64,4 @@ fragment("head");
 
 </div>
 </body>
-<?php fragment("closer") ?>
+<?php fragment("closer"); ?>

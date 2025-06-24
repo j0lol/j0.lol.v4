@@ -5,17 +5,6 @@ fragment("head");
     <?php fragment("navbar"); ?>
 
     <main>
-        <div style="display: flex; flex-direction: row">
-            <img class="raw dialog profile" src="/static/speechdeer.png" alt="drawing of a deer, talking to you.">
-            <div class="dialog speech jo">
-                <p>
-                    Hi! I'm j0. Welcome to my website! I hope you like it! <br> :-)
-                </p>
-            </div>
-        </div>
-
-<!--        <p>Hi! I'm Jo <em>(often stylized <code>j0</code>)</em>. Welcome to my website! </p>-->
-
         <?php
         $pronouns = ["she/her", "they/them", "it/its"];
         shuffle($pronouns);
@@ -49,9 +38,9 @@ fragment("head");
         }
         ?>
 
-        <h1>About me</h1>
+        <h1 class="fancy page-head">Hi!</h1>
 
-        <p>I'm a creature!
+        <p>I'm Jo.
             <label id="my-pronouns">My pronouns are <?php makeSelect(
                 $pronouns
             ); ?></label>
@@ -59,10 +48,10 @@ fragment("head");
             <label>my gender is <?php makeSelect($genders, true); ?></label>
         </p>
 
-        <details>
-            <summary>What about you?</summary>
+        <details style="margin-top: -0.7rem;">
+            <summary>What's your pronouns? </summary>
 
-            <label id="pronouns-blurb"> What's your pronouns? <input id="pronouns-choice"> </label>
+            <label id="pronouns-blurb"> <input id="pronouns-choice"> </label>
             <button id="pronouns-submit" type="button" onclick="steal_pronouns()">Submit</button>
 
             <script>
@@ -78,19 +67,20 @@ fragment("head");
             </script>
         </details>
 
+        <p>I'm a CompSci graduate from the University of Sussex. <a href="/contact">Hire me!</a></p>
+
         <h2>What do you do?</h2>
-        <p>I mainly write software, and study in the art of writing software. My specialities lie in writing correct, robust code. I love to read standards and double-check my work. Outside of development, I like to draw and write, and cook meals with a good balance of acidity. I am conversational in a constructed language, toki pona. </p>
-        <p>We should all strive for correctness.</p>
+        <p>I mainly write software, and study in the art of writing software. My specialities lie in writing correct, robust code. I love to read and write documentation, and to double-check my work. Outside of development, I like to draw and write, and cook meals with a good splash of umami. I am conversational in a constructed language, toki pona. </p>
         <p>Here's what I'm interested in right now!</p>
-        <ul>
+        <ul style="margin-top: -0.5rem;">
         <?php
         $interests = [
             "Rust <small>(self explanatory)</small>",
-            "PHP as a vector for quick web iteration",
-            "WebGPU and <samp>wgpu</samp> for fast, write-once-run-anywhere game engine code",
-            "Small websites, small communities, bringing power back to the homeservers",
+            "Making small stuff with PHP",
+            "WebGPU for fast, write-once-run-anywhere rendering",
+            "Small websites, small communities",
             "Idiomatic vanilla Javascript, modern CSS",
-            "Clean design"
+            "Clean design",
         ];
         foreach ($interests as $interest) {
             echo "<li>" . $interest . "</li>";
@@ -102,14 +92,14 @@ fragment("head");
             Here's what I'm doing on the computer:
         </p>
         <div>
-            <blockquote style="border-radius: 0.2em; margin: 0 0.25em; padding: 0.25em;">Finishing up University submission for my voxel game prototype.</blockquote>
+            <blockquote class="small">Slowly hacking away on <a href="https://github.com/j0lol/vee">Vee Face Library</a>, a pure Rust Mii renderer and parser.</blockquote>
         </div>
 
         <p style="margin-bottom: 0.25em">
             And here's what I'm doing offline:
         </p>
         <div>
-            <blockquote style="border-radius: 0.2em; margin: 0 0.25em; padding: 0.25em;">Just got a bicycle!</blockquote>
+            <blockquote class="small"">Not much! I'm still kind of recovering from burnout.</blockquote>
         </div>
 
         <h2>More info</h2>
@@ -135,6 +125,15 @@ fragment("head");
                 "contact"
             ) ?>">contact me</a>, or check out my <a href="https://github.com/j0lol">git repos</a>!
         </p>
+
+        <div style="display: flex; flex-direction: row">
+            <img class="raw dialog profile" src="/static/speechdeer.png" alt="drawing of a deer, talking to you.">
+            <div class="dialog speech jo">
+                <p>
+                    Thanks for visiting my website =]
+                </p>
+            </div>
+        </div>
 
     </main>
     <?php fragment("footer"); ?>

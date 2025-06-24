@@ -6,7 +6,7 @@ fragment("head");
     <?php fragment("navbar"); ?>
 
     <main>
-        <h1>Projects</h1>
+        <h1 class="page-head">Projects</h1>
 
         <p> these are the projects i have made over the years. i hope you enjoy them! <br>(🚧 means Work in Progress)
         </p>
