@@ -152,6 +152,13 @@ body {
     color: var(--text);
 }
 
+p,
+blockquote,
+h1,
+h2,
+h3 {
+    text-wrap: pretty;
+}
 .wrapper {
     min-height: 100vh;
     display: grid;
