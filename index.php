@@ -2,7 +2,10 @@
 
 declare(strict_types=1);
 
-$commit_hash = exec("git rev-parse --short HEAD");
+$commit_hash = exec(
+    "cd " . $_SERVER["DOCUMENT_ROOT"] . "&& git rev-parse --short HEAD"
+);
+
 global $commit_hash;
 
 require_once "vendor/autoload.php";
