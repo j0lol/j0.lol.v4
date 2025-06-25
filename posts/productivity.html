@@ -1,4 +1,8 @@
-<p>One of the things that has been plaguing me recently is editor choice. I've been a programmer for a large portion of my life, and the editor is the window to code. Naturally, I have tried a lot of editors:</p>
+<p>
+    One of the things that has been plaguing me recently is editor choice. I've
+    been a programmer for a large portion of my life, and the editor is the
+    window to code. Naturally, I have tried a lot of editors:
+</p>
 <ul>
     <li>IntelliJ and friends</li>
     <li>VSCode</li>
@@ -9,43 +13,62 @@
     <li>Zed</li>
     <li>Micro</li>
 </ul>
-<p>It is easy to switch editor. Most editors use the same <abbr>LSP</abbr> backends (IntelliJ is an exception!) So why switch?</p>
+<p>
+    It is easy to switch editor. Most editors use the same
+    <abbr>LSP</abbr> backends (IntelliJ is an exception!) So why switch?
+</p>
 <h2>&quot;Modal Editing is more productive&quot;</h2>
-<p>My first big switch was to NVIM. I was instantly sold on the idea that I could use my keyboard to do actions quicker. And you can! After learning how to use vim keybinds, you can do a lot of actions very quickly. Is this good, though? One can quite easily see the link between 'actions per second' and productivity, but I would like to argue that this is not useful.</p>
+<p>
+    My first big switch was to NVIM. I was instantly sold on the idea that I
+    could use my keyboard to do actions quicker. And you can! After learning how
+    to use vim keybinds, you can do a lot of actions very quickly. Is this good,
+    though? One can quite easily see the link between 'actions per second' and
+    productivity, but I would like to argue that this is not useful.
+</p>
 <h2>&quot;Helix has easier keybinds&quot;</h2>
 <p>What sold me on Helix, a TUI editor made in Rust, was two things:</p>
 <ul>
     <li>It claims to have keybinds that make more &quot;sense&quot;</li>
     <li>It claims to have faster actions per second than vim keybinds</li>
 </ul>
-<p>Instead of having an &quot;action to selection&quot; model, it has a &quot;selection to action&quot; model, which supposedly makes it more intuitive. The issue here is that <em>productivity</em> and <em>intuitiveness</em> are kind of fake words in situations like this. Nobody has stats on this! The developers chose to make it like this because they thought it was better. And that's fine!
-    The issue is, none of this is objective in any way. You are not a better programmer for using a modal editor.
-    Even if modal editing was an objective good, developer productivity is not a concrete measurement, and probably is influenced by a wide amount of variables.
-    Caffeine intake, or hours slept, is probably a better measure of productivity than editor.
+<p>
+    Instead of having an &quot;action to selection&quot; model, it has a
+    &quot;selection to action&quot; model, which supposedly makes it more
+    intuitive. The issue here is that <em>productivity</em> and
+    <em>intuitiveness</em> are kind of fake words in situations like this.
+    Nobody has stats on this! The developers chose to make it like this because
+    they thought it was better. And that's fine! The issue is, none of this is
+    objective in any way. You are not a better programmer for using a modal
+    editor. Even if modal editing was an objective good, developer productivity
+    is not a concrete measurement, and probably is influenced by a wide amount
+    of variables. Caffeine intake, or hours slept, is probably a better measure
+    of productivity than editor.
 </p>
 <h2>It doesn't matter if there is a "best editor" or not</h2>
 <p>
-    That's my thesis. All editors are, functionally, the same program.
-    You can do whatever you want in any editor about as fast as any other editor.
-    I will not defend IntelliJ over VSCode, or anything similar, because they are the same.
-    Stop taking editing so seriously, and relax!
+    That's my thesis. All editors are, functionally, the same program. You can
+    do whatever you want in any editor about as fast as any other editor. I will
+    not defend IntelliJ over VSCode, or anything similar, because they are the
+    same. Stop taking editing so seriously, and relax!
 </p>
 <figure>
-    <img width="1920" height="1080" alt="Screenshot of PhpStorm with Comic Sans MS font in the UI." src="https://f004.backblazeb2.com/file/j0-lol-website/funny-ide.jpg">
+    <img
+        width="1920"
+        height="1080"
+        alt="Screenshot of PhpStorm with Comic Sans MS font in the UI."
+        src="https://f004.backblazeb2.com/file/j0-lol-website/funny-ide.jpg"
+    />
     <figcaption>Can you tell I don't care about seriousness?</figcaption>
 </figure>
 
 <h2>But...</h2>
-<div style="display: flex; flex-direction: row">
-    <img class="raw dialog profile" src="/static/speechyou.png" alt="drawing of you, smiling.">
-    <div class="dialog speech you"><p>
-        But I like using <samp>$EDITOR</samp>!
-    </p></div>
-</div>
+<?php speech_start(SpeechCharacter::You, null); ?>
+<p>But I like using <samp>$EDITOR</samp>!</p>
+<?php speech_end(); ?>
 
 <p>
-    That's good! I'm not on a crusade.
-    I think discussion just orients around "productivity" and other such programming metrics too much in editor conversation.
-    I think people tend to forget that we are human sometimes!
-    If <samp>$EDITOR</samp> is what makes you feel good, go for it!
+    That's good! I'm not on a crusade. I think discussion just orients around
+    "productivity" and other such programming metrics too much in editor
+    conversation. I think people tend to forget that we are human sometimes! If
+    <samp>$EDITOR</samp> is what makes you feel good, go for it!
 </p>

@@ -12,7 +12,12 @@ $feed->logo_uri = $host . "/static/j0site-pfp.png";
 $feed->addauthor("Jo Null", "me@j0.lol", "https://j0.lol/");
 
 foreach ($posts as $slug => $post) {
-    $content = file_get_contents("./posts/" . $slug . ".html");
+    // $content = file_get_contents("./posts/" . $slug . ".html");
+
+    ob_start();
+    require_once "./posts/" . $slug . ".html";
+    $content = ob_get_contents();
+    ob_end_clean();
 
     $feed->addentry(
         $host . "/blog/" . $slug,

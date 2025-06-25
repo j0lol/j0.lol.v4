@@ -1,35 +1,64 @@
 <p>
-    My site went down! This is because the syntax highlighting library I made in an <a href="/blog/php-site">older blog post</a> broke!
-    Instead of just updating it (it was a pain because <code>ext-php-rs</code> is hard to use...)
-    I just replaced it with <a href="https://prismjs.com">Prism.JS</a>.
-
+    My site went down! This is because the syntax highlighting library I made in
+    an <a href="/blog/php-site">older blog post</a> broke! Instead of just
+    updating it (it was a pain because <code>ext-php-rs</code> is hard to
+    use...) I just replaced it with <a href="https://prismjs.com">Prism.JS</a>.
 </p>
 
 <p>
-    This library is a lot simpler and better maintained.
-    The only downside is that highlighting happens on the frontend, which probably means some sort of <abbr title="Flash of Un-styled Content">FOUC</abbr> happens.
-    The benefit is that I don't have to maintain a PHP library in Rust.
+    This library is a lot simpler and better maintained. The only downside is
+    that highlighting happens on the frontend, which probably means some sort of
+    <abbr title="Flash of Un-styled Content">FOUC</abbr> happens. The benefit is
+    that I don't have to maintain a PHP library in Rust.
 </p>
 
-<p>While doing this, I realised that I could make a lot of my site a lot easier to maintain if I just drop build steps.</p>
+<p>
+    While doing this, I realised that I could make a lot of my site a lot easier
+    to maintain if I just drop build steps.
+</p>
 
 <h2>Blogging in HTML</h2>
 
-<p>It's not that hard! The downsides of having to use XML-y tags everywhere is that you gain the benefits of concrete syntax. Another benefit is <em>Semantic HTML</em>, which let's me do things like <abbr title="Abbreviations">abbr's</abbr>. </p>
+<p>
+    It's not that hard! The downsides of having to use XML-y tags everywhere is
+    that you gain the benefits of concrete syntax. Another benefit is
+    <em>Semantic HTML</em>, which let's me do things like
+    <abbr title="Abbreviations">abbr's</abbr>.
+</p>
 
-<p>It's pretty fun to read all the semantic tags and try them out. And it's fun to read the MDN! <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">Click here</a> for a combination of both of these. <samp>=)</samp></p>
+<p>
+    It's pretty fun to read all the semantic tags and try them out. And it's fun
+    to read the MDN!
+    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element"
+        >Click here</a
+    >
+    for a combination of both of these. <samp>=)</samp>
+</p>
 
 <h2>Styling</h2>
 
-<p>I changed the font on my website from Cascadia Code to Maple Mono. I think it complements the body font a lot better! And I use the font in my editor now instead of Cascadia.</p>
-
-<p>While changing styling, I found a horrible bug where a <code>&#x3C;pre&#x3E;&#x3C;code&#x3E;</code> block's contents would influence the size of the document's page, even when scrolling. To fix this, my partner figured out that because I was using a <code>display: grid;</code> element as a document wrapper, the grid was calculating it's <code>min-width</code> with the minimum size of all elements in the body. </p>
-
-<img src="https://f004.backblazeb2.com/file/j0-lol-website/gridshenanigans.jpg" alt="Crude diagram of above explanation.">
+<p>
+    I changed the font on my website from Cascadia Code to Maple Mono. I think
+    it complements the body font a lot better! And I use the font in my editor
+    now instead of Cascadia.
+</p>
 
 <p>
-    The fix, of course, is trivial:
+    While changing styling, I found a horrible bug where a
+    <code>&#x3C;pre&#x3E;&#x3C;code&#x3E;</code> block's contents would
+    influence the size of the document's page, even when scrolling. To fix this,
+    my partner figured out that because I was using a
+    <code>display: grid;</code> element as a document wrapper, the grid was
+    calculating it's <code>min-width</code> with the minimum size of all
+    elements in the body.
 </p>
+
+<img
+    src="https://f004.backblazeb2.com/file/j0-lol-website/gridshenanigans.jpg"
+    alt="Crude diagram of above explanation."
+/>
+
+<p>The fix, of course, is trivial:</p>
 
 <pre><code class="language-css">.wrapper {
     display: grid;
@@ -49,11 +78,19 @@ main {
 
 <h3>Dialog box</h3>
 
-<div style="display: flex; flex-direction: row">
-    <img class="raw dialog profile" src="/static/speechdeer.png" alt="drawing of a deer, talking to you.">
-    <div class="dialog speech jo"><p>This was pretty fun to implement! I used the MDN <a
-            href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_backgrounds_and_borders/Border-image_generator">border-image generator</a> to make the dialog box, then I drew the deer on the left :-)</div>
-</div>
+<?php speech_start(SpeechCharacter::Deer, SpeechEmotion::Neutral); ?>
+<p>
+    This was pretty fun to implement! I used the MDN
+    <a
+        href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_backgrounds_and_borders/Border-image_generator"
+        >border-image generator</a
+    >
+    to make the dialog box, then I drew the deer on the left :-)
+</p>
+<?php speech_end(); ?>
 
-<p>That's about it, other than some other stylesheet cleanup (I removed a bunch of <code>calc</code>s and moved some <code>px</code> values to <code>rem</code>!)
-    Keep things simple! <span class="pona">󱥄󱥔</span></p>
+<p>
+    That's about it, other than some other stylesheet cleanup (I removed a bunch
+    of <code>calc</code>s and moved some <code>px</code> values to
+    <code>rem</code>!) Keep things simple! <span class="pona">󱥄󱥔</span>
+</p>

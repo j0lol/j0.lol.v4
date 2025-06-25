@@ -27,9 +27,9 @@ fragment("head");
                             "post_slug" => "$slug",
                         ]) ?>"><?= $item["title"] ?></a>
                         <br>
-                        <span style="font-family: var(--font-mono)">-></span> <time datetime="<?= $item[
-                            "date"
-                        ] ?>"><?= $item["date"]->format("F jS, Y") ?></time>
+                        <span><?php icon_time(); ?></span> <time datetime="<?= $item[
+    "date"
+] ?>"> <?php echo $item["date"]->format("F jS, Y"); ?></time>
                     </li>
                 <?php
             }
@@ -50,9 +50,9 @@ fragment("head");
                         "post_slug" => "$slug",
                     ]) ?>"><?= $item["title"] ?></a>
                     <br>
-                    <span style="font-family: var(--font-mono)">-></span> <time datetime="<?= $item[
-                        "date"
-                    ] ?>"><?= $item["date"]->format("F jS, Y") ?></time>
+                    <span><?php icon_time(); ?></span> <time datetime="<?= $item[
+    "date"
+] ?>"> <?php echo $item["date"]->format("F jS, Y"); ?></time>
                 </li>
                 <?php
             }

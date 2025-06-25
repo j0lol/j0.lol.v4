@@ -66,19 +66,12 @@
     </figcaption>
 </figure>
 
-<div style="display: flex; flex-direction: row">
-    <img
-        class="raw dialog profile"
-        src="/static/speechdeer.png"
-        alt="drawing of a deer, talking to you."
-    />
-    <div class="dialog speech jo">
-        <p>
-            This kinda works for me. There's definitely more that Raycast can do
-            that Shortcuts can't right now, but it's pretty decent right now!
-            Definitely enough for me to stop using it. Your use case is probably
-            different, though. I know a lot of people would hate a workflow like
-            this, and prefer to use the browser and/or the CLI.
-        </p>
-    </div>
-</div>
+<?php speech_start(SpeechCharacter::Deer, SpeechEmotion::Neutral); ?>
+<p>
+    This kinda works for me. There's definitely more that Raycast can do that
+    Shortcuts can't right now, but it's pretty decent right now! Definitely
+    enough for me to stop using it. Your use case is probably different, though.
+    I know a lot of people would hate a workflow like this, and prefer to use
+    the browser and/or the CLI.
+</p>
+<?php speech_end(); ?>

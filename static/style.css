@@ -166,23 +166,27 @@ h3 {
     grid-template-rows: auto 1fr auto;
 }
 
-main > :first-child {
+main > :first-child,
+article > :first-child {
     margin-top: 0;
     margin-block-start: 0;
 }
 
-main > :last-child {
+main > :last-child,
+article > :last-child {
     margin-bottom: 0;
     margin-block-end: 0;
 }
 
-main {
+main,
+article {
     padding-top: 0.33rem;
     padding-bottom: 0.33rem;
 }
 
 main,
-.page {
+.page,
+article {
     flex-grow: 1;
     font-family: var(--font-body);
     margin: 1rem auto;
@@ -301,6 +305,9 @@ abbr {
 }
 
 hr {
+    width: 100%;
+}
+hr.frontmatter {
     border: none;
     border-top: 3px double var(--text);
     color: var(--text);
@@ -309,13 +316,17 @@ hr {
     height: 5px;
 }
 
-hr::after {
+hr.frontmatter::after {
     background: var(--bg-surface1);
     content: "0";
     font-family: var(--font-mono);
     padding: 0 2px;
     position: relative;
     top: -10px;
+}
+
+hr.frontmatter.pilcrow::after {
+    content: "¶";
 }
 
 #title {
@@ -353,7 +364,7 @@ hr::after {
     }
 }
 
-footer {
+footer#page-footer {
     padding: 1rem;
     background-color: var(--bg-header);
     color: var(--fg-header);
@@ -395,7 +406,14 @@ div._88x31s {
     }
 }
 
+.tablet-show {
+    display: none;
+}
 @media (width <=48rem) {
+    .tablet-show {
+        display: initial;
+    }
+
     .tablet-hide {
         display: none;
     }
@@ -416,7 +434,7 @@ div._88x31s {
         display: inherit;
     }
 
-    footer {
+    footer#page-footer {
         padding: 0.5em;
         font-size: 2em;
     }
@@ -431,34 +449,6 @@ div._88x31s {
     overflow: hidden;
     padding: 0;
     position: absolute;
-}
-
-pre {
-    background-color: var(--plain-bg);
-    padding: 1rem;
-    border: 1px solid var(--border);
-    border-radius: 0.5rem;
-    font-family: var(--font-mono);
-    overflow-x: scroll;
-
-    & b {
-        font-weight: 500;
-    }
-
-    code {
-        word-wrap: normal;
-        white-space: pre;
-    }
-}
-
-pre[lang="ansi"] {
-    --red: rgb(243 139 168);
-    --green: rgb(166 227 161);
-    --yellow: rgb(249 226 175);
-    --blue: rgb(137 180 250);
-    --pink: rgb(245 194 231);
-    --teal: rgb(148 226 213);
-    --black: #6c7086;
 }
 
 .card-stack {
@@ -581,4 +571,67 @@ bsky-comments {
 
 figcaption {
     text-align: center;
+}
+
+div.code-toolbar {
+    position: relative;
+    margin: 1em 0px;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    overflow: hidden;
+
+    .toolbar {
+        background-color: var(--bg);
+
+        border-bottom-left-radius: 0.5rem;
+        font-family: var(--font-serif);
+        border-left: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+
+        padding: 0.2rem;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    pre {
+        margin: 0;
+        border: 0;
+        border-radius: 0;
+        overflow-x: auto;
+    }
+}
+
+pre {
+    background-color: var(--plain-bg);
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 10pt;
+
+    & b {
+        font-weight: 500;
+    }
+
+    code {
+        word-wrap: normal;
+        white-space: pre;
+    }
+
+    @media (width <= 27rem) {
+        & {
+            font-size: 9pt;
+        }
+    }
+}
+
+pre[lang="ansi"] {
+    --red: rgb(243 139 168);
+    --green: rgb(166 227 161);
+    --yellow: rgb(249 226 175);
+    --blue: rgb(137 180 250);
+    --pink: rgb(245 194 231);
+    --teal: rgb(148 226 213);
+    --black: #6c7086;
 }

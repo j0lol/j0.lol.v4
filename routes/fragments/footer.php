@@ -1,4 +1,4 @@
-<footer>
+<footer id="page-footer">
     <div class="tablet-hide">
         <span>This is a footer. This footer contains words for your enjoyment.</span>
     </div>

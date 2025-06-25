@@ -51,27 +51,18 @@ fragment("head");
 
         <h1 class="fancy page-head">Hi!</h1>
 
-        <div style="display: flex; flex-direction: row">
-            <img class="raw dialog profile" src="/static/speechdeer.png" alt="drawing of a deer, talking to you.">
-            <div class="dialog speech jo">
-                <p>I'm Jo.
-                    <label id="my-pronouns">My pronouns are <?php makeSelect(
-                        $pronouns
-                    ); ?></label>
-                    and
-                    <label>my gender is <?php makeSelect(
-                        $genders,
-                        false
-                    ); ?></label>
-                </p>
+        <?php speech_start(SpeechCharacter::Deer, SpeechEmotion::Neutral); ?>
+        <p>I'm Jo.
+            <label id="my-pronouns">My pronouns are <?php makeSelect(
+                $pronouns
+            ); ?></label>
+            and
+            <label>my gender is <?php makeSelect($genders, false); ?></label>
+        </p>
 
-                <p>I'm a CompSci graduate from the University of Sussex. <small><a href="/contact">(Hire me!)</a></small></p>
+        <p>I'm a CompSci graduate from the University of Sussex. <small><a href="/contact">(Hire me!)</a></small></p>
 
-            </div>
-        </div>
-
-
-
+        <?php speech_end(); ?>
 
         <details style="margin-top: 1rem;">
             <summary>What's your pronouns? </summary>
@@ -150,14 +141,12 @@ fragment("head");
             ) ?>">contact me</a>, or check out my <a href="https://github.com/j0lol">git repos</a>!
         </p>
 
-        <div style="display: flex; flex-direction: row">
-            <img class="raw dialog profile" src="/static/speechhappy.png" alt="drawing of a deer, talking to you.">
-            <div class="dialog speech jo">
-                <p>
-                    Thanks for visiting my website!
-                </p>
-            </div>
-        </div>
+
+        <?php speech_start(SpeechCharacter::Deer, SpeechEmotion::Happy); ?>
+        <p>
+            Thanks for visiting my website!
+        </p>
+        <?php speech_end(); ?>
 
     </main>
     <?php fragment("footer"); ?>

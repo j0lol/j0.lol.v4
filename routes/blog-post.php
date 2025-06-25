@@ -6,7 +6,7 @@
 <div class="wrapper">
 
     <?php fragment("navbar"); ?>
-    <main>
+    <article>
 
         <?php
         use Aeon\Calendar\Gregorian\DateTime;
@@ -22,9 +22,9 @@
                 $meta["subtitle"] .
                 "</em></span>"
             : "" ?>
-            <hr>
+            <hr class="frontmatter">
 
-        <p class="blog-publish">Posted on <time datetime="<?= $date ?>"><?= $date->format(
+        <p class="blog-publish"><span aria-label="Published date:"><?php icon_time(); ?></span> <time datetime="<?= $date ?>"><?= $date->format(
     "F jS, Y"
 ) ?></time></p>
 
@@ -32,13 +32,19 @@
 
 
         <?php if (file_exists("./posts/" . $post_slug . ".html")) {
-            $contents = file_get_contents("./posts/" . $post_slug . ".html");
-            echo $contents;
+            include "./posts/" . $post_slug . ".html";
         } ?>
 
-    </main>
+    </article>
     <?php if (isset($meta["post"])) { ?>
+            <div style="background: var(--bg-surface1); padding: 0rem 1rem;" class="tablet-show">
+                <hr class="frontmatter pilcrow">
+
+            </div>
+
             <section class="page">
+                <noop>
+
                 <bsky-comments post="<?= $meta["post"] ?>"></bsky-comments>
             </section>
             <?php } ?>

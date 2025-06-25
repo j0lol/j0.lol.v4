@@ -1,0 +1,216 @@
+<?php speech_start(SpeechCharacter::Deer, SpeechEmotion::Neutral); ?>
+<p>
+    Going to preface this post with this: I'm not a programming language
+    designer. I don't really know what I'm talking about. I'm just a Rust
+    developer with a passing interest in Swift. I probably made some mistakes in
+    here, feel free to send me corrections.
+</p>
+<?php speech_end(); ?>
+
+<p>
+    So about a week ago, I was bored and watching WWDC 25 (pronounced "dub dub
+    DC", apparently.) I was watching this video:
+    <a href="https://developer.apple.com/videos/play/wwdc2025/312"
+        ><em>Improve memory usage and performance with Swift</em></a
+    >, where they show off some new features in Swift to reduce memory overhead
+    and increase safety (feel free to watch this alongside!) The first new
+    standard library construct they show off is
+    <code>InlineArray&lt;N, T&gt;</code>, which acts like... an array. In Rust
+    terms, the normal Swift array is similar to a
+    <code>Arc&lt;Vec&lt;T&gt;&gt;</code>, where it is a growable collection that
+    can be shared across threads and is copied on write. To keep the analogy
+    going, the new Swift <code>InlineArray</code> is like a Rust array:
+    <code>[T; N]</code>. To make it clear, <code>Array</code> is heap-allocated
+    and <code>InlineArray</code> is stack-allocated.
+</p>
+
+<pre><code class="language-swift">func array() {
+    var array = [4, 5, 6]
+}
+
+func inlineArray() {
+    var array: InlineArray&lt;3, Int&gt; = [4, 5, 6]
+}</code></pre>
+
+And let's compare to Rust:
+
+<pre><code class="language-rust">fn vec() {
+    let mut vec = vec![4, 5, 6]; // I could wrap this in an Arc, but that's not really what real code would do.
+}
+
+fn array() {
+    let mut arr = [4, 5, 6];
+}</code></pre>
+
+<p>
+    You can probably see the argument I'm going to make here — This is less
+    ergonomic. Rust is often said to have bad syntax, but here you can see that
+    the better performing option is <em>just easier</em> than the heap-allocated
+    version.
+</p>
+
+<h2>Safety</h2>
+
+<p>
+    So another topic in the video is how to efficiently read from a reference
+    counted collection. In order to avoid the reference counter, and read data
+    directly, one would previously use an unsafe pointer to do a direct read.
+</p>
+
+<figure>
+    <pre><code class="language-swift">// Safe usage of a buffer pointer
+func processUsingBuffer(_ array: [Int]) -> Int {
+    array.withUnsafeBufferPointer { buffer in
+        var result = 0
+        for i in 0..&lt;buffer.count {
+            result += calculate(using: buffer, at: i)
+        }
+        return result
+    }
+}</code></pre>
+
+    <figcaption>Example from above WWDC talk, used as a reference.</figcaption>
+</figure>
+
+<p>
+    As highlighted in the talk, these buffers are unsafe partially because they
+    could be used outside of the scope of the function (e.g. returned, or stored
+    as part of a structure), and misued. In order to make this operation safe,
+    they introduce a type called <code>Span</code>, which points to a
+    contiguious block of memory. In order to make this safe, a new "Marker
+    trait" (Rust speak) called <code>Escapable</code><a ref="escapable"></a>
+    is added to the language. This trait is auto-added to all types by default,
+    and you can specify if your type cannot be used outside of its context with
+    <code>~Escapable</code>. Pretty neat language feature!
+</p>
+
+<p>
+    This is a very different approach to Rust. We deal with pointer unsafety by
+    relegating them to <em>Unsafe Rust</em>, a language that lives alongside
+    <em>Safe Rust</em>. But also — We sidestep this whole problem.
+    <code>Vec</code>s are not reference-counted (you have to wrap them in a
+    <code>Rc</code> or <code>Arc</code> for that,) so we don't have to sidestep
+    the reference counter.
+</p>
+
+<h2>Conclusion</h2>
+<p>
+    You can clearly see the difference in these language's designs from these
+    two examples. Swift makes working with types as easy as possible, while
+    letting you "drop down" for performance. Rust instead makes the most
+    ergonomic pattern the most performant, while letting you "build up"
+    convenience by moving to heap allocation with <code>Vec&lt;T&gt;</code>,
+    adding copy-on-write with <code>Cow&lt;T&gt;</code>, or reference counting
+    with <code>Rc&lt;T&gt;</code>.
+</p>
+
+<p>
+    I think it's clear who these language features are for — Swift library
+    maintainers. Being able to write more performant code for your users will
+    make everyone happy, and doing this without unsafety is nice. I don't think
+    this is really for app developers, or anything like that. Making all of your
+    array accesses use spans to dodge the reference counter is
+    <em>technically</em> faster, but makes things much more annoying to maintain
+    than the obvious solution. I think the talk makes this clear, as they show
+    off a new
+    <a href="https://github.com/apple/swift-binary-parsing"
+        >Binary Parsing library</a
+    >
+    at the end which uses these new language features.
+</p>
+
+<p>
+    As for the title of this article. I don't think Swift is becoming
+    unergonomic Rust (<a
+        href="https://en.wikipedia.org/wiki/Betteridge%27s_law_of_headlines"
+        >Betteridge's law of headlines</a
+    >
+    wins again.) It's just bringing in features similar to Rust to "drop down"
+    to. Honestly, a "less complex" Rust has a good place in the world of
+    programming languages. There is some work adjacent to this, see the
+    <a href="https://github.com/softdevteam/alloy">Alloy language</a>: a fork of
+    Rust that gives you opt-in garbage collection for things like Linked Lists.
+    I think it's easy to write things like this off — but all languages have
+    their tradeoffs. What makes you a good developer is being able to take all
+    of the values of prospective systems and being able to pick the right one<a
+        ref="values"
+    ></a
+    >!
+</p>
+
+<footer>
+    <h2 id="notes_heading">Footnotes</h2>
+    <ol>
+        <li id="note_escapable">
+            So Swift calls traits <em>Protocols</em>, and this one is implicitly
+            applied to all Swift types. Here's
+            <a
+                href="https://github.com/swiftlang/swift-evolution/blob/main/proposals/0446-non-escapable.md"
+                >SE-0446</a
+            >
+            if you want to read into it further. In Rust, we would make a trait,
+            and then have a
+            <a
+                href="https://doc.rust-lang.org/book/ch10-02-traits.html#using-trait-bounds-to-conditionally-implement-methods"
+                ><em>blanket implementation</em></a
+            >
+            over a generic. Dunno how Swift does this!
+            <!-- <a aria-label="Return to content">↩</a> -->
+        </li>
+        <li id="values">
+            Bryan Cantrill has a great talk on this:
+            <a href="https://youtu.be/Xhx970_JKX4"
+                ><em>Platform as a Reflection of Values</em></a
+            >
+        </li>
+    </ol>
+</footer>
+
+<!-- https://www.niquette.ca/articles/accessible-footnotes/ -->
+<style>
+    article {
+        counter-reset: references;
+    }
+
+    [aria-labelledby="notes_heading"] {
+        counter-increment: references;
+        font-size: 0.83em;
+        vertical-align: super;
+        line-height: 1;
+    }
+
+    [aria-labelledby="notes_heading"]::after {
+        content: "[" counter(references) "]";
+    }
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var footerPairs = document.querySelectorAll("footer ol li");
+
+        footerPairs.forEach((pair) => {
+            var returnLink = document.createElement("a");
+            returnLink.innerHTML = "↩";
+            returnLink.setAttribute("aria-label", "Return to content");
+
+            // var returnLink = pair.querySelector(
+            //     'a[aria-label="Return to content"]',
+            // );
+            if (returnLink && pair.id) {
+                returnLink.href = "#ref_" + pair.id.replace(/^note_/, "");
+            }
+            pair.appendChild(returnLink);
+        });
+
+        var articleAnchors = document.querySelectorAll("article a[ref]");
+
+        articleAnchors.forEach((anchor, index) => {
+            let ref = anchor.getAttribute("ref");
+            anchor.removeAttribute("ref");
+
+            var id = "ref_" + ref;
+            anchor.id = id;
+            anchor.href = "#note_" + ref;
+            anchor.setAttribute("aria-labelledby", "notes_heading");
+        });
+    });
+</script>

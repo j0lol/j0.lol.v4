@@ -3,16 +3,9 @@
     cry. Why do I keep doing it?
 </p>
 
-<div style="display: flex; flex-direction: row">
-    <img
-        class="raw dialog profile"
-        src="/static/speechsad.png"
-        alt="drawing of a deer, talking to you."
-    />
-    <div class="dialog speech jo">
-        <p>It looks pretty, though...</p>
-    </div>
-</div>
+<?php speech_start(SpeechCharacter::Deer, SpeechEmotion::Worried); ?>
+<p>It looks pretty, though...</p>
+<?php speech_end(); ?>
 
 <p>
     Yeah... So basically <em>everything</em> here is worse. I don't really care
@@ -46,16 +39,9 @@
     Thorium.
 </p>
 
-<div style="display: flex; flex-direction: row">
-    <img
-        class="raw dialog profile"
-        src="/static/speechyou.png"
-        alt="drawing of a deer, talking to you."
-    />
-    <div class="dialog speech you">
-        <p>wtf is thorium??</p>
-    </div>
-</div>
+<?php speech_start(SpeechCharacter::You, null); ?>
+<p>wtf is thorium??</p>
+<?php speech_end(); ?>
 
 <p>
     <a href="https://thorium.rocks/">Some chrome fork</a> that a friend
@@ -79,18 +65,10 @@
     Spotlight has been quite buggy with shortcuts as of now.)
 </p>
 
-<div style="display: flex; flex-direction: row">
-    <img
-        class="raw dialog profile"
-        src="/static/speechdeer.png"
-        alt="drawing of a deer, talking to you."
-    />
-    <div class="dialog speech jo">
-        <p>
-            As of writing, I have not installed macOS 26 Beta 2. Could fix
-            everything! Who knows. Might update this post if anything
-            interesting happens on this front. That's all I wanted to blog
-            about, though. See ya!
-        </p>
-    </div>
-</div>
+<?php speech_start(SpeechCharacter::Deer, SpeechEmotion::Neutral); ?>
+<p>
+    As of writing, I have not installed macOS 26 Beta 2. Could fix everything!
+    Who knows. Might update this post if anything interesting happens on this
+    front. That's all I wanted to blog about, though. See ya!
+</p>
+<?php speech_end(); ?>
