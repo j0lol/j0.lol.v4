@@ -1,110 +1,200 @@
-<p>Whisky was recently pronounced dead <sup><a
-        href="https://www.reddit.com/r/macgaming/comments/1j6agur/comment/mgt88tb/?context=3&utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button">[src]</a></sup>. This was inevitable, because the program isn't very good.
-    However, this leaves a void in the macOS gaming community of Wine GUIs that don't cost an arm and a leg.  </p>
+<p>
+    Whisky was recently pronounced dead
+    <sup
+        ><a
+            href="https://www.reddit.com/r/macgaming/comments/1j6agur/comment/mgt88tb/?context=3&utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button"
+            >[src]</a
+        ></sup
+    >. This was inevitable. It wasn't really that good either. However, this
+    leaves a void in the macOS gaming community of Wine GUIs that don't cost an
+    arm and a leg.
+</p>
 
-<p>However, a recent revival of Wineskin has come out, called Kegworks Winery. It's pretty decent. Here's a tutorial on how to use it.</p>
+<p>
+    However, a recent revival of Wineskin has come out, called Kegworks Winery.
+    It's pretty decent. Here's a tutorial on how to use it.
+</p>
 
 <h2>Installation</h2>
 
 <ol>
-    <li>Install Kegworks Winery. Here's the <a href="https://brew.sh">brew</a> command they have on their GitHub.        <sup><a href="https://github.com/Kegworks-App">[src]</a></sup>
+    <li>
+        Install Kegworks Winery. Here's the
+        <a href="https://brew.sh">brew</a> command they have on their GitHub.
+        <sup><a href="https://github.com/Kegworks-App">[src]</a></sup>
 
         <code>
-            <pre class="language-sh">brew upgrade
-brew install --cask --no-quarantine Kegworks-App/kegworks/kegworks</pre>
+            <pre class="language-sh">
+brew upgrade
+brew install --cask --no-quarantine Kegworks-App/kegworks/kegworks</pre
+            >
         </code>
     </li>
 
-    <li>Open it up and install a version of CrossOver wine (<samp>WS**WineCX**</samp>)</li>
+    <li>
+        Open it up and install a version of CrossOver wine
+        (<samp>WS**WineCX**</samp>)
+    </li>
 
-
-    <img src="https://f004.backblazeb2.com/file/j0-lol-website/kegwroks/Screenshot%202025-03-22%20at%2017.03.55.png" height="488" width="404"/>
-    <li>Make a wrapper app
-        (Be prepared for this to take a while, and freeze up.)</li>
-
+    <img
+        src="https://f004.backblazeb2.com/file/j0-lol-website/kegwroks/Screenshot%202025-03-22%20at%2017.03.55.png"
+        height="488"
+        width="404"
+    />
+    <li>
+        Make a wrapper app (Be prepared for this to take a while, and freeze
+        up.)
+    </li>
 
     <li>Open up your new wrapper</li>
-    <li>Notice that your new wrapper application has an AI generated icon. Ew. Change that to something better. (<a
-            href="https://f004.backblazeb2.com/file/j0-lol-website/kegwroks/Steam.icns">Here's a Steam icon.</a>)</li>
-    <img src="https://f004.backblazeb2.com/file/j0-lol-website/kegwroks/Screenshot%202025-03-22%20at%2017.14.25.png" alt="" width="685" height="369">
-
-    </ol>
+    <li>
+        Notice that your new wrapper application has an AI generated icon. Ew.
+        Change that to something better. (<a
+            href="https://f004.backblazeb2.com/file/j0-lol-website/kegwroks/Steam.icns"
+            >Here's a Steam icon.</a
+        >)
+    </li>
+    <img
+        src="https://f004.backblazeb2.com/file/j0-lol-website/kegwroks/Screenshot%202025-03-22%20at%2017.14.25.png"
+        alt=""
+        width="685"
+        height="369"
+    />
+</ol>
 
 <h2>Steam</h2>
 <ol>
-
-    <li>You want to run steam. Probably. Open winetricks and run the steam action.</li>
-
-    <img src="https://f004.backblazeb2.com/file/j0-lol-website/kegwroks/Screenshot%202025-03-22%20at%2017.08.46.png" alt=""  height="727" width="803">
-    <li>Once that's done, go to 'Advanced' and change the Windows app to Steam.
-
-        <img src="https://f004.backblazeb2.com/file/j0-lol-website/kegwroks/Screenshot%202025-03-22%20at%2017.15.17.png"  width="685" height="369">
+    <li>
+        You want to run steam. Probably. Open winetricks and run the steam
+        action.
     </li>
-    <li>You will want to use a DirectX translation layer:
+
+    <img
+        src="https://f004.backblazeb2.com/file/j0-lol-website/kegwroks/Screenshot%202025-03-22%20at%2017.08.46.png"
+        alt=""
+        height="727"
+        width="803"
+    />
+    <li>
+        Once that's done, go to 'Advanced' and change the Windows app to Steam.
+
+        <img
+            src="https://f004.backblazeb2.com/file/j0-lol-website/kegwroks/Screenshot%202025-03-22%20at%2017.15.17.png"
+            width="685"
+            height="369"
+        />
+    </li>
+    <li>
+        You will want to use a DirectX translation layer:
         <ul>
-            <li>D3DMetal is the official, Apple supported, translation layer. This will have the least overhead and, usually, widest compatability. If you're unsure, use this one.</li>
-            <li>DXVK is used widely on macOS and Linux for gpu call translation. This should be your fallback if D3DMetal fails you.</li>
-            <li>DXMT is a newcomer and focuses only on DirectX11 to Metal translation. Some games will work great with this.         <sup><a href="https://support.codeweavers.com/advanced-settings-in-crossover-235">[src]</a></sup>
+            <li>
+                D3DMetal is the official, Apple supported, translation layer.
+                This will have the least overhead and, usually, widest
+                compatability. If you're unsure, use this one.
+            </li>
+            <li>
+                DXVK is used widely on macOS and Linux for gpu call translation.
+                This should be your fallback if D3DMetal fails you.
+            </li>
+            <li>
+                DXMT is a newcomer and focuses only on DirectX11 to Metal
+                translation. Some games will work great with this.
+                <sup
+                    ><a
+                        href="https://support.codeweavers.com/advanced-settings-in-crossover-235"
+                        >[src]</a
+                    ></sup
+                >
             </li>
         </ul>
     </li>
-
 </ol>
-
 
 <h2>Tweaking</h2>
 <p>You may also want to tweak some other graphics settings:</p>
 
 <ul>
+    <li>
+        You may get better or worse performance by tweaking which type of
+        synchronization you use. There are two options in Kegworks and
+        Crossover. Personally, I have not seen any difference between the two.
+
+        <ul>
+            <li>Eventfd-based synchronization, or <samp>ESYNC</samp>.</li>
             <li>
-                You may get better or worse performance by tweaking which type of synchronization you use. There are two options in Kegworks and Crossover.
-                Personally, I have not seen any difference between the two.
-
-                <ul>
-                    <li>
-                        Eventfd-based synchronization, or <samp>ESYNC</samp>.
-                    </li>
-                    <li>
-                        Mach semaphore-based synchronization, or <samp>MSYNC</samp>                <sup><a href="https://support.codeweavers.com/advanced-settings-in-crossover-235">[src]</a></sup>
-
-                    </li>
-                </ul>
-
-            </li>
-            <li>
-                High DPI mode. If you're on an Apple display, you probably have a high DPI.
-                This is quite annoying to do.
-                <ol>
-                    <li>
-                        Open <samp>regedit</samp>
-                    </li>
-                    <li>Go to <samp>HKCU\Software\Wine\Mac Driver</samp>
-                    </li>
-                    <li> Then set a new string value <samp>RetinaMode</samp> to <samp>Y</samp> <sup><a href="https://www.reddit.com/r/macgaming/comments/1gees5s/comment/lu9dlsx/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button">[src]</a></sup></li>
-                    <li>Open <samp>winecfg</samp></li>
-                    <li>Change the dpi.  Note that the default is 96dpi. For a 2&times; DPI monitor, go for <small>96 &times; 2 = </small> 192dpi.</li>
-                </ol>
-
-                If you're often switching between high dpi and 96dpi monitors, I would recommend making a separate wrapper app so you don't have to undo and redo this hack constantly.
-
-                <br><br>
-                <b>EDIT:</b> I made a tool to automate this: <a href="https://github.com/j0lol/winebottle-retina-toggler">winebottle-retina-toggler</a>.
-                I also made an <a href="https://github.com/Kegworks-App/Kegworks/issues/79">issue on Kegworks Winery</a> in hopes of a better solution.
+                Mach semaphore-based synchronization, or <samp>MSYNC</samp>
+                <sup
+                    ><a
+                        href="https://support.codeweavers.com/advanced-settings-in-crossover-235"
+                        >[src]</a
+                    ></sup
+                >
             </li>
         </ul>
+    </li>
+    <li>
+        High DPI mode. If you're on an Apple display, you probably have a high
+        DPI. This is quite annoying to do.
+        <ol>
+            <li>Open <samp>regedit</samp></li>
+            <li>Go to <samp>HKCU\Software\Wine\Mac Driver</samp></li>
+            <li>
+                Then set a new string value <samp>RetinaMode</samp> to
+                <samp>Y</samp>
+                <sup
+                    ><a
+                        href="https://www.reddit.com/r/macgaming/comments/1gees5s/comment/lu9dlsx/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button"
+                        >[src]</a
+                    ></sup
+                >
+            </li>
+            <li>Open <samp>winecfg</samp></li>
+            <li>
+                Change the dpi. Note that the default is 96dpi. For a 2&times;
+                DPI monitor, go for <small>96 &times; 2 = </small> 192dpi.
+            </li>
+        </ol>
+
+        If you're often switching between high dpi and 96dpi monitors, I would
+        recommend making a separate wrapper app so you don't have to undo and
+        redo this hack constantly.
+
+        <br /><br />
+        <b>EDIT:</b> I made a tool to automate this:
+        <a href="https://github.com/j0lol/winebottle-retina-toggler"
+            >winebottle-retina-toggler</a
+        >. I also made an
+        <a href="https://github.com/Kegworks-App/Kegworks/issues/79"
+            >issue on Kegworks Winery</a
+        >
+        in hopes of a better solution.
+    </li>
+</ul>
 
 <h2>Troubleshooting</h2>
-Theoretically, Steam should "just work."
-Give it a test run before you close your wrapper app.
-If your wrapper stops working, open up your wrapper <samp>.app</samp> with "Show Package Contents" and open <samp>KegworksConfig.app</samp> to get access to the config menu again.
+Theoretically, Steam should "just work." Give it a test run before you close
+your wrapper app. If your wrapper stops working, open up your wrapper
+<samp>.app</samp> with "Show Package Contents" and open
+<samp>KegworksConfig.app</samp> to get access to the config menu again.
 
-<p>Annoyingly, Steam is quite buggy in wine. This is just because Steam sucks. It's a web browser running through three translation layers (D3DMetal, Wine, Rosetta 2.) It is still pretty usable, though, and the macOS build of Steam isn't much better! </p>
+<p>
+    Annoyingly, Steam is quite buggy in wine. This is just because Steam sucks.
+    It's a web browser running through three translation layers (D3DMetal, Wine,
+    Rosetta 2.) It is still pretty usable, though, and the macOS build of Steam
+    isn't much better!
+</p>
 
 <h2>Performance and Compatability</h2>
-It's alright. The main issue is memory constraints. If you have an 8gb Apple device, you will feel this when you try and load large games.
-If you want good benchmarks, I can recommend <a href="https://www.youtube.com/@Andytizer">Andrew Tsai</a>'s channel. 
-If you need other performance & compatability details, try the <a href="https://www.applegamingwiki.com/wiki/Home">AppleGamingWiki</a>.
+It's alright. The main issue is memory constraints. If you have an 8gb Apple
+device, you will feel this when you try and load large games. If you want good
+benchmarks, I can recommend
+<a href="https://www.youtube.com/@Andytizer">Andrew Tsai</a>'s channel. If you
+need other performance & compatability details, try the
+<a href="https://www.applegamingwiki.com/wiki/Home">AppleGamingWiki</a>.
 
 <h2>Conclusion</h2>
 
-<p>This kinda sucks, right? Why can't Valve Corporation just do this for us? Who knows. I think they just hate us macOS users.</p>
+<p>
+    This kinda sucks, right? Why can't Valve Corporation just do this for us?
+    Who knows. I think they just hate us macOS users.
+</p>

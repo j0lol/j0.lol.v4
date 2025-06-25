@@ -132,6 +132,7 @@
     --preview: light-dark(rgb(var(--secondary-200)), rgb(var(--secondary-950)));
     --font-mono: "Maple Mono", monospace;
     --font-body: "DM Sans", sans-serif;
+    --font-serif: "Hepta Slab", serif;
 }
 
 /*  https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Box_model#the_alternative_css_box_model */
@@ -248,7 +249,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Hepta Slab", serif;
+    font-family: var(--font-serif);
     /* font-optical-sizing: auto; */
     font-style: normal;
     font-weight: 450;
@@ -262,7 +263,12 @@ h1.page-head {
 } */
 
 span.blog-subhead {
-    font-family: "Hepta Slab", serif;
+    font-family: var(--font-serif);
+}
+
+p.blog-publish {
+    font-family: var(--font-serif);
+    font-style: italic;
 }
 
 p,
@@ -571,4 +577,8 @@ bsky-comments {
     --link-hover-color: var(--anchor-active);
     --comment-meta-color: var(--subtext);
     --reply-border-color: var(--border);
+}
+
+figcaption {
+    text-align: center;
 }

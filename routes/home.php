@@ -4,21 +4,32 @@ fragment("head");
 <div class="wrapper">
     <?php fragment("navbar"); ?>
 
+    <script>
+      Array.from(document.querySelectorAll('select'), (input) => {
+        let parent = input.parentNode;
+
+        function updateSize() {
+          parent.dataset.selectAutoExpand = input.value
+        }
+
+        input.addEventListener('input', updateSize);
+
+        updateSize();
+      });
+    </script>
     <main>
         <?php
         $pronouns = ["she/her", "they/them", "it/its"];
         shuffle($pronouns);
 
         $genders = [
-            "the number Zero",
-            "deer",
-            "idk",
-            "between girl and void",
-            "in stores this Summer",
-            "behind you",
+            "𐂂",
+            "\u{2400}",
+            "\u{2205}",
+            "girl?",
             "stolen",
-            "n't",
-            $_SERVER["REMOTE_ADDR"],
+            "not",
+            // $_SERVER["REMOTE_ADDR"],
         ];
         shuffle($genders);
 
@@ -40,15 +51,29 @@ fragment("head");
 
         <h1 class="fancy page-head">Hi!</h1>
 
-        <p>I'm Jo.
-            <label id="my-pronouns">My pronouns are <?php makeSelect(
-                $pronouns
-            ); ?></label>
-            and
-            <label>my gender is <?php makeSelect($genders, true); ?></label>
-        </p>
+        <div style="display: flex; flex-direction: row">
+            <img class="raw dialog profile" src="/static/speechdeer.png" alt="drawing of a deer, talking to you.">
+            <div class="dialog speech jo">
+                <p>I'm Jo.
+                    <label id="my-pronouns">My pronouns are <?php makeSelect(
+                        $pronouns
+                    ); ?></label>
+                    and
+                    <label>my gender is <?php makeSelect(
+                        $genders,
+                        false
+                    ); ?></label>
+                </p>
 
-        <details style="margin-top: -0.7rem;">
+                <p>I'm a CompSci graduate from the University of Sussex. <small><a href="/contact">(Hire me!)</a></small></p>
+
+            </div>
+        </div>
+
+
+
+
+        <details style="margin-top: 1rem;">
             <summary>What's your pronouns? </summary>
 
             <label id="pronouns-blurb"> <input id="pronouns-choice"> </label>
@@ -67,7 +92,6 @@ fragment("head");
             </script>
         </details>
 
-        <p>I'm a CompSci graduate from the University of Sussex. <a href="/contact">Hire me!</a></p>
 
         <h2>What do you do?</h2>
         <p>I mainly write software, and study in the art of writing software. My specialities lie in writing correct, robust code. I love to read and write documentation, and to double-check my work. Outside of development, I like to draw and write, and cook meals with a good splash of umami. I am conversational in a constructed language, toki pona. </p>
@@ -99,7 +123,7 @@ fragment("head");
             And here's what I'm doing offline:
         </p>
         <div>
-            <blockquote class="small"">Not much! I'm still kind of recovering from burnout.</blockquote>
+            <blockquote class="small"">Not much! I'm still kind of recovering from burnout. I've been playing a bit of chess though. <a href="https://lichess.org/@/j0lol">Not very good at it yet.</a></blockquote>
         </div>
 
         <h2>More info</h2>
@@ -127,10 +151,10 @@ fragment("head");
         </p>
 
         <div style="display: flex; flex-direction: row">
-            <img class="raw dialog profile" src="/static/speechdeer.png" alt="drawing of a deer, talking to you.">
+            <img class="raw dialog profile" src="/static/speechhappy.png" alt="drawing of a deer, talking to you.">
             <div class="dialog speech jo">
                 <p>
-                    Thanks for visiting my website =]
+                    Thanks for visiting my website!
                 </p>
             </div>
         </div>
