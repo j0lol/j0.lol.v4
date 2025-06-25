@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+$commit_hash = exec("git rev-parse --short HEAD");
+global $commit_hash;
+
 require_once "vendor/autoload.php";
 require_once "posts/post-list.php";
 require_once "extra_funcs.php";
