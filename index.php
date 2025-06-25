@@ -6,7 +6,7 @@ declare(strict_types=1);
 $commit_hash = exec(
     "cd " .
         $_SERVER["DOCUMENT_ROOT"] .
-        " && awk 'BEGIN { ORS=\" \" }; { print $1 }' ./.git/FETCH_HEAD"
+        " && awk '{ print $1 }' ./.git/FETCH_HEAD"
 );
 
 global $commit_hash;

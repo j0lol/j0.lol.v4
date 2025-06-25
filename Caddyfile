@@ -1,4 +1,4 @@
-http://127.0.0.1:8080 {
+http://localhost:8080, http://127.0.0.1:8080  {
 	#respond "j0.lol is down for rewrites. If you need me, shoot me a msg at me@j0.lol."
 	root * .
 
@@ -10,7 +10,7 @@ http://127.0.0.1:8080 {
 	handle_path /static/* {
    	    @cachedFiles {
             not file
-            path_regexp cached ~*(.+)\.(?:[0-9a-z]+)\.(js|css|jpg|svg|png)
+            path_regexp cached ~*(.+)\.(?:[0-9a-zA-Z]+)\.(js|css|jpg|svg|png)
         }
         rewrite @cachedFiles {http.regexp.cached.1}.{http.regexp.cached.2}
 

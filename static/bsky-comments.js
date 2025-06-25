@@ -34,6 +34,7 @@ class BskyComments extends HTMLElement {
 
     const params = new URLSearchParams({ uri });
     const url = `https://public.api.bsky.app/xrpc/app.bsky.feed.getPostThread?${params.toString()}`;
+    console.log(url);
 
     try {
       const response = await fetch(url, {
@@ -90,7 +91,7 @@ class BskyComments extends HTMLElement {
     const hiddenReplies = this.thread.post.threadgate?.record.hiddenReplies;
     const commentsContainer = container.querySelector("#comments");
     sortedReplies.slice(0, this.visibleCount).forEach((reply) => {
-      if (hiddenReplies != null && !hiddenReplies.includes(reply.post.uri)) {
+      if (!hiddenReplies?.includes(reply.post.uri)) {
         commentsContainer.appendChild(this.createCommentElement(reply));
       }
     });
