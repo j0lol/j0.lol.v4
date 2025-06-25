@@ -14,6 +14,8 @@ $posts = [
         "title" => "Is Swift becoming unergonomic Rust?",
         "subtitle" => "(No, but I thought it was)",
         "date" => dt("2025-06-25 15:00"),
+        "post" =>
+            "at://did:plc:by6abidhbnj6siox5if2wzq6/app.bsky.feed.post/3lsh3wg4zqc2t",
     ],
     "spotlight-raycast" => [
         "title" => "How I use the new Spotlight",
