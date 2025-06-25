@@ -4,10 +4,10 @@
     <?php global $commit_hash; ?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <link href="/static/normalize.css?v=<?= $commit_hash ?>" type="text/css" rel="stylesheet">
-    <link href="/static/style.css?v=<?= $commit_hash ?>" type="text/css" rel="stylesheet">
-    <link href="/static/nav.css?v=<?= $commit_hash ?>" type="text/css" rel="stylesheet">
-    <link href="/static/dialog.css?v=<?= $commit_hash ?>" type="text/css" rel="stylesheet">
+    <link href="/static/normalize.<?= $commit_hash ?>.css" type="text/css" rel="stylesheet">
+    <link href="/static/style.<?= $commit_hash ?>.css" type="text/css" rel="stylesheet">
+    <link href="/static/nav.<?= $commit_hash ?>.css" type="text/css" rel="stylesheet">
+    <link href="/static/dialog.<?= $commit_hash ?>.css" type="text/css" rel="stylesheet">
     <meta name="theme-color" content="#b497ee">
     <meta name="apple-mobile-web-app-status-bar-style" content="#b497ee">
     <script defer data-domain="j0.lol" src="https://plausible.j0.lol/js/script.js"></script>

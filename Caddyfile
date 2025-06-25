@@ -1,0 +1,20 @@
+http://127.0.0.1:8080 {
+	#respond "j0.lol is down for rewrites. If you need me, shoot me a msg at me@j0.lol."
+	root * .
+
+	encode zstd gzip
+
+    # brew services start php
+	php_fastcgi 127.0.0.1:9000
+
+	handle_path /static/* {
+   	    @cachedFiles {
+            not file
+            path_regexp cached ~*(.+)\.(?:[0-9a-z]+)\.(js|css|jpg|svg|png)
+        }
+        rewrite @cachedFiles {http.regexp.cached.1}.{http.regexp.cached.2}
+
+        root * ./static
+        file_server browse
+    }
+}
