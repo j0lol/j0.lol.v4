@@ -2,11 +2,13 @@
 
 declare(strict_types=1);
 
+# https://stackoverflow.com/a/74790265
 $commit_hash = exec(
-    "cd " . $_SERVER["DOCUMENT_ROOT"] . "&& git rev-parse --short HEAD"
+    "cd " .
+        $_SERVER["DOCUMENT_ROOT"] .
+        " && awk 'BEGIN { ORS=\" \" }; { print $1 }' ./.git/FETCH_HEAD"
 );
 
-echo $_SERVER["DOCUMENT_ROOT"];
 global $commit_hash;
 
 require_once "vendor/autoload.php";
