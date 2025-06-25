@@ -10,11 +10,17 @@ function dt($string)
 }
 
 $posts = [
+    "spotlight-raycast" => [
+        "title" => "How I use the new Spotlight",
+        "date" => dt("2025-06-25 00:00"),
+        "post" =>
+            "at://did:plc:by6abidhbnj6siox5if2wzq6/app.bsky.feed.post/3lsfjq2xg6c2o",
+    ],
     "tahoe-beta" => [
         "title" =>
             "The macOS Tahoe beta is so bad that it made me switch to Chromium.",
         "subtitle" => "Urrghhh",
-        "date" => dt("2025-06-25 22:00"),
+        "date" => dt("2025-06-24 22:00"),
         "post" =>
             "at://did:plc:by6abidhbnj6siox5if2wzq6/app.bsky.feed.post/3lsfg6ec7ws2h",
     ],
