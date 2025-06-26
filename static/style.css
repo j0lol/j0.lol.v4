@@ -543,11 +543,11 @@ div._88x31s {
 blockquote {
     color: var(--text-hard);
     border-radius: 1rem;
-    border-right: 1px solid var(--bg);
+    border-right: 1px solid light-dark(var(--bg), rgb(var(--secondary-925)));
     border-left: 0.3rem solid var(--border);
     padding: 0.1rem 0.7rem;
     background-color: var(--bg-surface0);
-    box-shadow: 0 0.1rem var(--bg);
+    box-shadow: 0 0.1rem light-dark(var(--bg), rgb(var(--secondary-925)));
     word-break: break-all;
 }
 

@@ -11,10 +11,11 @@ nav.bar {
     border-image: linear-gradient(
             to right,
             hsl(
-                    from var(--border-header) calc(h + 20) calc(s + 10) calc(l + 3)
+                from var(--border-header) calc(h + 20) calc(s + 10) calc(l + 3)
             ),
             var(--border-header)
-    ) 3;
+        )
+        3;
 
     > ul {
         width: min(calc(var(--max-width) - 0.5rem), 100%);
@@ -37,12 +38,14 @@ nav.bar {
 
         &:hover {
             background-color: rgb(0 0 0 / 10%);
+            backdrop-filter: hue-rotate(5deg);
             margin-bottom: -2px;
             border-bottom: 2px solid rgb(0 0 0 / 30%);
         }
 
         &:active {
             background-color: rgb(0 0 0 / 20%);
+            backdrop-filter: hue-rotate(10deg);
             margin-bottom: -2px;
             border-bottom: 2px solid rgb(0 0 0 / 50%);
         }
@@ -76,5 +79,15 @@ nav.bar {
     #nav-index:active {
         border-bottom: 0;
         margin-bottom: 0;
+    }
+}
+
+.navbreak-show {
+    display: none;
+}
+
+@media (width <= 21.5rem) {
+    .navbreak-show {
+        display: initial;
     }
 }
