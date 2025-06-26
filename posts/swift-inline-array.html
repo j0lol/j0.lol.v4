@@ -165,7 +165,7 @@ fn array() {
             over a generic. Dunno how Swift does this!
             <!-- <a aria-label="Return to content">↩</a> -->
         </li>
-        <li id="values">
+        <li id="note_values">
             Bryan Cantrill has a great talk on this:
             <a href="https://youtu.be/Xhx970_JKX4"
                 ><em>Platform as a Reflection of Values</em></a
@@ -173,52 +173,3 @@ fn array() {
         </li>
     </ol>
 </footer>
-
-<!-- https://www.niquette.ca/articles/accessible-footnotes/ -->
-<style>
-    article {
-        counter-reset: references;
-    }
-
-    [aria-labelledby="notes_heading"] {
-        counter-increment: references;
-        font-size: 0.83em;
-        vertical-align: super;
-        line-height: 1;
-    }
-
-    [aria-labelledby="notes_heading"]::after {
-        content: "[" counter(references) "]";
-    }
-</style>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        var footerPairs = document.querySelectorAll("footer ol li");
-
-        footerPairs.forEach((pair) => {
-            var returnLink = document.createElement("a");
-            returnLink.innerHTML = "↩";
-            returnLink.setAttribute("aria-label", "Return to content");
-
-            // var returnLink = pair.querySelector(
-            //     'a[aria-label="Return to content"]',
-            // );
-            if (returnLink && pair.id) {
-                returnLink.href = "#ref_" + pair.id.replace(/^note_/, "");
-            }
-            pair.appendChild(returnLink);
-        });
-
-        var articleAnchors = document.querySelectorAll("article a[ref]");
-
-        articleAnchors.forEach((anchor, index) => {
-            let ref = anchor.getAttribute("ref");
-            anchor.removeAttribute("ref");
-
-            var id = "ref_" + ref;
-            anchor.id = id;
-            anchor.href = "#note_" + ref;
-            anchor.setAttribute("aria-labelledby", "notes_heading");
-        });
-    });
-</script>
