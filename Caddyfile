@@ -1,4 +1,6 @@
-http://localhost:8080, http://127.0.0.1:8080  {
+http://localhost:8099, http://127.0.0.1:8099  {
+	respond /health-check 200
+
 	#respond "j0.lol is down for rewrites. If you need me, shoot me a msg at me@j0.lol."
 	root * .
 
@@ -12,9 +14,25 @@ http://localhost:8080, http://127.0.0.1:8080  {
             not file
             path_regexp cached ~*(.+)\.(?:[0-9a-zA-Z]+)\.(js|css|jpg|svg|png)
         }
+        header @cachedFiles Cache-Control "no-store" # Dev Only
         rewrite @cachedFiles {http.regexp.cached.1}.{http.regexp.cached.2}
 
         root * ./static
         file_server browse
+    }
+    # reverse_proxy https://plausible.j0.lol /js/script.js
+
+    handle_path /pls/* {
+        reverse_proxy https://plausible.j0.lol
+    }
+
+    @plausible path /js/script.js /api/event
+    handle @plausible {
+    	# Change this if you use a different variant of the script
+    	# e.g. rewrite /js/script.js /js/script.outbound-links.js
+    	rewrite /js/script.js /js/script.js
+    	reverse_proxy https://plausible.j0.lol {
+    		header_up Host {http.reverse_proxy.upstream.hostport}
+    	}
     }
 }

@@ -1,7 +1,6 @@
 <?php fragment("head"); ?>
 
 <body>
-    <script src="/static/prism.js"></script>
 
 <div class="wrapper">
 

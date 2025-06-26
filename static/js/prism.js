@@ -1,5 +1,5 @@
 /* PrismJS 1.30.0
-https://prismjs.com/download#themes=prism&languages=markup+css+clike+javascript+java+markup-templating+php+rust+swift&plugins=show-language+toolbar */
+https://prismjs.com/download#themes=prism-tomorrow&languages=markup+css+clike+javascript+bash+java+markup-templating+php+rust+swift&plugins=show-language+unescaped-markup+normalize-whitespace+toolbar */
 var _self =
     "undefined" != typeof window
       ? window
@@ -761,6 +761,175 @@ Prism.languages.clike = {
       "javascript",
     )),
   (Prism.languages.js = Prism.languages.javascript));
+!(function (e) {
+  var t =
+      "\\b(?:BASH|BASHOPTS|BASH_ALIASES|BASH_ARGC|BASH_ARGV|BASH_CMDS|BASH_COMPLETION_COMPAT_DIR|BASH_LINENO|BASH_REMATCH|BASH_SOURCE|BASH_VERSINFO|BASH_VERSION|COLORTERM|COLUMNS|COMP_WORDBREAKS|DBUS_SESSION_BUS_ADDRESS|DEFAULTS_PATH|DESKTOP_SESSION|DIRSTACK|DISPLAY|EUID|GDMSESSION|GDM_LANG|GNOME_KEYRING_CONTROL|GNOME_KEYRING_PID|GPG_AGENT_INFO|GROUPS|HISTCONTROL|HISTFILE|HISTFILESIZE|HISTSIZE|HOME|HOSTNAME|HOSTTYPE|IFS|INSTANCE|JOB|LANG|LANGUAGE|LC_ADDRESS|LC_ALL|LC_IDENTIFICATION|LC_MEASUREMENT|LC_MONETARY|LC_NAME|LC_NUMERIC|LC_PAPER|LC_TELEPHONE|LC_TIME|LESSCLOSE|LESSOPEN|LINES|LOGNAME|LS_COLORS|MACHTYPE|MAILCHECK|MANDATORY_PATH|NO_AT_BRIDGE|OLDPWD|OPTERR|OPTIND|ORBIT_SOCKETDIR|OSTYPE|PAPERSIZE|PATH|PIPESTATUS|PPID|PS1|PS2|PS3|PS4|PWD|RANDOM|REPLY|SECONDS|SELINUX_INIT|SESSION|SESSIONTYPE|SESSION_MANAGER|SHELL|SHELLOPTS|SHLVL|SSH_AUTH_SOCK|TERM|UID|UPSTART_EVENTS|UPSTART_INSTANCE|UPSTART_JOB|UPSTART_SESSION|USER|WINDOWID|XAUTHORITY|XDG_CONFIG_DIRS|XDG_CURRENT_DESKTOP|XDG_DATA_DIRS|XDG_GREETER_DATA_DIR|XDG_MENU_PREFIX|XDG_RUNTIME_DIR|XDG_SEAT|XDG_SEAT_PATH|XDG_SESSION_DESKTOP|XDG_SESSION_ID|XDG_SESSION_PATH|XDG_SESSION_TYPE|XDG_VTNR|XMODIFIERS)\\b",
+    a = {
+      pattern: /(^(["']?)\w+\2)[ \t]+\S.*/,
+      lookbehind: !0,
+      alias: "punctuation",
+      inside: null,
+    },
+    n = {
+      bash: a,
+      environment: { pattern: RegExp("\\$" + t), alias: "constant" },
+      variable: [
+        {
+          pattern: /\$?\(\([\s\S]+?\)\)/,
+          greedy: !0,
+          inside: {
+            variable: [
+              { pattern: /(^\$\(\([\s\S]+)\)\)/, lookbehind: !0 },
+              /^\$\(\(/,
+            ],
+            number:
+              /\b0x[\dA-Fa-f]+\b|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:[Ee]-?\d+)?/,
+            operator:
+              /--|\+\+|\*\*=?|<<=?|>>=?|&&|\|\||[=!+\-*/%<>^&|]=?|[?~:]/,
+            punctuation: /\(\(?|\)\)?|,|;/,
+          },
+        },
+        {
+          pattern: /\$\((?:\([^)]+\)|[^()])+\)|`[^`]+`/,
+          greedy: !0,
+          inside: { variable: /^\$\(|^`|\)$|`$/ },
+        },
+        {
+          pattern: /\$\{[^}]+\}/,
+          greedy: !0,
+          inside: {
+            operator: /:[-=?+]?|[!\/]|##?|%%?|\^\^?|,,?/,
+            punctuation: /[\[\]]/,
+            environment: {
+              pattern: RegExp("(\\{)" + t),
+              lookbehind: !0,
+              alias: "constant",
+            },
+          },
+        },
+        /\$(?:\w+|[#?*!@$])/,
+      ],
+      entity:
+        /\\(?:[abceEfnrtv\\"]|O?[0-7]{1,3}|U[0-9a-fA-F]{8}|u[0-9a-fA-F]{4}|x[0-9a-fA-F]{1,2})/,
+    };
+  ((e.languages.bash = {
+    shebang: { pattern: /^#!\s*\/.*/, alias: "important" },
+    comment: { pattern: /(^|[^"{\\$])#.*/, lookbehind: !0 },
+    "function-name": [
+      {
+        pattern: /(\bfunction\s+)[\w-]+(?=(?:\s*\(?:\s*\))?\s*\{)/,
+        lookbehind: !0,
+        alias: "function",
+      },
+      { pattern: /\b[\w-]+(?=\s*\(\s*\)\s*\{)/, alias: "function" },
+    ],
+    "for-or-select": {
+      pattern: /(\b(?:for|select)\s+)\w+(?=\s+in\s)/,
+      alias: "variable",
+      lookbehind: !0,
+    },
+    "assign-left": {
+      pattern: /(^|[\s;|&]|[<>]\()\w+(?:\.\w+)*(?=\+?=)/,
+      inside: {
+        environment: {
+          pattern: RegExp("(^|[\\s;|&]|[<>]\\()" + t),
+          lookbehind: !0,
+          alias: "constant",
+        },
+      },
+      alias: "variable",
+      lookbehind: !0,
+    },
+    parameter: {
+      pattern: /(^|\s)-{1,2}(?:\w+:[+-]?)?\w+(?:\.\w+)*(?=[=\s]|$)/,
+      alias: "variable",
+      lookbehind: !0,
+    },
+    string: [
+      {
+        pattern: /((?:^|[^<])<<-?\s*)(\w+)\s[\s\S]*?(?:\r?\n|\r)\2/,
+        lookbehind: !0,
+        greedy: !0,
+        inside: n,
+      },
+      {
+        pattern: /((?:^|[^<])<<-?\s*)(["'])(\w+)\2\s[\s\S]*?(?:\r?\n|\r)\3/,
+        lookbehind: !0,
+        greedy: !0,
+        inside: { bash: a },
+      },
+      {
+        pattern:
+          /(^|[^\\](?:\\\\)*)"(?:\\[\s\S]|\$\([^)]+\)|\$(?!\()|`[^`]+`|[^"\\`$])*"/,
+        lookbehind: !0,
+        greedy: !0,
+        inside: n,
+      },
+      { pattern: /(^|[^$\\])'[^']*'/, lookbehind: !0, greedy: !0 },
+      {
+        pattern: /\$'(?:[^'\\]|\\[\s\S])*'/,
+        greedy: !0,
+        inside: { entity: n.entity },
+      },
+    ],
+    environment: { pattern: RegExp("\\$?" + t), alias: "constant" },
+    variable: n.variable,
+    function: {
+      pattern:
+        /(^|[\s;|&]|[<>]\()(?:add|apropos|apt|apt-cache|apt-get|aptitude|aspell|automysqlbackup|awk|basename|bash|bc|bconsole|bg|bzip2|cal|cargo|cat|cfdisk|chgrp|chkconfig|chmod|chown|chroot|cksum|clear|cmp|column|comm|composer|cp|cron|crontab|csplit|curl|cut|date|dc|dd|ddrescue|debootstrap|df|diff|diff3|dig|dir|dircolors|dirname|dirs|dmesg|docker|docker-compose|du|egrep|eject|env|ethtool|expand|expect|expr|fdformat|fdisk|fg|fgrep|file|find|fmt|fold|format|free|fsck|ftp|fuser|gawk|git|gparted|grep|groupadd|groupdel|groupmod|groups|grub-mkconfig|gzip|halt|head|hg|history|host|hostname|htop|iconv|id|ifconfig|ifdown|ifup|import|install|ip|java|jobs|join|kill|killall|less|link|ln|locate|logname|logrotate|look|lpc|lpr|lprint|lprintd|lprintq|lprm|ls|lsof|lynx|make|man|mc|mdadm|mkconfig|mkdir|mke2fs|mkfifo|mkfs|mkisofs|mknod|mkswap|mmv|more|most|mount|mtools|mtr|mutt|mv|nano|nc|netstat|nice|nl|node|nohup|notify-send|npm|nslookup|op|open|parted|passwd|paste|pathchk|ping|pkill|pnpm|podman|podman-compose|popd|pr|printcap|printenv|ps|pushd|pv|quota|quotacheck|quotactl|ram|rar|rcp|reboot|remsync|rename|renice|rev|rm|rmdir|rpm|rsync|scp|screen|sdiff|sed|sendmail|seq|service|sftp|sh|shellcheck|shuf|shutdown|sleep|slocate|sort|split|ssh|stat|strace|su|sudo|sum|suspend|swapon|sync|sysctl|tac|tail|tar|tee|time|timeout|top|touch|tr|traceroute|tsort|tty|umount|uname|unexpand|uniq|units|unrar|unshar|unzip|update-grub|uptime|useradd|userdel|usermod|users|uudecode|uuencode|v|vcpkg|vdir|vi|vim|virsh|vmstat|wait|watch|wc|wget|whereis|which|who|whoami|write|xargs|xdg-open|yarn|yes|zenity|zip|zsh|zypper)(?=$|[)\s;|&])/,
+      lookbehind: !0,
+    },
+    keyword: {
+      pattern:
+        /(^|[\s;|&]|[<>]\()(?:case|do|done|elif|else|esac|fi|for|function|if|in|select|then|until|while)(?=$|[)\s;|&])/,
+      lookbehind: !0,
+    },
+    builtin: {
+      pattern:
+        /(^|[\s;|&]|[<>]\()(?:\.|:|alias|bind|break|builtin|caller|cd|command|continue|declare|echo|enable|eval|exec|exit|export|getopts|hash|help|let|local|logout|mapfile|printf|pwd|read|readarray|readonly|return|set|shift|shopt|source|test|times|trap|type|typeset|ulimit|umask|unalias|unset)(?=$|[)\s;|&])/,
+      lookbehind: !0,
+      alias: "class-name",
+    },
+    boolean: {
+      pattern: /(^|[\s;|&]|[<>]\()(?:false|true)(?=$|[)\s;|&])/,
+      lookbehind: !0,
+    },
+    "file-descriptor": { pattern: /\B&\d\b/, alias: "important" },
+    operator: {
+      pattern:
+        /\d?<>|>\||\+=|=[=~]?|!=?|<<[<-]?|[&\d]?>>|\d[<>]&?|[<>][&=]?|&[>&]?|\|[&|]?/,
+      inside: { "file-descriptor": { pattern: /^\d/, alias: "important" } },
+    },
+    punctuation: /\$?\(\(?|\)\)?|\.\.|[{}[\];\\]/,
+    number: { pattern: /(^|\s)(?:[1-9]\d*|0)(?:[.,]\d+)?\b/, lookbehind: !0 },
+  }),
+    (a.inside = e.languages.bash));
+  for (
+    var s = [
+        "comment",
+        "function-name",
+        "for-or-select",
+        "assign-left",
+        "parameter",
+        "string",
+        "environment",
+        "function",
+        "keyword",
+        "builtin",
+        "boolean",
+        "file-descriptor",
+        "operator",
+        "punctuation",
+        "number",
+      ],
+      o = n.variable[1].inside,
+      i = 0;
+    i < s.length;
+    i++
+  )
+    o[s[i]] = e.languages.bash[s[i]];
+  ((e.languages.sh = e.languages.bash), (e.languages.shell = e.languages.bash));
+})(Prism);
 !(function (e) {
   var n =
       /\b(?:abstract|assert|boolean|break|byte|case|catch|char|class|const|continue|default|do|double|else|enum|exports|extends|final|finally|float|for|goto|if|implements|import|instanceof|int|interface|long|module|native|new|non-sealed|null|open|opens|package|permits|private|protected|provides|public|record(?!\s*[(){}[\]<>=%~.:,;?+\-*/&|^])|requires|return|sealed|short|static|strictfp|super|switch|synchronized|this|throw|throws|to|transient|transitive|try|uses|var|void|volatile|while|with|yield)\b/,
@@ -1801,4 +1970,184 @@ Prism.languages.clike = {
         }
       });
     } else console.warn("Show Languages plugin loaded before Toolbar plugin.");
+})();
+"undefined" != typeof Prism &&
+  "undefined" != typeof document &&
+  (Element.prototype.matches ||
+    (Element.prototype.matches =
+      Element.prototype.msMatchesSelector ||
+      Element.prototype.webkitMatchesSelector),
+  (Prism.plugins.UnescapedMarkup = !0),
+  Prism.hooks.add("before-highlightall", function (e) {
+    e.selector +=
+      ', [class*="lang-"] script[type="text/plain"], [class*="language-"] script[type="text/plain"], script[type="text/plain"][class*="lang-"], script[type="text/plain"][class*="language-"]';
+  }),
+  Prism.hooks.add("before-sanity-check", function (e) {
+    var t = e.element;
+    if (t.matches('script[type="text/plain"]')) {
+      var a = document.createElement("code"),
+        c = document.createElement("pre");
+      c.className = a.className = t.className;
+      var n = t.dataset;
+      return (
+        Object.keys(n || {}).forEach(function (e) {
+          Object.prototype.hasOwnProperty.call(n, e) && (c.dataset[e] = n[e]);
+        }),
+        (a.textContent = e.code =
+          e.code.replace(/&lt;\/script(?:>|&gt;)/gi, "<\/script>")),
+        c.appendChild(a),
+        t.parentNode.replaceChild(c, t),
+        void (e.element = a)
+      );
+    }
+    if (!e.code) {
+      var o = t.childNodes;
+      1 === o.length &&
+        "#comment" == o[0].nodeName &&
+        (t.textContent = e.code = o[0].textContent);
+    }
+  }));
+!(function () {
+  if ("undefined" != typeof Prism) {
+    var e =
+        Object.assign ||
+        function (e, t) {
+          for (var n in t) t.hasOwnProperty(n) && (e[n] = t[n]);
+          return e;
+        },
+      t = {
+        "remove-trailing": "boolean",
+        "remove-indent": "boolean",
+        "left-trim": "boolean",
+        "right-trim": "boolean",
+        "break-lines": "number",
+        indent: "number",
+        "remove-initial-line-feed": "boolean",
+        "tabs-to-spaces": "number",
+        "spaces-to-tabs": "number",
+      };
+    ((n.prototype = {
+      setDefaults: function (t) {
+        this.defaults = e(this.defaults, t);
+      },
+      normalize: function (t, n) {
+        for (var r in (n = e(this.defaults, n))) {
+          var i = r.replace(/-(\w)/g, function (e, t) {
+            return t.toUpperCase();
+          });
+          "normalize" !== r &&
+            "setDefaults" !== i &&
+            n[r] &&
+            this[i] &&
+            (t = this[i].call(this, t, n[r]));
+        }
+        return t;
+      },
+      leftTrim: function (e) {
+        return e.replace(/^\s+/, "");
+      },
+      rightTrim: function (e) {
+        return e.replace(/\s+$/, "");
+      },
+      tabsToSpaces: function (e, t) {
+        return ((t = 0 | t || 4), e.replace(/\t/g, new Array(++t).join(" ")));
+      },
+      spacesToTabs: function (e, t) {
+        return ((t = 0 | t || 4), e.replace(RegExp(" {" + t + "}", "g"), "\t"));
+      },
+      removeTrailing: function (e) {
+        return e.replace(/\s*?$/gm, "");
+      },
+      removeInitialLineFeed: function (e) {
+        return e.replace(/^(?:\r?\n|\r)/, "");
+      },
+      removeIndent: function (e) {
+        var t = e.match(/^[^\S\n\r]*(?=\S)/gm);
+        return t && t[0].length
+          ? (t.sort(function (e, t) {
+              return e.length - t.length;
+            }),
+            t[0].length ? e.replace(RegExp("^" + t[0], "gm"), "") : e)
+          : e;
+      },
+      indent: function (e, t) {
+        return e.replace(
+          /^[^\S\n\r]*(?=\S)/gm,
+          new Array(++t).join("\t") + "$&",
+        );
+      },
+      breakLines: function (e, t) {
+        t = !0 === t ? 80 : 0 | t || 80;
+        for (var n = e.split("\n"), i = 0; i < n.length; ++i)
+          if (!(r(n[i]) <= t)) {
+            for (
+              var o = n[i].split(/(\s+)/g), a = 0, l = 0;
+              l < o.length;
+              ++l
+            ) {
+              var s = r(o[l]);
+              (a += s) > t && ((o[l] = "\n" + o[l]), (a = s));
+            }
+            n[i] = o.join("");
+          }
+        return n.join("\n");
+      },
+    }),
+      "undefined" != typeof module && module.exports && (module.exports = n),
+      (Prism.plugins.NormalizeWhitespace = new n({
+        "remove-trailing": !0,
+        "remove-indent": !0,
+        "left-trim": !0,
+        "right-trim": !0,
+      })),
+      Prism.hooks.add("before-sanity-check", function (e) {
+        var n = Prism.plugins.NormalizeWhitespace;
+        if (
+          (!e.settings || !1 !== e.settings["whitespace-normalization"]) &&
+          Prism.util.isActive(e.element, "whitespace-normalization", !0)
+        )
+          if ((e.element && e.element.parentNode) || !e.code) {
+            var r = e.element.parentNode;
+            if (e.code && r && "pre" === r.nodeName.toLowerCase()) {
+              for (var i in (null == e.settings && (e.settings = {}), t))
+                if (Object.hasOwnProperty.call(t, i)) {
+                  var o = t[i];
+                  if (r.hasAttribute("data-" + i))
+                    try {
+                      var a = JSON.parse(r.getAttribute("data-" + i) || "true");
+                      typeof a === o && (e.settings[i] = a);
+                    } catch (e) {}
+                }
+              for (
+                var l = r.childNodes, s = "", c = "", u = !1, m = 0;
+                m < l.length;
+                ++m
+              ) {
+                var f = l[m];
+                f == e.element
+                  ? (u = !0)
+                  : "#text" === f.nodeName &&
+                    (u ? (c += f.nodeValue) : (s += f.nodeValue),
+                    r.removeChild(f),
+                    --m);
+              }
+              if (e.element.children.length && Prism.plugins.KeepMarkup) {
+                var d = s + e.element.innerHTML + c;
+                ((e.element.innerHTML = n.normalize(d, e.settings)),
+                  (e.code = e.element.textContent));
+              } else
+                ((e.code = s + e.code + c),
+                  (e.code = n.normalize(e.code, e.settings)));
+            }
+          } else e.code = n.normalize(e.code, e.settings);
+      }));
+  }
+  function n(t) {
+    this.defaults = e({}, t);
+  }
+  function r(e) {
+    for (var t = 0, n = 0; n < e.length; ++n)
+      e.charCodeAt(n) == "\t".charCodeAt(0) && (t += 3);
+    return e.length + t;
+  }
 })();

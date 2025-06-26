@@ -24,23 +24,29 @@
     and <code>InlineArray</code> is stack-allocated.
 </p>
 
-<pre><code class="language-swift">func array() {
+<pre><code class="language-swift"><!--
+func array() {
     var array = [4, 5, 6]
 }
 
 func inlineArray() {
-    var array: InlineArray&lt;3, Int&gt; = [4, 5, 6]
-}</code></pre>
+    var array: InlineArray<3, Int> = [4, 5, 6]
+}
+--></code></pre>
 
 And let's compare to Rust:
 
-<pre><code class="language-rust">fn vec() {
-    let mut vec = vec![4, 5, 6]; // I could wrap this in an Arc, but that's not really what real code would do.
+<pre><code class="language-rust">
+fn vec() {
+    // I could wrap this in an Arc, but
+    // that's not really what real code would do.
+    let mut vec = vec![4, 5, 6];
 }
 
 fn array() {
     let mut arr = [4, 5, 6];
-}</code></pre>
+}
+</code></pre>
 
 <p>
     You can probably see the argument I'm going to make here — This is less
@@ -58,16 +64,18 @@ fn array() {
 </p>
 
 <figure>
-    <pre><code class="language-swift">// Safe usage of a buffer pointer
-func processUsingBuffer(_ array: [Int]) -> Int {
-    array.withUnsafeBufferPointer { buffer in
-        var result = 0
-        for i in 0..&lt;buffer.count {
-            result += calculate(using: buffer, at: i)
+    <pre><code class="language-swift">
+    // Safe usage of a buffer pointer
+    func processUsingBuffer(_ array: [Int]) -> Int {
+        array.withUnsafeBufferPointer { buffer in
+            var result = 0
+            for i in 0..&lt;buffer.count {
+                result += calculate(using: buffer, at: i)
+            }
+            return result
         }
-        return result
     }
-}</code></pre>
+    </code></pre>
 
     <figcaption>Example from above WWDC talk, used as a reference.</figcaption>
 </figure>

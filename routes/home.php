@@ -140,15 +140,12 @@ fragment("head");
                 "contact"
             ) ?>">contact me</a>, or check out my <a href="https://github.com/j0lol">git repos</a>!
         </p>
-
-
-
-
-
-
-
-
     </main>
+
+    <div style="background: var(--bg-surface1); padding: 0rem 1rem;" class="tablet-show">
+        <hr class="frontmatter pilcrow">
+
+    </div>
 
     <div class="page">
 
@@ -161,8 +158,6 @@ fragment("head");
         <br>
         <details>
             <summary>Embed code for my website</summary>
-
-            <script src="/static/prism.js"></script>
 
             <pre><code class="language-html">&#x3C;a rel=&#x22;noreferrer&#x22; href=&#x22;https://j0.lol&#x22;&#x3E;
     &#x3C;img src=&#x22;https://j0.lol/static/badges/j0.gif&#x22; alt=&#x22;Logo: j0, with subtitle &#x27;deer thing&#x27;. To the side, there is a purple deer with yellow features. Various elements flicker.&#x22;&#x3E;

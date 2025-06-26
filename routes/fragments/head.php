@@ -4,15 +4,16 @@
     <?php global $commit_hash; ?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <link href="/static/normalize.<?= $commit_hash ?>.css" type="text/css" rel="stylesheet">
-    <link href="/static/style.<?= $commit_hash ?>.css" type="text/css" rel="stylesheet">
-    <link href="/static/nav.<?= $commit_hash ?>.css" type="text/css" rel="stylesheet">
-    <link href="/static/dialog.<?= $commit_hash ?>.css" type="text/css" rel="stylesheet">
+    <link href="/static/css/normalize.<?= $commit_hash ?>.css" type="text/css" rel="stylesheet">
+    <link href="/static/css/style.<?= $commit_hash ?>.css" type="text/css" rel="stylesheet">
+    <link href="/static/css/nav.<?= $commit_hash ?>.css" type="text/css" rel="stylesheet">
+    <link href="/static/css/dialog.<?= $commit_hash ?>.css" type="text/css" rel="stylesheet">
     <meta name="theme-color" content="#b497ee">
     <meta name="apple-mobile-web-app-status-bar-style" content="#b497ee">
-    <script defer data-domain="j0.lol" src="https://plausible.j0.lol/js/script.js"></script>
-    <script type="module" src="/static/bsky-comments.js"></script>
-    <link href="https://prismjs.catppuccin.com/mocha.css" rel="stylesheet" />
+    <script defer data-domain="j0.lol" src="/js/script.js"></script>
+    <script type="module" src="/static/js/bsky-comments.<?= $commit_hash ?>.js"></script>
+    <link href="/static/css/prism-theme-mocha.css" rel="stylesheet" />
+    <script src="/static/js/prism.js"></script>
 
     <?php
     global $post_slug;

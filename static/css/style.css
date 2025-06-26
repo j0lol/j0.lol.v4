@@ -98,6 +98,7 @@
     --border-header: rgb(var(--secondary-700));
     --plain-bg: light-dark(rgb(var(--primary-50)), rgb(var(--secondary-975)));
     --bg: light-dark(rgb(var(--primary-200)), rgb(var(--secondary-950)));
+    --bg-depth: light-dark(var(--bg), rgb(var(--secondary-925)));
     --bg-surface0: light-dark(
         rgb(var(--primary-100)),
         rgb(var(--secondary-900))
@@ -293,7 +294,31 @@ img:not(.raw) {
     max-width: 100%;
     height: auto;
     border: 1px solid rgb(53 50 68);
-    border-radius: 0.5rem;
+    border-radius: 0.2rem;
+    max-height: 20rem;
+    width: auto;
+    height: auto;
+
+    margin: 0 auto;
+    display: block;
+
+    background-color: var(--bg);
+}
+
+img:not(.raw) {
+    box-shadow: 1px 2px var(--bg-depth);
+}
+
+img:not(.raw).applerounded {
+    border-radius: 1.5rem;
+}
+
+img:not(.raw).superrounded {
+    border-radius: 3rem;
+}
+
+img:not(.raw).blackbg {
+    background-color: #000000;
 }
 
 abbr {
@@ -448,10 +473,21 @@ div._88x31s {
     position: absolute;
 }
 
+main {
+    container-type: inline-size;
+}
+@container (width < 28.5rem) {
+    /* Specificity hack */
+    /* https://csswizardry.com/2014/07/hacks-for-dealing-with-specificity/ */
+    .card-stack.card-stack {
+        grid-template-columns: 1fr;
+    }
+}
+
 .card-stack {
     display: grid;
     gap: 0.5em;
-    grid-template-columns: repeat(auto-fill, 14em);
+    grid-template-columns: repeat(auto-fill, 14rem);
     justify-content: center;
 }
 
@@ -560,10 +596,10 @@ blockquote.small {
 bsky-comments {
     --background-color: var(--bg-surface1);
     --text-color: var(--text);
-    --link-color: var(--anchor);
+    --link-color: var(--subtext);
     --link-hover-color: var(--anchor-active);
     --comment-meta-color: var(--subtext);
-    --reply-border-color: var(--border);
+    --reply-border-color: var(--text);
 }
 
 figcaption {
