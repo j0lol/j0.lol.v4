@@ -13,6 +13,10 @@ const style = `article {
 
 [aria-labelledby="notes_heading"]::after {
 		content: "[" counter(references) "]";
+}
+
+footer ol {
+  margin-block-end: 0;
 }`;
 const styleSheet = document.createElement("style");
 styleSheet.textContent = style;
