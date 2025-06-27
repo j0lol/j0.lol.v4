@@ -290,23 +290,49 @@ samp {
     font-weight: 400;
 }
 
-img:not(.raw) {
-    max-width: 100%;
-    height: auto;
+body {
+    counter-reset: figure 0;
+}
+
+figure {
+    display: flex;
+    flex-direction: column;
+
+    figcaption {
+        &::before {
+            counter-increment: figure;
+            content: "Figure " counter(figure) ": ";
+        }
+    }
+}
+
+figure:has(img) {
+    box-shadow: 1px 2px var(--bg-depth);
+    background-color: #000;
     border: 1px solid rgb(53 50 68);
-    border-radius: 0.2rem;
-    max-height: 20rem;
-    width: auto;
-    height: auto;
+    justify-content: flex-end;
 
-    margin: 0 auto;
-    display: block;
-
-    background-color: var(--bg);
+    img {
+        padding: 0.2rem;
+    }
+    figcaption {
+        padding: 0.2rem 0;
+        border-top: 1px solid rgb(53 50 68);
+        background: var(--bg);
+    }
 }
 
 img:not(.raw) {
-    box-shadow: 1px 2px var(--bg-depth);
+    max-height: 24rem;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+
+    margin: 0 auto;
+    display: block;
+}
+
+img:not(.raw) {
 }
 
 img:not(.raw).applerounded {

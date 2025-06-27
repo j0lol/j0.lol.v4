@@ -13,8 +13,8 @@
     <script defer data-domain="j0.lol" src="/js/script.js"></script>
     <script type="module" src="/static/js/bsky-comments.<?= $commit_hash ?>.js"></script>
     <script type="module" src="/static/js/footnotes.<?= $commit_hash ?>.js"></script>
-    <link href="/static/css/prism-theme-mocha.css" rel="stylesheet" />
-    <script src="/static/js/prism.js"></script>
+    <link defer href="/static/css/prism-theme-mocha.css" rel="stylesheet" />
+    <script defer src="/static/js/prism.js"></script>
 
     <?php
     global $post_slug;

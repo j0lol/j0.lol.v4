@@ -19,7 +19,7 @@ enum SpeechCharacter
             SpeechEmotion::Neutral => "/static/speech/deer/neutral.png",
             SpeechEmotion::Worried => "/static/speech/deer/sad.png",
             SpeechEmotion::Happy => "/static/speech/deer/happy.png",
-            SpeechEmotion::Shocked => "/static/speech/deer/shocked.png",
+            SpeechEmotion::Shocked => "/static/speech/deer/shock.png",
             null => "",
         };
 
@@ -59,7 +59,7 @@ function speech_start(SpeechCharacter $char, ?SpeechEmotion $emotion)
 {
     ?>
 <div class="dialog-box">
-    <img class="raw dialog profile" src="<?= $char->img(
+    <img width="120" height="120" class="raw dialog profile" src="<?= $char->img(
         $emotion
     ) ?>" alt="<?= $char->alt($emotion) ?>">
     <div class="dialog speech <?= $char->clazz() ?>">

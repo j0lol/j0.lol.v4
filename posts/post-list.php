@@ -10,6 +10,11 @@ function dt($string)
 }
 
 $posts = [
+    "love-your-website" => [
+        "title" => "On loving your website",
+        "subtitle" => "It's your website. Give it some love!",
+        "date" => dt("2025-06-27 15:00"),
+    ],
     "swift-inline-array" => [
         "title" => "Is Swift becoming unergonomic Rust?",
         "subtitle" => "(No, but I thought it was)",

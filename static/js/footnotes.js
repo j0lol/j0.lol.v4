@@ -9,6 +9,10 @@ const style = `article {
 		font-size: 0.83em;
 		vertical-align: super;
 		line-height: 1;
+    text-decoration: none;
+}
+[aria-labelledby="notes_heading"]:hover {
+    text-decoration: underline;
 }
 
 [aria-labelledby="notes_heading"]::after {
@@ -23,7 +27,7 @@ styleSheet.textContent = style;
 document.head.appendChild(styleSheet);
 
 document.addEventListener("DOMContentLoaded", function () {
-  var footerPairs = document.querySelectorAll("footer ol li");
+  var footerPairs = document.querySelectorAll("footer > ol > li");
 
   footerPairs.forEach((pair) => {
     if (!pair.id.startsWith("note_")) {
