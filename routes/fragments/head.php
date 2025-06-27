@@ -15,6 +15,7 @@
     <script type="module" src="/static/js/footnotes.<?= $commit_hash ?>.js"></script>
     <link defer href="/static/css/prism-theme-mocha.css" rel="stylesheet" />
     <script defer src="/static/js/prism.js"></script>
+    <script defer src="https://um.j0.lol/script.js" data-website-id="daa18e2c-162d-4982-90a2-db41257484c5"></script>
 
     <?php
     global $post_slug;
