@@ -14,6 +14,6 @@ other stuff that makes it feel like a real thing.
 
 Anyway, enjoy!
 
-<img src="https://f004.backblazeb2.com/file/j0-lol-website/0b-dc.png" alt="ZeroBridge being used on Discord">
+<img src="https://vps.j0.lol/website-assets/0b-dc.png" alt="ZeroBridge being used on Discord">
 
-<img src="https://f004.backblazeb2.com/file/j0-lol-website/0b-mc.png" alt="ZeroBridge being used on Minecraft">
+<img src="https://vps.j0.lol/website-assets/0b-mc.png" alt="ZeroBridge being used on Minecraft">
