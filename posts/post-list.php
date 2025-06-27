@@ -14,6 +14,7 @@ $posts = [
         "title" => "On loving your website",
         "subtitle" => "It's your website. Give it some love!",
         "date" => dt("2025-06-27 15:00"),
+        "post" => "at://did:plc:by6abidhbnj6siox5if2wzq6/app.bsky.feed.post/3lslrn3ci6c22"
     ],
     "swift-inline-array" => [
         "title" => "Is Swift becoming unergonomic Rust?",
