@@ -10,6 +10,11 @@ function dt($string)
 }
 
 $posts = [
+    "suspicious-88x31" => [
+        "title" => "The suspicious 88&times;31",
+        "date" => dt("2025-06-27 16:00"),
+        "trash" => true,
+    ],
     "love-your-website" => [
         "title" => "On loving your website",
         "subtitle" => "It's your website. Give it some love!",
