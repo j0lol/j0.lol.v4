@@ -303,6 +303,14 @@ class BskyComments extends HTMLElement {
             text-decoration: none;
           }
 
+          .author-nickname {
+            display: table-cell; /* Yeah, whatever. */
+            max-width: 15ch;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          overflow: hidden;
+          }
+
           .author-nickname:hover {
             text-decoration: underline;
           }
